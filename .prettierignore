@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Cache
+.cache/
+
+# Generated files
+next-env.d.ts
+package-lock.json
+
+# Docker and infrastructure
+docker/
+docker-compose.yml
+
+# Documentation and specs
+docs/
+.spec_system/
+
+# Scripts
+scripts/
+
+# Misc
+*.log
+.DS_Store

@@ -27,7 +27,8 @@
   "completed_sessions": [
     "phase00-session01-asset-optimization",
     "phase00-session02-docker-infrastructure",
-    "phase00-session03-asset-deployment"
+    "phase00-session03-asset-deployment",
+    "phase00-session04-nextjs-bootstrap"
   ],
   "next_session_history": [
     {
@@ -43,6 +44,11 @@
     {
       "date": "2025-12-21",
       "session": "phase00-session03-asset-deployment",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-21",
+      "session": "phase00-session04-nextjs-bootstrap",
       "status": "completed"
     }
   ]
