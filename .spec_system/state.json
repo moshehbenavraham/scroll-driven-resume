@@ -25,12 +25,18 @@
     }
   },
   "completed_sessions": [
-    "phase00-session01-asset-optimization"
+    "phase00-session01-asset-optimization",
+    "phase00-session02-docker-infrastructure"
   ],
   "next_session_history": [
     {
       "date": "2025-12-21",
       "session": "phase00-session01-asset-optimization",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-21",
+      "session": "phase00-session02-docker-infrastructure",
       "status": "completed"
     }
   ]
