@@ -194,7 +194,7 @@ This system delivers the product via phases. Each phase is implemented via multi
 
 | Phase | Name | Sessions | Status |
 |-------|------|----------|--------|
-| 00 | Foundation | 7 | Not Started |
+| 00 | Foundation | 7 | Complete |
 | 01 | Core Animation | TBD | Not Started |
 | 02 | Content and Polish | TBD | Not Started |
 
@@ -330,25 +330,25 @@ Sessions are defined via `/phasebuild` as `session_NN_name.md` stubs under `.spe
 
 ## Success Criteria
 
-- [ ] Hero frame sequence optimized to under 10MB total
-- [ ] Product frame sequence optimized to under 10MB total
-- [ ] Mobile variants created at under 5MB each
-- [ ] Docker stack operational with MinIO serving optimized WebP frames via Nginx cache
-- [ ] Next.js 15 app running with TypeScript strict mode, zero errors
+- [x] Hero frame sequence optimized to under 10MB total
+- [x] Product frame sequence optimized to under 10MB total
+- [x] Mobile variants created at under 5MB each
+- [x] Docker stack operational with MinIO serving optimized WebP frames via Nginx cache
+- [x] Next.js 15 app running with TypeScript strict mode, zero errors
 - [ ] Hero section frame animation advancing/reversing smoothly with scroll
 - [ ] Product section frame animation advancing/reversing smoothly with scroll
 - [ ] WebGL accent effects rendering in hero sections
 - [ ] Parallax layers creating visible depth effect (background, mid, foreground)
 - [ ] Framer Motion scroll animations performing at 60fps
 - [ ] Fixed navbar with backdrop blur functioning correctly
-- [ ] Dark/light mode toggle working with next-themes
-- [ ] Loading screen displaying progress and revealing content after preload
+- [x] Dark/light mode toggle working with next-themes
+- [x] Loading screen displaying progress and revealing content after preload
 - [ ] Mobile view showing static frames with disabled parallax/WebGL
-- [ ] prefers-reduced-motion respected (static frames, no parallax, no WebGL)
+- [x] prefers-reduced-motion respected (static frames, no parallax, no WebGL)
 - [ ] All sections rendering correctly (About, Skills, Projects, Contact, Footer)
 - [ ] Core Web Vitals passing (LCP < 2.5s, CLS < 0.1, INP < 200ms)
 - [ ] Cross-browser testing passed (Chrome, Safari, Firefox, Edge)
-- [ ] Vitest unit tests passing with >80% coverage on utilities
+- [x] Vitest unit tests passing with >80% coverage on utilities
 - [ ] Playwright E2E tests passing for critical user flows
 - [ ] Deployed and accessible on Vercel or Firebase App Hosting
 
