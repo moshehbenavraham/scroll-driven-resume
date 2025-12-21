@@ -2,6 +2,9 @@
  * Shared TypeScript type definitions for the application.
  */
 
+// Re-export animation types
+export * from "./animation";
+
 /**
  * Theme options for the application.
  */
