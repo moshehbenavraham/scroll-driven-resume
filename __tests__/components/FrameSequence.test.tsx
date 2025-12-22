@@ -14,6 +14,22 @@ vi.mock("@/hooks/useFrameSequence", () => ({
   useFrameSequence: vi.fn(),
 }));
 
+// Mock canvas rendering hooks for CanvasFrameRenderer
+vi.mock("@/hooks/useImageCache", () => ({
+  useImageCache: vi.fn(() => ({
+    getImage: vi.fn(() => null),
+    isImageLoaded: vi.fn(() => false),
+    loadedCount: 0,
+    totalCount: 0,
+  })),
+}));
+
+vi.mock("@/hooks/useCanvasRenderer", () => ({
+  useCanvasRenderer: vi.fn(() => ({
+    lastDrawnFrame: -1,
+  })),
+}));
+
 describe("FrameSequence", () => {
   const createMockRef = () => ({
     current: document.createElement("section"),
@@ -153,10 +169,10 @@ describe("FrameSequence", () => {
   });
 
   // =========================================================================
-  // Frame virtualization tests
+  // Canvas rendering tests
   // =========================================================================
-  describe("frame virtualization", () => {
-    it("renders only virtualized frames (current +/- 2)", () => {
+  describe("canvas rendering", () => {
+    it("renders canvas for animated mode", () => {
       vi.mocked(useFrameSequence).mockReturnValue({
         currentFrame: 50,
         frameUrls: mockFrameUrls,
@@ -172,16 +188,16 @@ describe("FrameSequence", () => {
 
       const ref = createMockRef();
 
-      render(<FrameSequence sequence="hero" containerRef={ref} />);
+      const { container } = render(
+        <FrameSequence sequence="hero" containerRef={ref} />
+      );
 
-      // Should render frames 48-52 (5 frames total)
-      const images = screen.getAllByRole("img", { hidden: true });
-      // The main container + virtualized frame images
-      // Note: img role includes both container and actual images
-      expect(images.length).toBeLessThanOrEqual(6); // container + 5 frames max
+      // Should render canvas element for animation
+      const canvas = container.querySelector("canvas");
+      expect(canvas).toBeInTheDocument();
     });
 
-    it("renders first frame with highest z-index when active", () => {
+    it("canvas is aria-hidden", () => {
       vi.mocked(useFrameSequence).mockReturnValue({
         currentFrame: 0,
         frameUrls: mockFrameUrls,
@@ -197,11 +213,12 @@ describe("FrameSequence", () => {
 
       const ref = createMockRef();
 
-      render(<FrameSequence sequence="hero" containerRef={ref} />);
+      const { container } = render(
+        <FrameSequence sequence="hero" containerRef={ref} />
+      );
 
-      // First frame should be active
-      const frameImage = document.querySelector('img[alt="hero frame 1"]');
-      expect(frameImage).toHaveStyle({ opacity: "1" });
+      const canvas = container.querySelector("canvas");
+      expect(canvas).toHaveAttribute("aria-hidden", "true");
     });
   });
 
@@ -209,7 +226,7 @@ describe("FrameSequence", () => {
   // Static frame tests (reduced motion / mobile)
   // =========================================================================
   describe("static frame mode", () => {
-    it("shows only first frame when reduced motion is preferred", () => {
+    it("shows static image when reduced motion is preferred", () => {
       vi.mocked(useFrameSequence).mockReturnValue({
         currentFrame: 0,
         frameUrls: mockFrameUrls,
@@ -227,12 +244,14 @@ describe("FrameSequence", () => {
 
       render(<FrameSequence sequence="hero" containerRef={ref} />);
 
-      // Should only render one frame
-      const frameImage = document.querySelector('img[alt="hero frame 1"]');
+      // Should render static image fallback
+      const frameImage = document.querySelector(
+        'img[alt="hero static frame"]'
+      );
       expect(frameImage).toBeInTheDocument();
     });
 
-    it("shows only first frame on mobile", () => {
+    it("shows static image on mobile", () => {
       vi.mocked(useFrameSequence).mockReturnValue({
         currentFrame: 0,
         frameUrls: mockFrameUrls,
@@ -250,12 +269,14 @@ describe("FrameSequence", () => {
 
       render(<FrameSequence sequence="hero" containerRef={ref} />);
 
-      // Should only render one frame
-      const frameImage = document.querySelector('img[alt="hero frame 1"]');
+      // Should render static image fallback
+      const frameImage = document.querySelector(
+        'img[alt="hero static frame"]'
+      );
       expect(frameImage).toBeInTheDocument();
     });
 
-    it("shows only first frame when disabled", () => {
+    it("shows static image when disabled", () => {
       vi.mocked(useFrameSequence).mockReturnValue({
         currentFrame: 0,
         frameUrls: mockFrameUrls,
@@ -273,9 +294,36 @@ describe("FrameSequence", () => {
 
       render(<FrameSequence sequence="hero" containerRef={ref} disabled />);
 
-      // Should only render one frame
-      const frameImage = document.querySelector('img[alt="hero frame 1"]');
+      // Should render static image fallback
+      const frameImage = document.querySelector(
+        'img[alt="hero static frame"]'
+      );
       expect(frameImage).toBeInTheDocument();
+    });
+
+    it("does not render canvas in static mode", () => {
+      vi.mocked(useFrameSequence).mockReturnValue({
+        currentFrame: 0,
+        frameUrls: mockFrameUrls,
+        isLoading: false,
+        isReady: true,
+        loadProgress: 100,
+        direction: null,
+        isActive: false,
+        prefersReducedMotion: true,
+        isMobile: false,
+        startPreload: vi.fn(),
+      });
+
+      const ref = createMockRef();
+
+      const { container } = render(
+        <FrameSequence sequence="hero" containerRef={ref} />
+      );
+
+      // Should NOT render canvas in static mode
+      const canvas = container.querySelector("canvas");
+      expect(canvas).not.toBeInTheDocument();
     });
   });
 

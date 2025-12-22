@@ -423,3 +423,87 @@ export const MOBILE_BREAKPOINT = 768;
  * Number of frames to virtualize (current +/- this value).
  */
 export const FRAME_VIRTUALIZATION_RANGE = 2;
+
+// ============================================================================
+// Canvas Frame Renderer Types
+// ============================================================================
+
+/**
+ * Options for useImageCache hook.
+ */
+export interface UseImageCacheOptions {
+  /** Array of frame URLs to cache */
+  frameUrls: string[];
+  /** Whether caching is enabled. Default: true */
+  enabled?: boolean;
+}
+
+/**
+ * Return value from useImageCache hook.
+ */
+export interface UseImageCacheReturn {
+  /** Get cached image by frame index */
+  getImage: (index: number) => HTMLImageElement | null;
+  /** Check if specific frame is loaded */
+  isImageLoaded: (index: number) => boolean;
+  /** Number of images currently cached */
+  loadedCount: number;
+  /** Total number of images to cache */
+  totalCount: number;
+}
+
+/**
+ * Options for useCanvasRenderer hook.
+ */
+export interface UseCanvasRendererOptions {
+  /** Reference to canvas element */
+  canvasRef: React.RefObject<HTMLCanvasElement | null>;
+  /** Current frame index to draw */
+  currentFrame: number;
+  /** Function to get cached image by index */
+  getImage: (index: number) => HTMLImageElement | null;
+  /** Whether rendering is enabled. Default: true */
+  enabled?: boolean;
+}
+
+/**
+ * Return value from useCanvasRenderer hook.
+ */
+export interface UseCanvasRendererReturn {
+  /** Last successfully drawn frame index */
+  lastDrawnFrame: number;
+}
+
+/**
+ * Props for CanvasFrameRenderer component.
+ */
+export interface CanvasFrameRendererProps {
+  /** Array of frame URLs */
+  frameUrls: string[];
+  /** Current frame index to display */
+  currentFrame: number;
+  /** Optional CSS class name */
+  className?: string;
+}
+
+/**
+ * Dimensions for canvas draw operation (object-fit: cover).
+ */
+export interface DrawDimensions {
+  /** Source X offset (for cropping) */
+  sx: number;
+  /** Source Y offset (for cropping) */
+  sy: number;
+  /** Source width to draw */
+  sWidth: number;
+  /** Source height to draw */
+  sHeight: number;
+  /** Destination X offset */
+  dx: number;
+  /** Destination Y offset */
+  dy: number;
+  /** Destination width */
+  dWidth: number;
+  /** Destination height */
+  dHeight: number;
+}

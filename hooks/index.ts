@@ -13,6 +13,17 @@ export { useFrameSequence, FRAME_COUNTS } from "./useFrameSequence";
 // Accessibility hooks
 export { useReducedMotion } from "./useReducedMotion";
 
+// WebGL hooks
+export { useWebGLCapabilities } from "./useWebGLCapabilities";
+
+// Canvas rendering hooks
+export { useImageCache } from "./useImageCache";
+export { useCanvasRenderer } from "./useCanvasRenderer";
+
+// Unified WebGL hooks
+export { useTextureLoader } from "./useTextureLoader";
+export { useUnifiedFrameAnimation } from "./useUnifiedFrameAnimation";
+
 // Default exports for convenience
 export { default as useScrollProgressDefault } from "./useScrollProgress";
 export { default as useFrameAnimationDefault } from "./useFrameAnimation";
@@ -20,3 +31,8 @@ export { default as useParallaxDefault } from "./useParallax";
 export { default as useFramePreloadDefault } from "./useFramePreload";
 export { default as useReducedMotionDefault } from "./useReducedMotion";
 export { default as useFrameSequenceDefault } from "./useFrameSequence";
+export { default as useWebGLCapabilitiesDefault } from "./useWebGLCapabilities";
+export { default as useImageCacheDefault } from "./useImageCache";
+export { default as useCanvasRendererDefault } from "./useCanvasRenderer";
+export { default as useTextureLoaderDefault } from "./useTextureLoader";
+export { default as useUnifiedFrameAnimationDefault } from "./useUnifiedFrameAnimation";

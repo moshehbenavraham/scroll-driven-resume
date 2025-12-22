@@ -5,7 +5,7 @@
  * Combines useFrameAnimation, useFramePreload, and store management for easy component use.
  */
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { useMotionValueEvent } from "framer-motion";
 import { useFrameAnimation } from "./useFrameAnimation";
 import { useFramePreload } from "./useFramePreload";
@@ -142,13 +142,18 @@ export function useFrameSequence(
     offset,
   });
 
-  // Track current frame from motion value
+  // Track current frame from motion value - only update when frame actually changes
   const [currentFrame, setCurrentFrame] = useState(0);
+  const lastFrameRef = useRef(0);
 
   useMotionValueEvent(frameIndex, "change", (latest) => {
     const frame = Math.round(latest);
-    setCurrentFrame(frame);
-    setSequenceFrame(sequence, frame);
+    // Only trigger re-render if frame actually changed
+    if (frame !== lastFrameRef.current) {
+      lastFrameRef.current = frame;
+      setCurrentFrame(frame);
+      setSequenceFrame(sequence, frame);
+    }
   });
 
   // Sync direction to store

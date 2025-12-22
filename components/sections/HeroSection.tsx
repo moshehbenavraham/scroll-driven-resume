@@ -2,24 +2,27 @@
 
 /**
  * HeroSection component - Full-viewport hero with scroll-synchronized frame animation.
- * Integrates FrameSequence, gradient overlay, and content with proper z-index layering.
+ * Uses unified WebGL canvas for flicker-free rendering of frames and particle effects.
  */
 
 import { useRef } from "react";
 import { cn } from "@/lib/cn";
-import { FrameSequence } from "@/components/animation/FrameSequence";
 import { ContentReveal } from "@/components/loading/ContentReveal";
 import { HeroContent } from "@/components/hero/HeroContent";
 import { SkillIndicators } from "@/components/hero/SkillIndicators";
 import { SocialLinks } from "@/components/hero/SocialLinks";
+import { UnifiedHeroCanvas } from "@/components/three/UnifiedHeroCanvas";
 import type { HeroSectionProps } from "@/types/hero";
 
 /**
  * Hero section with scroll-synchronized portrait animation.
  * Uses 300vh height to create scroll runway for 192 frames.
  *
+ * Uses unified WebGL canvas to eliminate flashing between frame updates
+ * and particle effects. Falls back to 2D canvas on unsupported devices.
+ *
  * Z-index layers:
- * - Frame sequence: 0 (background)
+ * - Unified canvas (frames + effects): 0 (background)
  * - Gradient overlay: 10 (contrast)
  * - Content: 20 (foreground)
  *
@@ -62,11 +65,12 @@ export function HeroSection({
           "overflow-hidden"
         )}
       >
-        {/* Layer 1: Frame sequence (z-index: 0) */}
+        {/* Layer 1: Unified WebGL canvas (frames + effects) (z-index: 0) */}
         <div className="absolute inset-0 z-0">
-          <FrameSequence
+          <UnifiedHeroCanvas
             sequence="hero"
             containerRef={sectionRef}
+            effectType="particles"
             onLoadComplete={onLoadComplete}
             onLoadProgress={onLoadProgress}
             className="h-full w-full"

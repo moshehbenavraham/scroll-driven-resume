@@ -96,6 +96,8 @@ export function useFramePreload(
         inFlightUrls.current.add(url);
 
         const img = new Image();
+        // Enable CORS for WebGL texture usage
+        img.crossOrigin = "anonymous";
 
         img.onload = () => {
           if (!isMounted.current) {
@@ -219,10 +221,12 @@ export function useFramePreload(
   // Track completion and fire callbacks
   // Using refs to avoid triggering additional renders
   const completionHandled = useRef(false);
+  const lastProgressRef = useRef(-1);
 
   useEffect(() => {
-    // Fire progress callback for intermediate updates
-    if (loadedCount > 0 && loadedCount < totalCount) {
+    // Fire progress callback when progress changes
+    if (progress !== lastProgressRef.current && totalCount > 0) {
+      lastProgressRef.current = progress;
       onProgress?.(progress);
     }
 

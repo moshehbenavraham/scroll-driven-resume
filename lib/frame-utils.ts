@@ -22,6 +22,12 @@ const FRAME_BASE_URL =
   process.env.NEXT_PUBLIC_FRAME_BASE_URL || "http://localhost:8080";
 
 /**
+ * Cache version for CORS-enabled requests.
+ * Increment to bust browser cache when CORS settings change.
+ */
+const CACHE_VERSION = "v3";
+
+/**
  * Bucket names for frame quality variants.
  */
 const BUCKET_NAMES: Record<FrameQuality, string> = {
@@ -70,7 +76,8 @@ function buildFrameUrl(
   // Pad index to 4 digits (e.g., 1 => "0001")
   const paddedIndex = String(index).padStart(4, "0");
 
-  return `${FRAME_BASE_URL}/${bucket}/${sequence}/frame_${paddedIndex}.webp`;
+  // Add cache version to bust stale non-CORS cached images
+  return `${FRAME_BASE_URL}/${bucket}/${sequence}/frame_${paddedIndex}.webp?${CACHE_VERSION}`;
 }
 
 // ============================================================================

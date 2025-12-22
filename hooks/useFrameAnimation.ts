@@ -80,14 +80,16 @@ export function useFrameAnimation(
     return clamp(index, 0, totalFrames - 1);
   });
 
-  // Track direction changes
+  // Track direction changes - only update state when direction actually changes
   useMotionValueEvent(scrollYProgress, "change", (currentProgress) => {
-    if (currentProgress > previousProgress.current) {
-      setDirection("down");
-    } else if (currentProgress < previousProgress.current) {
-      setDirection("up");
-    }
+    const newDirection = currentProgress > previousProgress.current ? "down" :
+                         currentProgress < previousProgress.current ? "up" : null;
     previousProgress.current = currentProgress;
+
+    // Only trigger re-render if direction actually changed
+    if (newDirection !== null && newDirection !== direction) {
+      setDirection(newDirection);
+    }
   });
 
   // Track if the section is in view (animation is active)

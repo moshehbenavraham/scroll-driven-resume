@@ -17,11 +17,8 @@ interface CanvasWrapperProps extends Omit<CanvasProps, "children"> {
 }
 
 function DefaultFallback() {
-  return (
-    <div className="bg-muted/50 flex h-full w-full items-center justify-center rounded-lg">
-      <div className="text-muted-foreground text-sm">Loading 3D scene...</div>
-    </div>
-  );
+  // Invisible fallback to prevent flash during Suspense
+  return <div className="h-full w-full" />;
 }
 
 export function CanvasWrapper({

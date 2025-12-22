@@ -8,6 +8,9 @@ export * from "./animation";
 // Re-export hero types
 export * from "./hero";
 
+// Re-export WebGL types
+export * from "./webgl";
+
 /**
  * Theme options for the application.
  */

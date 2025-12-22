@@ -2,25 +2,21 @@
 
 /**
  * FrameSequence component - Scroll-synchronized frame animation.
- * Renders a sequence of frames with opacity-based switching for smooth playback.
+ * Uses canvas-based rendering for flicker-free frame switching.
  */
 
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { cn } from "@/lib/cn";
 import { useFrameSequence } from "@/hooks/useFrameSequence";
-import { getVirtualizedRange } from "@/lib/frame-utils";
-import { FrameImage } from "./FrameImage";
-import {
-  FRAME_VIRTUALIZATION_RANGE,
-  type FrameSequenceProps,
-} from "@/types/animation";
+import { CanvasFrameRenderer } from "./CanvasFrameRenderer";
+import type { FrameSequenceProps } from "@/types/animation";
 
 /**
  * FrameSequence component for scroll-synchronized frame animation.
  *
  * Features:
- * - Opacity-based frame switching for smooth playback
- * - Frame virtualization (only renders current +/- 2 frames)
+ * - Canvas-based rendering for flicker-free frame switching
+ * - Single frame drawn at a time (no opacity transitions)
  * - Automatic preloading with priority for first N frames
  * - Reduced motion support (static first frame)
  * - Mobile fallback (static first frame)
@@ -88,39 +84,6 @@ export function FrameSequence({
   // Should show static frame?
   const showStatic = disabled || prefersReducedMotion || isMobile;
 
-  // Calculate virtualized frame range
-  const { start, end } = useMemo(() => {
-    if (showStatic) {
-      return { start: 0, end: 0 };
-    }
-    return getVirtualizedRange(
-      currentFrame,
-      frameUrls.length,
-      FRAME_VIRTUALIZATION_RANGE
-    );
-  }, [currentFrame, frameUrls.length, showStatic]);
-
-  // Get frames to render (virtualized)
-  const framesToRender = useMemo(() => {
-    if (frameUrls.length === 0) {
-      return [];
-    }
-
-    if (showStatic) {
-      // Only render first frame when disabled
-      return [{ index: 0, url: frameUrls[0] }];
-    }
-
-    // Render virtualized range
-    const frames: Array<{ index: number; url: string }> = [];
-    for (let i = start; i <= end; i++) {
-      if (i >= 0 && i < frameUrls.length) {
-        frames.push({ index: i, url: frameUrls[i] });
-      }
-    }
-    return frames;
-  }, [frameUrls, showStatic, start, end]);
-
   // Don't render until we have frame URLs
   if (frameUrls.length === 0) {
     return null;
@@ -156,22 +119,24 @@ export function FrameSequence({
         </div>
       ) : null}
 
-      {/* Frame images (virtualized) */}
-      {framesToRender.map(({ index, url }) => (
-        <FrameImage
-          key={`${sequence}-frame-${index}`}
-          src={url}
-          alt={`${sequence} frame ${index + 1}`}
-          isActive={showStatic ? index === 0 : index === currentFrame}
-          zIndex={
-            showStatic
-              ? 1
-              : index === currentFrame
-                ? FRAME_VIRTUALIZATION_RANGE + 1
-                : FRAME_VIRTUALIZATION_RANGE - Math.abs(index - currentFrame)
-          }
+      {/* Frame rendering */}
+      {showStatic ? (
+        // Static fallback: single img for reduced motion/mobile
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={frameUrls[0]}
+          alt={`${sequence} static frame`}
+          className="absolute inset-0 h-full w-full object-cover"
+          draggable={false}
         />
-      ))}
+      ) : (
+        // Canvas-based rendering for smooth scroll animation
+        <CanvasFrameRenderer
+          frameUrls={frameUrls}
+          currentFrame={currentFrame}
+          className="h-full w-full"
+        />
+      )}
     </div>
   );
 }
