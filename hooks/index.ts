@@ -12,6 +12,10 @@ export { useFrameSequence, FRAME_COUNTS } from "./useFrameSequence";
 
 // Accessibility hooks
 export { useReducedMotion } from "./useReducedMotion";
+export { useIsMobile } from "./useIsMobile";
+
+// Parallax hooks
+export { useParallaxTransform } from "./useParallaxTransform";
 
 // WebGL hooks
 export { useWebGLCapabilities } from "./useWebGLCapabilities";
@@ -30,6 +34,8 @@ export { default as useFrameAnimationDefault } from "./useFrameAnimation";
 export { default as useParallaxDefault } from "./useParallax";
 export { default as useFramePreloadDefault } from "./useFramePreload";
 export { default as useReducedMotionDefault } from "./useReducedMotion";
+export { default as useIsMobileDefault } from "./useIsMobile";
+export { default as useParallaxTransformDefault } from "./useParallaxTransform";
 export { default as useFrameSequenceDefault } from "./useFrameSequence";
 export { default as useWebGLCapabilitiesDefault } from "./useWebGLCapabilities";
 export { default as useImageCacheDefault } from "./useImageCache";

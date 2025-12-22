@@ -3,6 +3,7 @@
 /**
  * ProductSection component - Full-viewport product showcase with scroll-synchronized
  * burst frame animation. Uses unified WebGL canvas for flicker-free rendering.
+ * Implements multi-layer parallax for depth effect.
  *
  * Z-index layers:
  * - Unified canvas (frames + effects): 0 (background)
@@ -18,6 +19,7 @@ import { ProductContent } from "@/components/product/ProductContent";
 import { ProductStatsWithMotion } from "@/components/product/ProductStats";
 import { ProductCTAs } from "@/components/product/ProductCTAs";
 import { UnifiedHeroCanvas } from "@/components/three/UnifiedHeroCanvas";
+import { ParallaxContainer, ParallaxLayer } from "@/components/parallax";
 import type { ProductSectionProps } from "@/types/product";
 
 /**
@@ -86,57 +88,65 @@ export function ProductSection({
           "overflow-hidden"
         )}
       >
-        {/* Layer 1: Unified WebGL canvas (frames + effects) (z-index: 0) */}
-        <div className="absolute inset-0 z-0">
-          <UnifiedHeroCanvas
-            sequence="product"
-            containerRef={sectionRef}
-            effectType="particles"
-            onLoadComplete={onLoadComplete}
-            onLoadProgress={onLoadProgress}
-            className="h-full w-full"
-          />
-        </div>
+        {/* Parallax container provides scroll context to layers */}
+        <ParallaxContainer containerRef={sectionRef}>
+          {/* Layer 1: Unified WebGL canvas (frames + effects) (z-index: 0) */}
+          {/* Background layer: speed 0 = fixed relative to section */}
+          <ParallaxLayer layer="background" zIndex={0}>
+            <UnifiedHeroCanvas
+              sequence="product"
+              containerRef={sectionRef}
+              effectType="particles"
+              onLoadComplete={onLoadComplete}
+              onLoadProgress={onLoadProgress}
+              className="h-full w-full"
+            />
+          </ParallaxLayer>
 
-        {/* Layer 2: Gradient overlay for text contrast (z-index: 10) */}
-        <div
-          className={cn(
-            "absolute inset-0 z-10",
-            // Radial gradient from center for burst effect
-            "bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.8)_100%)]",
-            // Pointer events pass through to frame sequence
-            "pointer-events-none"
-          )}
-          aria-hidden="true"
-        />
+          {/* Layer 2: Gradient overlay for text contrast (z-index: 10) */}
+          {/* Mid layer: speed 0.4 = slower than scroll for depth effect */}
+          <ParallaxLayer layer="mid" zIndex={10}>
+            <div
+              className={cn(
+                "h-full w-full",
+                // Radial gradient from center for burst effect
+                "bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.8)_100%)]"
+              )}
+              aria-hidden="true"
+            />
+          </ParallaxLayer>
 
-        {/* Layer 3: Content overlay (z-index: 20) */}
-        <div
-          className={cn(
-            "absolute inset-0 z-20",
-            // Center content vertically and horizontally
-            "flex items-center justify-center",
-            // Allow clicks on interactive elements
-            "pointer-events-none"
-          )}
-        >
-          <ContentReveal
-            isRevealed={isRevealed}
-            className={cn(
-              // Re-enable pointer events for content
-              "pointer-events-auto",
-              "w-full"
-            )}
-          >
-            <ProductContent>
-              <ProductStatsWithMotion
-                scrollProgress={statsProgress}
-                className="mb-8"
-              />
-              <ProductCTAs />
-            </ProductContent>
-          </ContentReveal>
-        </div>
+          {/* Layer 3: Content overlay (z-index: 20) */}
+          {/* Foreground layer: speed 1.0 = normal scroll speed */}
+          <ParallaxLayer layer="foreground" zIndex={20}>
+            <div
+              className={cn(
+                "h-full w-full",
+                // Center content vertically and horizontally
+                "flex items-center justify-center",
+                // Allow clicks on interactive elements
+                "pointer-events-none"
+              )}
+            >
+              <ContentReveal
+                isRevealed={isRevealed}
+                className={cn(
+                  // Re-enable pointer events for content
+                  "pointer-events-auto",
+                  "w-full"
+                )}
+              >
+                <ProductContent>
+                  <ProductStatsWithMotion
+                    scrollProgress={statsProgress}
+                    className="mb-8"
+                  />
+                  <ProductCTAs />
+                </ProductContent>
+              </ContentReveal>
+            </div>
+          </ParallaxLayer>
+        </ParallaxContainer>
       </div>
     </section>
   );

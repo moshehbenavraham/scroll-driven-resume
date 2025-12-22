@@ -507,3 +507,20 @@ export interface DrawDimensions {
   /** Destination height */
   dHeight: number;
 }
+
+// ============================================================================
+// Parallax Types Re-export
+// ============================================================================
+
+/**
+ * Re-export parallax types for convenience.
+ * Full types available in types/parallax.ts
+ */
+export type {
+  ParallaxLayerType,
+  ParallaxContextValue,
+  ParallaxContainerProps,
+  ParallaxLayerProps,
+  UseParallaxTransformOptions,
+  UseParallaxTransformReturn,
+} from "./parallax";

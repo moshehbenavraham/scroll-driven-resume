@@ -3,6 +3,7 @@
 /**
  * HeroSection component - Full-viewport hero with scroll-synchronized frame animation.
  * Uses unified WebGL canvas for flicker-free rendering of frames and particle effects.
+ * Implements multi-layer parallax for depth effect.
  */
 
 import { useRef } from "react";
@@ -12,6 +13,7 @@ import { HeroContent } from "@/components/hero/HeroContent";
 import { SkillIndicators } from "@/components/hero/SkillIndicators";
 import { SocialLinks } from "@/components/hero/SocialLinks";
 import { UnifiedHeroCanvas } from "@/components/three/UnifiedHeroCanvas";
+import { ParallaxContainer, ParallaxLayer } from "@/components/parallax";
 import type { HeroSectionProps } from "@/types/hero";
 
 /**
@@ -65,55 +67,63 @@ export function HeroSection({
           "overflow-hidden"
         )}
       >
-        {/* Layer 1: Unified WebGL canvas (frames + effects) (z-index: 0) */}
-        <div className="absolute inset-0 z-0">
-          <UnifiedHeroCanvas
-            sequence="hero"
-            containerRef={sectionRef}
-            effectType="particles"
-            onLoadComplete={onLoadComplete}
-            onLoadProgress={onLoadProgress}
-            className="h-full w-full"
-          />
-        </div>
+        {/* Parallax container provides scroll context to layers */}
+        <ParallaxContainer containerRef={sectionRef}>
+          {/* Layer 1: Unified WebGL canvas (frames + effects) (z-index: 0) */}
+          {/* Background layer: speed 0 = fixed relative to section */}
+          <ParallaxLayer layer="background" zIndex={0}>
+            <UnifiedHeroCanvas
+              sequence="hero"
+              containerRef={sectionRef}
+              effectType="particles"
+              onLoadComplete={onLoadComplete}
+              onLoadProgress={onLoadProgress}
+              className="h-full w-full"
+            />
+          </ParallaxLayer>
 
-        {/* Layer 2: Gradient overlay for text contrast (z-index: 10) */}
-        <div
-          className={cn(
-            "absolute inset-0 z-10",
-            // Gradient from transparent top to semi-opaque bottom
-            "bg-gradient-to-t",
-            "from-black/80 via-black/40 to-transparent",
-            // Pointer events pass through to frame sequence
-            "pointer-events-none"
-          )}
-          aria-hidden="true"
-        />
+          {/* Layer 2: Gradient overlay for text contrast (z-index: 10) */}
+          {/* Mid layer: speed 0.4 = slower than scroll for depth effect */}
+          <ParallaxLayer layer="mid" zIndex={10}>
+            <div
+              className={cn(
+                "h-full w-full",
+                // Gradient from transparent top to semi-opaque bottom
+                "bg-gradient-to-t",
+                "from-black/80 via-black/40 to-transparent"
+              )}
+              aria-hidden="true"
+            />
+          </ParallaxLayer>
 
-        {/* Layer 3: Content overlay (z-index: 20) */}
-        <div
-          className={cn(
-            "absolute inset-0 z-20",
-            // Center content vertically and horizontally
-            "flex items-center justify-center",
-            // Allow clicks on interactive elements
-            "pointer-events-none"
-          )}
-        >
-          <ContentReveal
-            isRevealed={isRevealed}
-            className={cn(
-              // Re-enable pointer events for content
-              "pointer-events-auto",
-              "w-full"
-            )}
-          >
-            <HeroContent>
-              <SkillIndicators className="mb-8" />
-              <SocialLinks />
-            </HeroContent>
-          </ContentReveal>
-        </div>
+          {/* Layer 3: Content overlay (z-index: 20) */}
+          {/* Foreground layer: speed 1.0 = normal scroll speed */}
+          <ParallaxLayer layer="foreground" zIndex={20}>
+            <div
+              className={cn(
+                "h-full w-full",
+                // Center content vertically and horizontally
+                "flex items-center justify-center",
+                // Allow clicks on interactive elements
+                "pointer-events-none"
+              )}
+            >
+              <ContentReveal
+                isRevealed={isRevealed}
+                className={cn(
+                  // Re-enable pointer events for content
+                  "pointer-events-auto",
+                  "w-full"
+                )}
+              >
+                <HeroContent>
+                  <SkillIndicators className="mb-8" />
+                  <SocialLinks />
+                </HeroContent>
+              </ContentReveal>
+            </div>
+          </ParallaxLayer>
+        </ParallaxContainer>
       </div>
     </section>
   );
