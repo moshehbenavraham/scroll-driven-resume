@@ -41,13 +41,13 @@ function FrameImageComponent({
       draggable={false}
       className={cn(
         // Base positioning - fill parent container
-        "absolute inset-0 w-full h-full object-cover",
+        "absolute inset-0 h-full w-full object-cover",
         // GPU-accelerated opacity transition
         "transition-opacity duration-75 ease-linear",
         // Performance hints
         "will-change-opacity",
         // Prevent selection/dragging
-        "select-none pointer-events-none",
+        "pointer-events-none select-none",
         className
       )}
       style={{

@@ -27,7 +27,7 @@ export default function FramesDemoPage() {
   return (
     <main className="bg-black text-white">
       {/* Header */}
-      <header className="fixed left-0 right-0 top-0 z-50 bg-black/80 backdrop-blur-sm">
+      <header className="fixed top-0 right-0 left-0 z-50 bg-black/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
           <h1 className="text-xl font-bold">Frame Animation Demo</h1>
           <p className="text-sm text-gray-400">
@@ -41,11 +41,17 @@ export default function FramesDemoPage() {
         <div className="mb-2 font-bold text-green-400">Hero Sequence</div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
           <span className="text-gray-400">Frame:</span>
-          <span>{heroSequence.currentFrame} / {heroSequence.totalFrames - 1}</span>
+          <span>
+            {heroSequence.currentFrame} / {heroSequence.totalFrames - 1}
+          </span>
           <span className="text-gray-400">Progress:</span>
           <span>{heroProgress}%</span>
           <span className="text-gray-400">Active:</span>
-          <span className={heroSequence.isActive ? "text-green-400" : "text-gray-500"}>
+          <span
+            className={
+              heroSequence.isActive ? "text-green-400" : "text-gray-500"
+            }
+          >
             {heroSequence.isActive ? "Yes" : "No"}
           </span>
           <span className="text-gray-400">Direction:</span>
@@ -56,20 +62,30 @@ export default function FramesDemoPage() {
           </span>
         </div>
 
-        <div className="mb-2 mt-4 font-bold text-blue-400">Product Sequence</div>
+        <div className="mt-4 mb-2 font-bold text-blue-400">
+          Product Sequence
+        </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
           <span className="text-gray-400">Frame:</span>
-          <span>{productSequence.currentFrame} / {productSequence.totalFrames - 1}</span>
+          <span>
+            {productSequence.currentFrame} / {productSequence.totalFrames - 1}
+          </span>
           <span className="text-gray-400">Progress:</span>
           <span>{productProgress}%</span>
           <span className="text-gray-400">Active:</span>
-          <span className={productSequence.isActive ? "text-green-400" : "text-gray-500"}>
+          <span
+            className={
+              productSequence.isActive ? "text-green-400" : "text-gray-500"
+            }
+          >
             {productSequence.isActive ? "Yes" : "No"}
           </span>
           <span className="text-gray-400">Direction:</span>
           <span>{productSequence.direction ?? "none"}</span>
           <span className="text-gray-400">Loaded:</span>
-          <span className={productLoaded ? "text-green-400" : "text-yellow-400"}>
+          <span
+            className={productLoaded ? "text-green-400" : "text-yellow-400"}
+          >
             {productLoaded ? "Yes" : "Loading..."}
           </span>
         </div>

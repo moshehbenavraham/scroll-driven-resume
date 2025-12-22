@@ -130,7 +130,7 @@ export function FrameSequence({
     <div
       className={cn(
         // Container fills parent
-        "relative w-full h-full overflow-hidden",
+        "relative h-full w-full overflow-hidden",
         // Ensure proper stacking context
         "isolate",
         className
@@ -150,7 +150,7 @@ export function FrameSequence({
           role="status"
           aria-label={`Loading ${sequence} frames: ${loadProgress}%`}
         >
-          <div className="text-white text-sm font-mono">
+          <div className="font-mono text-sm text-white">
             Loading... {loadProgress}%
           </div>
         </div>

@@ -199,7 +199,9 @@ describe("useFrameSequence dependencies", () => {
     it("updates sequence direction", () => {
       useAnimationStore.getState().setSequenceDirection("hero", "down");
 
-      expect(useAnimationStore.getState().sequences.hero.direction).toBe("down");
+      expect(useAnimationStore.getState().sequences.hero.direction).toBe(
+        "down"
+      );
     });
 
     it("gets sequence state", () => {

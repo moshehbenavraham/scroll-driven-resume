@@ -64,7 +64,10 @@ interface AnimationState {
   setSequenceActive: (id: FrameSequenceId, active: boolean) => void;
   setSequenceLoadProgress: (id: FrameSequenceId, progress: number) => void;
   setSequenceLoaded: (id: FrameSequenceId, loaded: boolean) => void;
-  setSequenceDirection: (id: FrameSequenceId, direction: ScrollDirection) => void;
+  setSequenceDirection: (
+    id: FrameSequenceId,
+    direction: ScrollDirection
+  ) => void;
   getSequence: (id: FrameSequenceId) => SequenceState;
 }
 

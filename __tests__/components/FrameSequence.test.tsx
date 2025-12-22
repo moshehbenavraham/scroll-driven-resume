@@ -57,7 +57,9 @@ describe("FrameSequence", () => {
       render(<FrameSequence sequence="hero" containerRef={ref} />);
 
       // The container has role="img" with aria-label
-      expect(screen.getByRole("img", { name: /hero animation sequence/i })).toBeInTheDocument();
+      expect(
+        screen.getByRole("img", { name: /hero animation sequence/i })
+      ).toBeInTheDocument();
     });
 
     it("renders with correct aria-label", () => {
@@ -75,7 +77,9 @@ describe("FrameSequence", () => {
 
       render(<FrameSequence sequence="hero" containerRef={ref} />);
 
-      const container = screen.getByRole("img", { name: /hero animation sequence/i });
+      const container = screen.getByRole("img", {
+        name: /hero animation sequence/i,
+      });
       expect(container).toHaveAttribute("data-sequence", "hero");
       expect(container).toHaveAttribute("data-frame", "0");
       expect(container).toHaveAttribute("data-ready", "true");
@@ -93,7 +97,9 @@ describe("FrameSequence", () => {
       );
 
       // The container div has role="img" and the custom class
-      const container = screen.getByRole("img", { name: /hero animation sequence/i });
+      const container = screen.getByRole("img", {
+        name: /hero animation sequence/i,
+      });
       expect(container).toHaveClass("custom-class");
     });
   });

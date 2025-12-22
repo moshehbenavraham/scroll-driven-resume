@@ -32,7 +32,8 @@
     "phase00-session05-animation-libraries",
     "phase00-session06-scroll-parallax-utilities",
     "phase00-session07-loading-system",
-    "phase01-session01-frame-animation-core"
+    "phase01-session01-frame-animation-core",
+    "phase01-session02-hero-section"
   ],
   "next_session_history": [
     {
@@ -73,6 +74,11 @@
     {
       "date": "2025-12-22",
       "session": "phase01-session01-frame-animation-core",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-22",
+      "session": "phase01-session02-hero-section",
       "status": "completed"
     }
   ]

@@ -1,60 +1,55 @@
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+"use client";
 
+/**
+ * Home page with hero section and scroll-synchronized frame animation.
+ */
+
+import { useState, useCallback } from "react";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { LoadingScreen } from "@/components/loading/LoadingScreen";
+
+/**
+ * Home page component.
+ * Renders the hero section with loading screen integration.
+ */
 export default function Home() {
+  // Loading state management
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [isContentRevealed, setIsContentRevealed] = useState(false);
+
+  // Handle frame sequence load progress
+  const handleLoadProgress = useCallback((percent: number) => {
+    setLoadProgress(percent);
+  }, []);
+
+  // Handle frame sequence load complete
+  const handleLoadComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
+  // Handle loading screen exit animation complete
+  const handleExitComplete = useCallback(() => {
+    setIsContentRevealed(true);
+  }, []);
+
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* Header with theme toggle */}
-      <header className="fixed top-0 right-0 z-50 p-4">
-        <ThemeToggle />
-      </header>
+    <>
+      {/* Loading overlay */}
+      <LoadingScreen
+        isLoading={isLoading}
+        progress={loadProgress}
+        onExitComplete={handleExitComplete}
+      />
 
-      {/* Main content area */}
-      <main className="flex flex-1 flex-col items-center justify-center px-4">
-        <div className="mx-auto max-w-2xl text-center">
-          {/* Display font heading */}
-          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-6xl">
-            Creative Developer
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-muted-foreground mt-6 text-lg leading-8">
-            Building immersive digital experiences with modern web technologies.
-            This is a placeholder for the cinematic portfolio.
-          </p>
-
-          {/* Status indicators */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <div className="bg-secondary flex items-center gap-2 rounded-full px-4 py-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-green-500" />
-              <span>Next.js 16 Ready</span>
-            </div>
-            <div className="bg-secondary flex items-center gap-2 rounded-full px-4 py-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-green-500" />
-              <span>Tailwind CSS 4</span>
-            </div>
-            <div className="bg-secondary flex items-center gap-2 rounded-full px-4 py-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-green-500" />
-              <span>Theme System</span>
-            </div>
-          </div>
-
-          {/* Asset URL verification */}
-          <div className="border-border bg-card mt-8 rounded-lg border p-4 text-left text-sm">
-            <p className="text-card-foreground font-medium">
-              Environment Check
-            </p>
-            <p className="text-muted-foreground mt-2 font-mono text-xs">
-              NEXT_PUBLIC_ASSET_BASE_URL:{" "}
-              {process.env.NEXT_PUBLIC_ASSET_BASE_URL ?? "not set"}
-            </p>
-          </div>
-        </div>
+      {/* Main content */}
+      <main>
+        <HeroSection
+          isRevealed={isContentRevealed}
+          onLoadProgress={handleLoadProgress}
+          onLoadComplete={handleLoadComplete}
+        />
       </main>
-
-      {/* Footer */}
-      <footer className="border-border text-muted-foreground border-t py-6 text-center text-sm">
-        <p>Phase 00 Session 04 - Next.js Bootstrap Complete</p>
-      </footer>
-    </div>
+    </>
   );
 }

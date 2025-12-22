@@ -89,7 +89,9 @@ describe("frame-utils", () => {
     });
 
     it("handles invalid index by using 1", () => {
-      const consoleWarn = vi.spyOn(console, "warn").mockImplementation(() => {});
+      const consoleWarn = vi
+        .spyOn(console, "warn")
+        .mockImplementation(() => {});
 
       const url = getFrameUrl({
         sequence: "hero",
@@ -104,7 +106,9 @@ describe("frame-utils", () => {
     });
 
     it("handles negative index by using 1", () => {
-      const consoleWarn = vi.spyOn(console, "warn").mockImplementation(() => {});
+      const consoleWarn = vi
+        .spyOn(console, "warn")
+        .mockImplementation(() => {});
 
       const url = getFrameUrl({
         sequence: "hero",
