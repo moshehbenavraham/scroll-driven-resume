@@ -34,7 +34,8 @@
     "phase00-session07-loading-system",
     "phase01-session01-frame-animation-core",
     "phase01-session02-hero-section",
-    "phase01-session03-hero-webgl-effects"
+    "phase01-session03-hero-webgl-effects",
+    "phase01-session04-product-section"
   ],
   "next_session_history": [
     {
@@ -85,6 +86,11 @@
     {
       "date": "2025-12-22",
       "session": "phase01-session03-hero-webgl-effects",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-22",
+      "session": "phase01-session04-product-section",
       "status": "completed"
     }
   ]

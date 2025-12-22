@@ -11,6 +11,9 @@ export * from "./hero";
 // Re-export WebGL types
 export * from "./webgl";
 
+// Re-export product types
+export * from "./product";
+
 /**
  * Theme options for the application.
  */

@@ -1,11 +1,13 @@
 "use client";
 
 /**
- * Home page with hero section and scroll-synchronized frame animation.
+ * Home page with hero and product sections featuring scroll-synchronized
+ * frame animations.
  */
 
 import { useState, useCallback } from "react";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { ProductSection } from "@/components/sections/ProductSection";
 import { LoadingScreen } from "@/components/loading/LoadingScreen";
 
 /**
@@ -49,6 +51,7 @@ export default function Home() {
           onLoadProgress={handleLoadProgress}
           onLoadComplete={handleLoadComplete}
         />
+        <ProductSection isRevealed={isContentRevealed} />
       </main>
     </>
   );
