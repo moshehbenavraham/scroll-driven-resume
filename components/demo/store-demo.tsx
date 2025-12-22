@@ -44,7 +44,7 @@ export function StoreDemo() {
       </CardHeader>
       <CardContent className="space-y-4">
         {/* State display */}
-        <div className="rounded-lg bg-muted p-4 font-mono text-sm">
+        <div className="bg-muted rounded-lg p-4 font-mono text-sm">
           <pre className="whitespace-pre-wrap">
             {JSON.stringify(
               {
@@ -70,7 +70,11 @@ export function StoreDemo() {
             size="sm"
             onClick={() => setIsPlaying(!isPlaying)}
           >
-            {isPlaying ? <Pause className="mr-1 h-4 w-4" /> : <Play className="mr-1 h-4 w-4" />}
+            {isPlaying ? (
+              <Pause className="mr-1 h-4 w-4" />
+            ) : (
+              <Play className="mr-1 h-4 w-4" />
+            )}
             {isPlaying ? "Pause" : "Play"}
           </Button>
           <Button variant="outline" size="sm" onClick={reset}>
@@ -79,7 +83,7 @@ export function StoreDemo() {
           </Button>
         </div>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Global state management with Zustand. Changes update all subscribers.
         </p>
       </CardContent>

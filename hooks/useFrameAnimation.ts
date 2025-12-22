@@ -57,7 +57,10 @@ export function useFrameAnimation(
   // Type assertion needed as Framer Motion expects specific string literals
   const { scrollYProgress } = useScroll({
     target,
-    offset: (offset ?? ["start end", "end start"]) as ["start end", "end start"],
+    offset: (offset ?? ["start end", "end start"]) as [
+      "start end",
+      "end start",
+    ],
   });
 
   // Transform progress (0-1) to frame index (0 to totalFrames-1)

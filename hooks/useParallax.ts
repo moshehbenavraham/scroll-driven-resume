@@ -7,7 +7,11 @@
 
 import { useScroll, useTransform } from "framer-motion";
 import { clamp } from "@/lib/utils";
-import { PARALLAX_SPEEDS, type UseParallaxOptions, type UseParallaxReturn } from "@/types/animation";
+import {
+  PARALLAX_SPEEDS,
+  type UseParallaxOptions,
+  type UseParallaxReturn,
+} from "@/types/animation";
 
 /**
  * Default parallax speed (mid-ground layer).
@@ -56,25 +60,36 @@ export function useParallax(options: UseParallaxOptions): UseParallaxReturn {
   // Type assertion needed as Framer Motion expects specific string literals
   const { scrollYProgress } = useScroll({
     target,
-    offset: (offset ?? ["start end", "end start"]) as ["start end", "end start"],
+    offset: (offset ?? ["start end", "end start"]) as [
+      "start end",
+      "end start",
+    ],
   });
 
   // Calculate parallax Y offset
   // Positive speed < 1: element moves slower than scroll (appears behind)
   // Positive speed > 1: element moves faster than scroll (appears in front)
   // The offset is based on progress through the section * a multiplier
-  const y = useTransform(scrollYProgress, [0, 1], [
-    // Start position: offset based on speed difference
-    (clampedSpeed - 1) * -100,
-    // End position: opposite offset
-    (clampedSpeed - 1) * 100,
-  ]);
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [
+      // Start position: offset based on speed difference
+      (clampedSpeed - 1) * -100,
+      // End position: opposite offset
+      (clampedSpeed - 1) * 100,
+    ]
+  );
 
   // Horizontal parallax (typically 0, but available for advanced effects)
   const x = useTransform(scrollYProgress, [0, 1], [0, 0]);
 
   // Opacity with fade-in/fade-out at boundaries
-  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.85, 1],
+    [0, 1, 1, 0]
+  );
 
   return {
     y,

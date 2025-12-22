@@ -263,3 +263,163 @@ export const PARALLAX_SPEEDS = {
 } as const;
 
 export type ParallaxSpeedPreset = keyof typeof PARALLAX_SPEEDS;
+
+// ============================================================================
+// Frame Quality and URL Types (T005)
+// ============================================================================
+
+/**
+ * Quality variant for frame images.
+ */
+export type FrameQuality = "desktop" | "mobile";
+
+/**
+ * Frame sequence identifier.
+ */
+export type FrameSequenceId = "hero" | "product";
+
+/**
+ * Parameters for generating a single frame URL.
+ */
+export interface GetFrameUrlParams {
+  /** Sequence identifier (hero or product) */
+  sequence: FrameSequenceId;
+  /** Frame index (1-based, e.g., 1 to 192 for hero) */
+  index: number;
+  /** Quality variant (desktop or mobile) */
+  quality: FrameQuality;
+}
+
+/**
+ * Parameters for generating batch frame URLs.
+ */
+export interface GenerateFrameUrlsParams {
+  /** Sequence identifier (hero or product) */
+  sequence: FrameSequenceId;
+  /** Total number of frames in the sequence */
+  totalFrames: number;
+  /** Quality variant (desktop or mobile) */
+  quality: FrameQuality;
+}
+
+/**
+ * Frame URL configuration from environment.
+ */
+export interface FrameUrlConfig {
+  /** Base URL for frame assets (e.g., http://localhost:8080) */
+  baseUrl: string;
+  /** Bucket name pattern for desktop frames */
+  desktopBucket: string;
+  /** Bucket name pattern for mobile frames */
+  mobileBucket: string;
+}
+
+// ============================================================================
+// FrameSequence Component Types (T004)
+// ============================================================================
+
+/**
+ * Props for the FrameSequence component.
+ */
+export interface FrameSequenceProps {
+  /** Sequence identifier (hero or product) */
+  sequence: FrameSequenceId;
+  /** Reference to the container element for scroll tracking */
+  containerRef: React.RefObject<HTMLElement | null>;
+  /** Optional className for the wrapper element */
+  className?: string;
+  /** Optional priority count for preloading. Default: 10 */
+  priorityCount?: number;
+  /** Callback fired when all frames are preloaded */
+  onLoadComplete?: () => void;
+  /** Callback fired on preload progress updates (0-100) */
+  onLoadProgress?: (percent: number) => void;
+  /** Whether to disable animation (show static first frame) */
+  disabled?: boolean;
+  /** Custom scroll offset configuration */
+  offset?: ScrollOffset;
+}
+
+/**
+ * Props for the FrameImage component.
+ */
+export interface FrameImageProps {
+  /** URL of the frame image */
+  src: string;
+  /** Alt text for accessibility */
+  alt: string;
+  /** Whether this frame is currently visible (opacity: 1) */
+  isActive: boolean;
+  /** Z-index for stacking order */
+  zIndex: number;
+  /** Optional className for styling */
+  className?: string;
+  /** Optional loading strategy. Default: "eager" */
+  loading?: "eager" | "lazy";
+}
+
+/**
+ * Return value from useFrameSequence hook.
+ */
+export interface UseFrameSequenceReturn {
+  /** Current frame index (0-based) */
+  currentFrame: number;
+  /** Array of frame URLs */
+  frameUrls: string[];
+  /** Whether preloading is in progress */
+  isLoading: boolean;
+  /** Whether all frames are preloaded */
+  isReady: boolean;
+  /** Preload progress (0-100) */
+  loadProgress: number;
+  /** Current scroll direction */
+  direction: ScrollDirection;
+  /** Whether animation is active (section in view) */
+  isActive: boolean;
+  /** Whether reduced motion is preferred */
+  prefersReducedMotion: boolean;
+  /** Whether device is mobile (viewport < 768px) */
+  isMobile: boolean;
+  /** Start preloading manually */
+  startPreload: () => void;
+}
+
+/**
+ * Options for useFrameSequence hook.
+ */
+export interface UseFrameSequenceOptions {
+  /** Sequence identifier (hero or product) */
+  sequence: FrameSequenceId;
+  /** Reference to container element for scroll tracking */
+  containerRef: React.RefObject<HTMLElement | null>;
+  /** Priority count for preloading. Default: 10 */
+  priorityCount?: number;
+  /** Scroll offset configuration */
+  offset?: ScrollOffset;
+  /** Callback on preload progress */
+  onProgress?: (percent: number) => void;
+  /** Callback when preload completes */
+  onComplete?: () => void;
+}
+
+// ============================================================================
+// Frame Sequence Constants
+// ============================================================================
+
+/**
+ * Frame counts for each sequence.
+ */
+export const FRAME_COUNTS: Record<FrameSequenceId, number> = {
+  hero: 192,
+  product: 144,
+} as const;
+
+/**
+ * Mobile breakpoint width in pixels.
+ */
+export const MOBILE_BREAKPOINT = 768;
+
+/**
+ * Number of frames to virtualize (current +/- this value).
+ */
+export const FRAME_VIRTUALIZATION_RANGE = 2;

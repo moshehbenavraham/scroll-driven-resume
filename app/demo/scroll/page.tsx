@@ -38,7 +38,9 @@ function ScrollProgressDemo() {
       className="relative min-h-[150vh] bg-gradient-to-b from-slate-900 to-slate-800 px-8 py-24"
     >
       <div className="sticky top-24 mx-auto max-w-2xl">
-        <h2 className="mb-8 text-3xl font-bold text-white">useScrollProgress</h2>
+        <h2 className="mb-8 text-3xl font-bold text-white">
+          useScrollProgress
+        </h2>
 
         <div className="space-y-6 rounded-xl bg-slate-700/50 p-6 backdrop-blur-sm">
           <div>
@@ -103,7 +105,9 @@ function FrameAnimationDemo() {
       className="relative min-h-[200vh] bg-gradient-to-b from-slate-800 to-indigo-900 px-8 py-24"
     >
       <div className="sticky top-24 mx-auto max-w-2xl">
-        <h2 className="mb-8 text-3xl font-bold text-white">useFrameAnimation</h2>
+        <h2 className="mb-8 text-3xl font-bold text-white">
+          useFrameAnimation
+        </h2>
 
         <div className="space-y-6 rounded-xl bg-indigo-800/50 p-6 backdrop-blur-sm">
           <div className="grid grid-cols-2 gap-6">

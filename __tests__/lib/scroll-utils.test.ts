@@ -105,33 +105,48 @@ describe("normalizeProgress", () => {
     // startScroll = sectionTop - viewportHeight = 500 - 800 = -300
     // At scrollY = -300, progress = 0 (section just entering)
     // At scrollY = -500, section hasn't entered yet
-    expect(normalizeProgress(-500, sectionTop, sectionHeight, viewportHeight)).toBe(0);
+    expect(
+      normalizeProgress(-500, sectionTop, sectionHeight, viewportHeight)
+    ).toBe(0);
   });
 
   it("returns 0 when section top just enters viewport bottom", () => {
     // scrollY = sectionTop - viewportHeight = 500 - 800 = -300
     // At this point, section top is at viewport bottom
     const startScroll = sectionTop - viewportHeight;
-    expect(normalizeProgress(startScroll, sectionTop, sectionHeight, viewportHeight)).toBe(0);
+    expect(
+      normalizeProgress(startScroll, sectionTop, sectionHeight, viewportHeight)
+    ).toBe(0);
   });
 
   it("returns 1 when section bottom exits viewport top", () => {
     // scrollY = sectionTop + sectionHeight = 500 + 1000 = 1500
     const endScroll = sectionTop + sectionHeight;
-    expect(normalizeProgress(endScroll, sectionTop, sectionHeight, viewportHeight)).toBe(1);
+    expect(
+      normalizeProgress(endScroll, sectionTop, sectionHeight, viewportHeight)
+    ).toBe(1);
   });
 
   it("returns ~0.5 at midpoint", () => {
     const startScroll = sectionTop - viewportHeight;
     const endScroll = sectionTop + sectionHeight;
     const midScroll = (startScroll + endScroll) / 2;
-    const progress = normalizeProgress(midScroll, sectionTop, sectionHeight, viewportHeight);
+    const progress = normalizeProgress(
+      midScroll,
+      sectionTop,
+      sectionHeight,
+      viewportHeight
+    );
     expect(progress).toBeCloseTo(0.5, 1);
   });
 
   it("clamps progress to 0-1 range", () => {
-    expect(normalizeProgress(-1000, sectionTop, sectionHeight, viewportHeight)).toBe(0);
-    expect(normalizeProgress(5000, sectionTop, sectionHeight, viewportHeight)).toBe(1);
+    expect(
+      normalizeProgress(-1000, sectionTop, sectionHeight, viewportHeight)
+    ).toBe(0);
+    expect(
+      normalizeProgress(5000, sectionTop, sectionHeight, viewportHeight)
+    ).toBe(1);
   });
 
   it("handles zero section height", () => {

@@ -53,7 +53,10 @@ global.cancelAnimationFrame = (id: number) => {
 
 // Mock requestIdleCallback for preload testing
 global.requestIdleCallback = (callback: IdleRequestCallback) => {
-  return setTimeout(() => callback({ didTimeout: false, timeRemaining: () => 50 }), 0) as unknown as number;
+  return setTimeout(
+    () => callback({ didTimeout: false, timeRemaining: () => 50 }),
+    0
+  ) as unknown as number;
 };
 
 global.cancelIdleCallback = (id: number) => {

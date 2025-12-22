@@ -21,10 +21,7 @@ export interface LoadingLogoProps {
  * Loading logo with subtle pulse animation.
  * Uses a simple monogram as placeholder for actual logo.
  */
-export function LoadingLogo({
-  text = "JD",
-  className = "",
-}: LoadingLogoProps) {
+export function LoadingLogo({ text = "JD", className = "" }: LoadingLogoProps) {
   return (
     <motion.div
       className={`flex items-center justify-center ${className}`}
@@ -32,9 +29,7 @@ export function LoadingLogo({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div
-        className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800"
-      >
+      <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800">
         <span className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
           {text}
         </span>

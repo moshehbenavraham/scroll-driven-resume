@@ -41,7 +41,10 @@ export function useScrollProgress(
   // Type assertion needed as Framer Motion expects specific string literals
   const { scrollYProgress } = useScroll({
     target,
-    offset: (offset ?? ["start end", "end start"]) as ["start end", "end start"],
+    offset: (offset ?? ["start end", "end start"]) as [
+      "start end",
+      "end start",
+    ],
   });
 
   // Track if the section is in view

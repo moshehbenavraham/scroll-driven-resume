@@ -77,7 +77,8 @@ export function useFramePreload(
 
   // Calculate progress percentage
   const totalCount = frames.length;
-  const progress = totalCount > 0 ? Math.round((loadedCount / totalCount) * 100) : 0;
+  const progress =
+    totalCount > 0 ? Math.round((loadedCount / totalCount) * 100) : 0;
 
   /**
    * Loads a single image and returns a promise.
@@ -159,7 +160,6 @@ export function useFramePreload(
           return;
         }
 
-
         // Get next chunk
         const chunk = remainingUrls.slice(index, index + BACKGROUND_CHUNK_SIZE);
         index += BACKGROUND_CHUNK_SIZE;
@@ -207,7 +207,14 @@ export function useFramePreload(
 
     // Start background loading for remaining frames
     loadBackgroundFrames(backgroundFrames);
-  }, [isLoading, isComplete, frames, priorityCount, loadChunk, loadBackgroundFrames]);
+  }, [
+    isLoading,
+    isComplete,
+    frames,
+    priorityCount,
+    loadChunk,
+    loadBackgroundFrames,
+  ]);
 
   // Track completion and fire callbacks
   // Using refs to avoid triggering additional renders
@@ -220,7 +227,11 @@ export function useFramePreload(
     }
 
     // Handle completion once
-    if (loadedCount === totalCount && totalCount > 0 && !completionHandled.current) {
+    if (
+      loadedCount === totalCount &&
+      totalCount > 0 &&
+      !completionHandled.current
+    ) {
       completionHandled.current = true;
       // Use setTimeout to avoid synchronous setState in effect
       setTimeout(() => {

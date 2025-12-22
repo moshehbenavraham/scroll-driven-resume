@@ -18,8 +18,8 @@ interface CanvasWrapperProps extends Omit<CanvasProps, "children"> {
 
 function DefaultFallback() {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-muted/50 rounded-lg">
-      <div className="text-sm text-muted-foreground">Loading 3D scene...</div>
+    <div className="bg-muted/50 flex h-full w-full items-center justify-center rounded-lg">
+      <div className="text-muted-foreground text-sm">Loading 3D scene...</div>
     </div>
   );
 }

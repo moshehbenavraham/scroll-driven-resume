@@ -14,8 +14,8 @@
     "1": {
       "name": "Core Animation",
       "description": "Scroll-synchronized frame animation, hero section, product section, parallax layers, WebGL effects",
-      "status": "not_started",
-      "session_count": 0
+      "status": "in_progress",
+      "session_count": 6
     },
     "2": {
       "name": "Content and Polish",
@@ -31,7 +31,8 @@
     "phase00-session04-nextjs-bootstrap",
     "phase00-session05-animation-libraries",
     "phase00-session06-scroll-parallax-utilities",
-    "phase00-session07-loading-system"
+    "phase00-session07-loading-system",
+    "phase01-session01-frame-animation-core"
   ],
   "next_session_history": [
     {
@@ -67,6 +68,11 @@
     {
       "date": "2025-12-22",
       "session": "phase00-session07-loading-system",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-22",
+      "session": "phase01-session01-frame-animation-core",
       "status": "completed"
     }
   ]

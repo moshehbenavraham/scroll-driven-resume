@@ -2,14 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Heart,
-  Star,
-  Zap,
-  ArrowRight,
-  Settings,
-  Download,
-} from "lucide-react";
+import { Heart, Star, Zap, ArrowRight, Settings, Download } from "lucide-react";
 
 export function UIDemo() {
   return (
@@ -20,7 +13,7 @@ export function UIDemo() {
       <CardContent className="space-y-6">
         {/* Button variants */}
         <div>
-          <h4 className="text-sm font-medium mb-3">Button Variants</h4>
+          <h4 className="mb-3 text-sm font-medium">Button Variants</h4>
           <div className="flex flex-wrap gap-2">
             <Button variant="default">Default</Button>
             <Button variant="secondary">Secondary</Button>
@@ -33,7 +26,7 @@ export function UIDemo() {
 
         {/* Button sizes */}
         <div>
-          <h4 className="text-sm font-medium mb-3">Button Sizes</h4>
+          <h4 className="mb-3 text-sm font-medium">Button Sizes</h4>
           <div className="flex flex-wrap items-center gap-2">
             <Button size="sm">Small</Button>
             <Button size="default">Default</Button>
@@ -46,7 +39,7 @@ export function UIDemo() {
 
         {/* Icons */}
         <div>
-          <h4 className="text-sm font-medium mb-3">Lucide Icons</h4>
+          <h4 className="mb-3 text-sm font-medium">Lucide Icons</h4>
           <div className="flex flex-wrap gap-4">
             <div className="flex items-center gap-2">
               <Heart className="h-5 w-5 text-red-500" />
@@ -69,7 +62,7 @@ export function UIDemo() {
 
         {/* Button with icon */}
         <div>
-          <h4 className="text-sm font-medium mb-3">Button with Icon</h4>
+          <h4 className="mb-3 text-sm font-medium">Button with Icon</h4>
           <Button>
             Continue <ArrowRight />
           </Button>

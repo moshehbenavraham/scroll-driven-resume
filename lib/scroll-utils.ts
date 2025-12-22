@@ -18,7 +18,10 @@ import { clamp } from "./utils";
  * calculateFrameIndex(0.5, 192)   // 95
  * calculateFrameIndex(1, 192)     // 191
  */
-export function calculateFrameIndex(progress: number, totalFrames: number): number {
+export function calculateFrameIndex(
+  progress: number,
+  totalFrames: number
+): number {
   if (totalFrames <= 0) {
     return 0;
   }

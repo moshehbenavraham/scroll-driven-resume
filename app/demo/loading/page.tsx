@@ -29,7 +29,7 @@ function DemoContent() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <header className="mb-8 flex items-center justify-between">
@@ -37,7 +37,7 @@ function DemoContent() {
             <h1 className="text-3xl font-bold tracking-tight">
               Loading System Demo
             </h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="text-muted-foreground mt-2">
               Session 07: Loading System Verification
             </p>
           </div>
@@ -45,9 +45,9 @@ function DemoContent() {
         </header>
 
         {/* Status card */}
-        <div className="mb-6 rounded-lg border bg-card p-6">
+        <div className="bg-card mb-6 rounded-lg border p-6">
           <h2 className="text-xl font-semibold">Loading Complete!</h2>
-          <p className="mt-2 text-muted-foreground">
+          <p className="text-muted-foreground mt-2">
             The loading screen has finished and content is now revealed.
           </p>
           <p className="mt-2 text-sm">
@@ -63,10 +63,10 @@ function DemoContent() {
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <div
               key={i}
-              className="rounded-lg border bg-card p-4 transition-colors hover:bg-accent"
+              className="bg-card hover:bg-accent rounded-lg border p-4 transition-colors"
             >
               <h3 className="font-medium">Content Block {i}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="text-muted-foreground mt-1 text-sm">
                 This content appeared with staggered animation.
               </p>
             </div>
@@ -74,20 +74,25 @@ function DemoContent() {
         </div>
 
         {/* Instructions */}
-        <div className="mt-8 rounded-lg border bg-muted/50 p-6">
+        <div className="bg-muted/50 mt-8 rounded-lg border p-6">
           <h2 className="text-lg font-semibold">Testing Instructions</h2>
-          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-muted-foreground">
+          <ul className="text-muted-foreground mt-3 list-inside list-disc space-y-2 text-sm">
             <li>Refresh the page to see the loading screen again</li>
-            <li>Enable Reduce motion in your OS settings to test instant reveal</li>
-            <li>Use browser DevTools to throttle network and see slow loading</li>
+            <li>
+              Enable Reduce motion in your OS settings to test instant reveal
+            </li>
+            <li>
+              Use browser DevTools to throttle network and see slow loading
+            </li>
             <li>Check browser console for any errors or warnings</li>
           </ul>
         </div>
 
         {/* Footer */}
-        <footer className="mt-8 text-center text-sm text-muted-foreground">
+        <footer className="text-muted-foreground mt-8 text-center text-sm">
           <p>
-            Loading system configured successfully. Ready for Phase 01: Core Animation.
+            Loading system configured successfully. Ready for Phase 01: Core
+            Animation.
           </p>
         </footer>
       </div>
@@ -115,23 +120,23 @@ function LoadingDemoControls() {
     <div>
       {/* Controls panel (only visible when not loading) */}
       {!isLoading && (
-        <div className="fixed bottom-4 right-4 z-50 rounded-lg border bg-card p-4 shadow-lg">
+        <div className="bg-card fixed right-4 bottom-4 z-50 rounded-lg border p-4 shadow-lg">
           <h3 className="text-sm font-semibold">Demo Controls</h3>
           <div className="mt-2 space-y-2">
             <div className="flex items-center gap-2">
-              <label className="text-xs text-muted-foreground">Frames:</label>
+              <label className="text-muted-foreground text-xs">Frames:</label>
               <input
                 type="number"
                 min={0}
                 max={100}
                 value={frameCount}
                 onChange={(e) => setFrameCount(Number(e.target.value))}
-                className="w-16 rounded border bg-background px-2 py-1 text-xs"
+                className="bg-background w-16 rounded border px-2 py-1 text-xs"
               />
             </div>
             <button
               onClick={handleRestart}
-              className="w-full rounded bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded px-3 py-1.5 text-xs font-medium"
             >
               Restart Loading
             </button>

@@ -57,7 +57,7 @@ export function LoadingProgress({
       <div className="relative h-1 w-full overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700">
         {/* Animated progress fill */}
         <motion.div
-          className="absolute left-0 top-0 h-full rounded-full bg-neutral-900 dark:bg-neutral-100"
+          className="absolute top-0 left-0 h-full rounded-full bg-neutral-900 dark:bg-neutral-100"
           style={{
             width: useTransform(springProgress, (value) => `${value}%`),
           }}
@@ -67,7 +67,7 @@ export function LoadingProgress({
       {/* Percentage text */}
       {showPercentage ? (
         <div className="mt-3 text-center">
-          <motion.span className="text-sm font-medium tabular-nums text-neutral-600 dark:text-neutral-400">
+          <motion.span className="text-sm font-medium text-neutral-600 tabular-nums dark:text-neutral-400">
             <motion.span>{displayProgress}</motion.span>%
           </motion.span>
         </div>

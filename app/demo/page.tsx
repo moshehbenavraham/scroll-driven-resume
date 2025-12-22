@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function DemoPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <header className="mb-8 flex items-center justify-between">
@@ -19,7 +19,7 @@ export default function DemoPage() {
             <h1 className="text-3xl font-bold tracking-tight">
               Library Integration Demo
             </h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="text-muted-foreground mt-2">
               Session 05: Animation Libraries Verification
             </p>
           </div>
@@ -35,7 +35,7 @@ export default function DemoPage() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-8 text-center text-sm text-muted-foreground">
+        <footer className="text-muted-foreground mt-8 text-center text-sm">
           <p>
             All libraries configured successfully. Ready for Session 06: Scroll
             and Parallax Utilities.

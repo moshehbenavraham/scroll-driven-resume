@@ -27,12 +27,7 @@ function RotatingCube({
 
   return (
     <Box ref={meshRef} args={[1.5, 1.5, 1.5]} position={position}>
-      <MeshDistortMaterial
-        color={color}
-        speed={2}
-        distort={0.3}
-        radius={1}
-      />
+      <MeshDistortMaterial color={color} speed={2} distort={0.3} radius={1} />
     </Box>
   );
 }

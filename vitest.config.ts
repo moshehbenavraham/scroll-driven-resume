@@ -13,7 +13,12 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
-      include: ["lib/scroll-utils.ts", "hooks/useScrollProgress.ts", "hooks/useFrameAnimation.ts", "hooks/useParallax.ts"],
+      include: [
+        "lib/scroll-utils.ts",
+        "hooks/useScrollProgress.ts",
+        "hooks/useFrameAnimation.ts",
+        "hooks/useParallax.ts",
+      ],
       exclude: ["**/*.test.ts", "**/*.d.ts"],
       thresholds: {
         "lib/scroll-utils.ts": {

@@ -5,7 +5,12 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useFrameAnimation } from "@/hooks/useFrameAnimation";
-import { useScroll, useTransform, useMotionValueEvent, useInView } from "framer-motion";
+import {
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+  useInView,
+} from "framer-motion";
 
 // Mock framer-motion hooks
 vi.mock("framer-motion", () => ({
@@ -34,7 +39,9 @@ describe("useFrameAnimation", () => {
       scrollYProgress: mockScrollYProgress,
     });
     (useTransform as ReturnType<typeof vi.fn>).mockReturnValue(mockFrameIndex);
-    (useMotionValueEvent as ReturnType<typeof vi.fn>).mockImplementation(() => {});
+    (useMotionValueEvent as ReturnType<typeof vi.fn>).mockImplementation(
+      () => {}
+    );
     (useInView as ReturnType<typeof vi.fn>).mockReturnValue(false);
   });
 
@@ -155,9 +162,7 @@ describe("useFrameAnimation", () => {
       }
     );
 
-    renderHook(() =>
-      useFrameAnimation({ target: targetRef, totalFrames: 0 })
-    );
+    renderHook(() => useFrameAnimation({ target: targetRef, totalFrames: 0 }));
 
     expect(transformFn(0.5)).toBe(0);
   });

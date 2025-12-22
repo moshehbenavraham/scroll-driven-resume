@@ -195,7 +195,7 @@ This system delivers the product via phases. Each phase is implemented via multi
 | Phase | Name | Sessions | Status |
 |-------|------|----------|--------|
 | 00 | Foundation | 7 | Complete |
-| 01 | Core Animation | TBD | Not Started |
+| 01 | Core Animation | 6 | Not Started |
 | 02 | Content and Polish | TBD | Not Started |
 
 ## Phase 00: Foundation

@@ -64,14 +64,11 @@ export function LoadingProvider({
   }, [minTimeElapsed, setComplete]);
 
   // Handle preload errors
-  const handleError = useCallback(
-    (url: string, error: Error) => {
-      console.warn(`Failed to preload: ${url}`, error);
-      // Don't fail loading on individual frame errors
-      // Continue gracefully
-    },
-    []
-  );
+  const handleError = useCallback((url: string, error: Error) => {
+    console.warn(`Failed to preload: ${url}`, error);
+    // Don't fail loading on individual frame errors
+    // Continue gracefully
+  }, []);
 
   // Initialize preload hook
   const { isComplete: preloadComplete, startPreload } = useFramePreload({
@@ -111,7 +108,14 @@ export function LoadingProvider({
         startPreload();
       }
     }
-  }, [autoStart, frameUrls.length, startPreload, setProgress, setComplete, minTimeElapsed]);
+  }, [
+    autoStart,
+    frameUrls.length,
+    startPreload,
+    setProgress,
+    setComplete,
+    minTimeElapsed,
+  ]);
 
   // Reset store on unmount
   useEffect(() => {
@@ -135,9 +139,7 @@ export function LoadingProvider({
       />
 
       {/* Content with reveal animation */}
-      <ContentReveal isRevealed={isContentRevealed}>
-        {children}
-      </ContentReveal>
+      <ContentReveal isRevealed={isContentRevealed}>{children}</ContentReveal>
     </>
   );
 }

@@ -37,13 +37,13 @@ export function MotionDemo() {
               variants={item}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="h-16 w-16 rounded-lg bg-primary/20 flex items-center justify-center cursor-pointer"
+              className="bg-primary/20 flex h-16 w-16 cursor-pointer items-center justify-center rounded-lg"
             >
-              <span className="text-xl font-bold text-primary">{i}</span>
+              <span className="text-primary text-xl font-bold">{i}</span>
             </motion.div>
           ))}
         </motion.div>
-        <p className="mt-4 text-sm text-muted-foreground">
+        <p className="text-muted-foreground mt-4 text-sm">
           Staggered entry animation with hover/tap interactions.
         </p>
       </CardContent>

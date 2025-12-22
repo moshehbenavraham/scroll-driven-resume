@@ -11,12 +11,12 @@ export function ThreeDemo() {
         <CardTitle>React Three Fiber</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-64 w-full rounded-lg overflow-hidden bg-background">
+        <div className="bg-background h-64 w-full overflow-hidden rounded-lg">
           <CanvasWrapper>
             <Scene />
           </CanvasWrapper>
         </div>
-        <p className="mt-4 text-sm text-muted-foreground">
+        <p className="text-muted-foreground mt-4 text-sm">
           3D rotating cube with distort material, rendered via R3F.
         </p>
       </CardContent>

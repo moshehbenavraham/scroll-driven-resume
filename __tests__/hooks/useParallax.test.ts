@@ -38,9 +38,7 @@ describe("useParallax", () => {
   it("returns y MotionValue", () => {
     const targetRef = { current: document.createElement("div") };
 
-    const { result } = renderHook(() =>
-      useParallax({ target: targetRef })
-    );
+    const { result } = renderHook(() => useParallax({ target: targetRef }));
 
     expect(result.current.y).toBe(mockMotionValue);
   });
@@ -48,9 +46,7 @@ describe("useParallax", () => {
   it("returns x MotionValue", () => {
     const targetRef = { current: document.createElement("div") };
 
-    const { result } = renderHook(() =>
-      useParallax({ target: targetRef })
-    );
+    const { result } = renderHook(() => useParallax({ target: targetRef }));
 
     expect(result.current.x).toBe(mockMotionValue);
   });
@@ -58,9 +54,7 @@ describe("useParallax", () => {
   it("returns opacity MotionValue", () => {
     const targetRef = { current: document.createElement("div") };
 
-    const { result } = renderHook(() =>
-      useParallax({ target: targetRef })
-    );
+    const { result } = renderHook(() => useParallax({ target: targetRef }));
 
     expect(result.current.opacity).toBe(mockMotionValue);
   });
@@ -80,9 +74,7 @@ describe("useParallax", () => {
     const targetRef = { current: document.createElement("div") };
     const customOffset: [string, string] = ["start start", "end end"];
 
-    renderHook(() =>
-      useParallax({ target: targetRef, offset: customOffset })
-    );
+    renderHook(() => useParallax({ target: targetRef, offset: customOffset }));
 
     expect(useScroll).toHaveBeenCalledWith({
       target: targetRef,
@@ -134,9 +126,7 @@ describe("useParallax", () => {
       }
     );
 
-    renderHook(() =>
-      useParallax({ target: targetRef, speed: 0.3 })
-    );
+    renderHook(() => useParallax({ target: targetRef, speed: 0.3 }));
 
     // First call is for y transform
     // Speed 0.3: (0.3 - 1) * -100 = 70, (0.3 - 1) * 100 = -70
@@ -156,9 +146,7 @@ describe("useParallax", () => {
       }
     );
 
-    renderHook(() =>
-      useParallax({ target: targetRef, speed: 1.3 })
-    );
+    renderHook(() => useParallax({ target: targetRef, speed: 1.3 }));
 
     // First call is for y transform
     // Speed 1.3: (1.3 - 1) * -100 = -30, (1.3 - 1) * 100 = 30
@@ -201,9 +189,7 @@ describe("useParallax", () => {
     );
 
     // Speed below minimum should be clamped to 0.1
-    renderHook(() =>
-      useParallax({ target: targetRef, speed: 0.01 })
-    );
+    renderHook(() => useParallax({ target: targetRef, speed: 0.01 }));
 
     // First call is for y transform
     // Clamped speed 0.1: (0.1 - 1) * -100 = 90, (0.1 - 1) * 100 = -90
@@ -214,9 +200,7 @@ describe("useParallax", () => {
   it("handles null target ref", () => {
     const targetRef = { current: null };
 
-    const { result } = renderHook(() =>
-      useParallax({ target: targetRef })
-    );
+    const { result } = renderHook(() => useParallax({ target: targetRef }));
 
     expect(result.current.y).toBe(mockMotionValue);
     expect(result.current.x).toBe(mockMotionValue);
@@ -229,9 +213,7 @@ describe("useParallax", () => {
     // Test each preset
     Object.entries(PARALLAX_SPEEDS).forEach(([, speed]) => {
       vi.clearAllMocks();
-      renderHook(() =>
-        useParallax({ target: targetRef, speed })
-      );
+      renderHook(() => useParallax({ target: targetRef, speed }));
       expect(useTransform).toHaveBeenCalled();
     });
   });
