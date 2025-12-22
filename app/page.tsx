@@ -8,6 +8,7 @@
 import { useState, useCallback } from "react";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProductSection } from "@/components/sections/ProductSection";
+import { AboutSection } from "@/components/sections/AboutSection";
 import { LoadingScreen } from "@/components/loading/LoadingScreen";
 
 /**
@@ -52,17 +53,8 @@ export default function Home() {
           onLoadComplete={handleLoadComplete}
         />
 
-        {/* Placeholder sections for navigation - will be replaced in future sessions */}
-        <section
-          id="about"
-          className="flex min-h-screen items-center justify-center bg-background"
-          aria-label="About section"
-        >
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-muted-foreground">About</h2>
-            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 02</p>
-          </div>
-        </section>
+        {/* About section */}
+        <AboutSection isRevealed={isContentRevealed} />
 
         <section
           id="skills"

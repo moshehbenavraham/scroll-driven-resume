@@ -17,6 +17,9 @@ export * from "./product";
 // Re-export decorative types
 export * from "./decorative";
 
+// Re-export about types
+export * from "./about";
+
 /**
  * Theme options for the application.
  */
