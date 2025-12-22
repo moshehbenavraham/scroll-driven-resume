@@ -72,7 +72,9 @@ describe("AchievementCard", () => {
   });
 
   it("renders suffix with value", () => {
-    render(<AchievementCard achievement={mockAchievement} isRevealed={false} />);
+    render(
+      <AchievementCard achievement={mockAchievement} isRevealed={false} />
+    );
     // When not revealed, counter starts at 0
     expect(screen.getByText("0+")).toBeInTheDocument();
   });
@@ -91,7 +93,9 @@ describe("AchievementCard", () => {
       value: 50,
       label: "Projects",
     };
-    render(<AchievementCard achievement={achievementNoSuffix} isRevealed={false} />);
+    render(
+      <AchievementCard achievement={achievementNoSuffix} isRevealed={false} />
+    );
     expect(screen.getByText("0")).toBeInTheDocument();
   });
 

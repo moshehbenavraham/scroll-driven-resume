@@ -87,7 +87,7 @@ export function Bio({
       {/* Heading */}
       <motion.h2
         className={cn(
-          "text-3xl md:text-4xl lg:text-5xl font-bold",
+          "text-3xl font-bold md:text-4xl lg:text-5xl",
           "text-foreground",
           "tracking-tight"
         )}

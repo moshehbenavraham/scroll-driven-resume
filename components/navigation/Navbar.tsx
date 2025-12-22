@@ -24,14 +24,14 @@ function SkipToContent() {
       href="#main-content"
       className={cn(
         // Position off-screen by default
-        "absolute left-4 top-4 z-[60]",
+        "absolute top-4 left-4 z-[60]",
         // Hidden until focused
         "-translate-y-16 opacity-0",
         // Visible on focus
         "focus:translate-y-0 focus:opacity-100",
         // Styling
-        "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium",
+        "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
         // Transition
         "transition-all duration-200"
       )}
@@ -83,7 +83,7 @@ export function Navbar({ className, hideOnScroll = false }: NavbarProps) {
           <motion.header
             className={cn(
               // Fixed positioning at top
-              "fixed left-0 right-0 top-0 z-50",
+              "fixed top-0 right-0 left-0 z-50",
               // Padding for inset effect
               "px-4 pt-4",
               // Pointer events pass through padding area

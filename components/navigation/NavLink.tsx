@@ -69,7 +69,7 @@ export function NavLink({
         // Active state
         isActive && "text-foreground",
         // Focus styles for accessibility
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md",
+        "focus-visible:ring-ring focus-visible:ring-offset-background rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
         className
       )}
       aria-current={isActive ? "page" : undefined}
@@ -78,7 +78,7 @@ export function NavLink({
       {/* Active indicator underline */}
       <span
         className={cn(
-          "absolute bottom-0 left-1/2 h-0.5 -translate-x-1/2 bg-foreground transition-all duration-200",
+          "bg-foreground absolute bottom-0 left-1/2 h-0.5 -translate-x-1/2 transition-all duration-200",
           isActive ? "w-4/5 opacity-100" : "w-0 opacity-0"
         )}
         aria-hidden="true"

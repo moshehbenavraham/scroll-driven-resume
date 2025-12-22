@@ -39,7 +39,11 @@ interface SectionEntry {
 export function useActiveSection(
   options: UseActiveSectionOptions
 ): string | null {
-  const { sectionIds, threshold = 0.3, rootMargin = "-80px 0px 0px 0px" } = options;
+  const {
+    sectionIds,
+    threshold = 0.3,
+    rootMargin = "-80px 0px 0px 0px",
+  } = options;
 
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);

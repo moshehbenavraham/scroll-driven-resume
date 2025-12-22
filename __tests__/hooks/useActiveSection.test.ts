@@ -88,9 +88,7 @@ describe("useActiveSection", () => {
   });
 
   it("returns null when no sections are observed", () => {
-    const { result } = renderHook(() =>
-      useActiveSection({ sectionIds: [] })
-    );
+    const { result } = renderHook(() => useActiveSection({ sectionIds: [] }));
 
     expect(result.current).toBeNull();
   });
@@ -184,9 +182,7 @@ describe("useActiveSection", () => {
 
   it("cleans up observer on unmount", () => {
     const sectionIds = ["hero", "about"];
-    const { unmount } = renderHook(() =>
-      useActiveSection({ sectionIds })
-    );
+    const { unmount } = renderHook(() => useActiveSection({ sectionIds }));
 
     expect(mockObserverInstance!.observedElements.size).toBe(2);
 
@@ -264,9 +260,7 @@ describe("useActiveSection - Edge Cases", () => {
 
   it("handles rapid intersection changes gracefully", () => {
     const sectionIds = ["test"];
-    const { result } = renderHook(() =>
-      useActiveSection({ sectionIds })
-    );
+    const { result } = renderHook(() => useActiveSection({ sectionIds }));
 
     // Simulate rapid changes
     act(() => {

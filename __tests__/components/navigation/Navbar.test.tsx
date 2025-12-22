@@ -60,9 +60,7 @@ vi.mock("@radix-ui/react-dialog", () => ({
   Portal: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   Overlay: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   Content: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  Title: ({ children }: { children: React.ReactNode }) => (
-    <h2>{children}</h2>
-  ),
+  Title: ({ children }: { children: React.ReactNode }) => <h2>{children}</h2>,
   Close: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
@@ -77,7 +75,9 @@ describe("Navbar", () => {
 
   it("renders without crashing", () => {
     render(<Navbar />);
-    expect(screen.getByRole("navigation", { name: /main navigation/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("navigation", { name: /main navigation/i })
+    ).toBeInTheDocument();
   });
 
   it("has correct ARIA attributes", () => {

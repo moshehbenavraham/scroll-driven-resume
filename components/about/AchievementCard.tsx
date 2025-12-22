@@ -141,7 +141,7 @@ export function AchievementCard({
         "relative p-6",
         "rounded-xl",
         "bg-card/50 backdrop-blur-sm",
-        "border border-border/50",
+        "border-border/50 border",
         // Hover effect
         "transition-colors duration-300",
         "hover:bg-card/70 hover:border-border",
@@ -156,20 +156,20 @@ export function AchievementCard({
       <div
         className={cn(
           "mb-4",
-          "w-10 h-10",
+          "h-10 w-10",
           "flex items-center justify-center",
           "rounded-lg",
           "bg-accent/10",
           "text-accent"
         )}
       >
-        <IconComponent className="w-5 h-5" aria-hidden="true" />
+        <IconComponent className="h-5 w-5" aria-hidden="true" />
       </div>
 
       {/* Value with counter animation */}
       <div
         className={cn(
-          "text-3xl md:text-4xl font-bold",
+          "text-3xl font-bold md:text-4xl",
           "text-foreground",
           "tabular-nums" // Prevent layout shift during animation
         )}
@@ -184,7 +184,7 @@ export function AchievementCard({
           "mt-1",
           "text-sm md:text-base",
           "text-muted-foreground",
-          "uppercase tracking-wide"
+          "tracking-wide uppercase"
         )}
       >
         {label}

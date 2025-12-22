@@ -53,10 +53,10 @@ export function MobileMenuButton({
         // Show only on mobile
         "md:hidden",
         // Background and border
-        "rounded-md border border-input bg-background/50 backdrop-blur-sm",
+        "border-input bg-background/50 rounded-md border backdrop-blur-sm",
         // Hover and focus states
         "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
         // Transition
         "transition-colors duration-150",
         className
@@ -69,7 +69,7 @@ export function MobileMenuButton({
       <div className="relative h-5 w-5">
         {/* Top line - rotates to form X */}
         <motion.span
-          className="absolute left-0 top-1 h-0.5 w-5 rounded-full bg-current"
+          className="absolute top-1 left-0 h-0.5 w-5 rounded-full bg-current"
           variants={lineVariants}
           initial="closed"
           animate={isOpen ? "open" : "closed"}
@@ -78,7 +78,7 @@ export function MobileMenuButton({
         />
         {/* Middle line - fades out */}
         <motion.span
-          className="absolute left-0 top-[9px] h-0.5 w-5 rounded-full bg-current"
+          className="absolute top-[9px] left-0 h-0.5 w-5 rounded-full bg-current"
           initial={{ opacity: 1 }}
           animate={{ opacity: isOpen ? 0 : 1 }}
           transition={{ duration: 0.15 }}

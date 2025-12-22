@@ -39,7 +39,8 @@
     "phase01-session05-parallax-layer-system",
     "phase01-session06-decorative-elements",
     "phase02-session01-fixed-navbar",
-    "phase02-session02-about-section"
+    "phase02-session02-about-section",
+    "phase02-session03-skills-section"
   ],
   "next_session_history": [
     {
@@ -115,6 +116,11 @@
     {
       "date": "2025-12-22",
       "session": "phase02-session02-about-section",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-23",
+      "session": "phase02-session03-skills-section",
       "status": "completed"
     }
   ]

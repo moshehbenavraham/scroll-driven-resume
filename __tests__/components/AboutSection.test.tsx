@@ -68,11 +68,9 @@ vi.mock("framer-motion", async () => {
 
 // Mock parallax components
 vi.mock("@/components/parallax", () => ({
-  ParallaxContainer: ({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) => <div data-testid="parallax-container">{children}</div>,
+  ParallaxContainer: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="parallax-container">{children}</div>
+  ),
   ParallaxLayer: ({
     children,
     zIndex,
@@ -178,8 +176,6 @@ describe("AboutSection", () => {
 
   it("renders bio paragraphs", () => {
     render(<AboutSection isRevealed={true} />);
-    expect(
-      screen.getByText(/passionate AI engineer/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/passionate AI engineer/i)).toBeInTheDocument();
   });
 });

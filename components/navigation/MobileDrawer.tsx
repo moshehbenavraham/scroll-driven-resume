@@ -103,10 +103,10 @@ export function MobileDrawer({
                 id="mobile-menu"
                 className={cn(
                   // Position and sizing
-                  "fixed right-0 top-0 bottom-0 z-50",
+                  "fixed top-0 right-0 bottom-0 z-50",
                   "w-[280px] max-w-[80vw]",
                   // Background and border
-                  "bg-background border-l border-border",
+                  "bg-background border-border border-l",
                   // Shadow
                   "shadow-xl"
                 )}
@@ -117,7 +117,7 @@ export function MobileDrawer({
                 aria-label="Mobile navigation menu"
               >
                 {/* Drawer header */}
-                <div className="flex h-16 items-center justify-between border-b border-border px-4">
+                <div className="border-border flex h-16 items-center justify-between border-b px-4">
                   <Dialog.Title className="text-lg font-semibold">
                     Menu
                   </Dialog.Title>
@@ -126,7 +126,7 @@ export function MobileDrawer({
                       className={cn(
                         "flex h-10 w-10 items-center justify-center rounded-md",
                         "hover:bg-accent hover:text-accent-foreground",
-                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none"
                       )}
                       aria-label="Close menu"
                     >
@@ -149,7 +149,10 @@ export function MobileDrawer({
                 </div>
 
                 {/* Navigation links */}
-                <nav className="flex flex-col gap-1 p-4" aria-label="Mobile navigation">
+                <nav
+                  className="flex flex-col gap-1 p-4"
+                  aria-label="Mobile navigation"
+                >
                   {NAV_LINKS.map((link) => (
                     <NavLink
                       key={link.id}

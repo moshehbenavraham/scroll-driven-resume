@@ -52,9 +52,7 @@ vi.mock("framer-motion", async () => {
 describe("Bio", () => {
   it("renders without crashing", () => {
     render(<Bio />);
-    expect(
-      screen.getByRole("heading", { level: 2 })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
   });
 
   it("renders default heading", () => {
@@ -99,9 +97,7 @@ describe("Bio", () => {
 
   it("handles empty paragraphs array gracefully", () => {
     render(<Bio paragraphs={[]} isRevealed={true} />);
-    expect(
-      screen.getByRole("heading", { level: 2 })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
   });
 
   it("has proper heading styling", () => {

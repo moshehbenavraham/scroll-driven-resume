@@ -32,7 +32,7 @@ export function Achievements({
     <div
       className={cn(
         // Grid layout
-        "grid grid-cols-1 sm:grid-cols-2 gap-4",
+        "grid grid-cols-1 gap-4 sm:grid-cols-2",
         className
       )}
       role="list"

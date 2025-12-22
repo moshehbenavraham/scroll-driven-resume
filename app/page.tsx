@@ -9,6 +9,7 @@ import { useState, useCallback } from "react";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProductSection } from "@/components/sections/ProductSection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
 import { LoadingScreen } from "@/components/loading/LoadingScreen";
 
 /**
@@ -56,25 +57,21 @@ export default function Home() {
         {/* About section */}
         <AboutSection isRevealed={isContentRevealed} />
 
-        <section
-          id="skills"
-          className="flex min-h-screen items-center justify-center bg-background/50"
-          aria-label="Skills section"
-        >
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-muted-foreground">Skills</h2>
-            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 03</p>
-          </div>
-        </section>
+        {/* Skills section */}
+        <SkillsSection isRevealed={isContentRevealed} />
 
         <section
           id="projects"
-          className="flex min-h-screen items-center justify-center bg-background"
+          className="bg-background flex min-h-screen items-center justify-center"
           aria-label="Projects section"
         >
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-muted-foreground">Projects</h2>
-            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 04</p>
+            <h2 className="text-muted-foreground text-3xl font-bold">
+              Projects
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Coming in Phase 02 Session 04
+            </p>
           </div>
         </section>
 
@@ -82,12 +79,16 @@ export default function Home() {
 
         <section
           id="contact"
-          className="flex min-h-screen items-center justify-center bg-background/50"
+          className="bg-background/50 flex min-h-screen items-center justify-center"
           aria-label="Contact section"
         >
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-muted-foreground">Contact</h2>
-            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 05</p>
+            <h2 className="text-muted-foreground text-3xl font-bold">
+              Contact
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Coming in Phase 02 Session 05
+            </p>
           </div>
         </section>
       </main>

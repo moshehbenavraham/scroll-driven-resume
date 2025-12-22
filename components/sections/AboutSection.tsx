@@ -73,7 +73,7 @@ export function AboutSection({
             )}
           >
             {/* Asymmetric two-column layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
               {/* Bio column - takes 7 columns on large screens */}
               <div className="lg:col-span-7">
                 <Bio isRevealed={shouldReveal} />
