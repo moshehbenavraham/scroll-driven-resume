@@ -12,7 +12,8 @@ import { DECORATIVE_Z_INDEX, type NoiseOverlayProps } from "@/types/decorative";
  * Base64-encoded noise texture (50x50 PNG, grayscale noise).
  * Small size tiles seamlessly and reduces bundle impact.
  */
-const NOISE_TEXTURE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3Oeli0teleL1dlzZXlvYiQBLT2s9e7SMDZ6dY2Jf5OZmpq7o6/v/v7j4+Pf3N/V8u7O4+/V1NYEjRbmAAAAT0lEQVR42u3PsQ0AIAwEwfsCfex/VAINDxJVKB9Xt3FzZ+bMzJzMzJyZOTNnZubMnJk5M2dmzswAQBKAJABJAJIAJAFIApAEIIlfsr4B+AM7CgPlWXsR1wAAAABJRU5ErkJggg==";
+const NOISE_TEXTURE =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3Oeli0teleL1dlzZXlvYiQBLT2s9e7SMDZ6dY2Jf5OZmpq7o6/v/v7j4+Pf3N/V8u7O4+/V1NYEjRbmAAAAT0lEQVR42u3PsQ0AIAwEwfsCfex/VAINDxJVKB9Xt3FzZ+bMzJzMzJyZOTNnZubMnJk5M2dmzswAQBKAJABJAJIAJAFIApAEIIlfsr4B+AM7CgPlWXsR1wAAAABJRU5ErkJggg==";
 
 /**
  * NoiseOverlay decorative component.
@@ -39,7 +40,7 @@ export function NoiseOverlay({
   return (
     <div
       className={cn(
-        "absolute inset-0 w-full h-full pointer-events-none",
+        "pointer-events-none absolute inset-0 h-full w-full",
         animated && "animate-noise",
         className
       )}

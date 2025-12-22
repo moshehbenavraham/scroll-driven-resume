@@ -196,7 +196,7 @@ This system delivers the product via phases. Each phase is implemented via multi
 |-------|------|----------|--------|
 | 00 | Foundation | 7 | Complete |
 | 01 | Core Animation | 6 | Complete |
-| 02 | Content and Polish | TBD | Not Started |
+| 02 | Content and Polish | 8 | Not Started |
 
 ## Phase 00: Foundation
 
@@ -237,15 +237,26 @@ Sessions are defined via `/phasebuild` as `session_NN_name.md` stubs under `.spe
 
 1. Complete About, Skills, Projects, and Contact sections with animations
 2. Implement fixed navbar with backdrop blur and smooth scroll
-3. Add dark/light mode toggle with next-themes
-4. Mobile optimization and responsive design
-5. Accessibility implementation (prefers-reduced-motion, Radix primitives)
-6. Performance optimization, testing with Vitest/Playwright
-7. Production deployment
+3. Mobile optimization and responsive design
+4. Accessibility implementation (prefers-reduced-motion, Radix primitives, WCAG 2.1 AA)
+5. Performance optimization to meet Core Web Vitals (LCP < 2.5s, CLS < 0.1, INP < 200ms)
+6. Comprehensive testing with Playwright E2E and cross-browser verification
+7. Production deployment to Vercel
 
-### Sessions (To Be Defined)
+### Sessions (8 Defined)
 
-Sessions are defined via `/phasebuild` as `session_NN_name.md` stubs under `.spec_system/PRD/phase_02/`.
+| Session | Name | Estimated Tasks |
+|---------|------|-----------------|
+| 01 | Fixed Navbar | ~20-25 |
+| 02 | About Section | ~20-25 |
+| 03 | Skills Section | ~20-25 |
+| 04 | Projects Section | ~20-25 |
+| 05 | Contact Section and Footer | ~20-25 |
+| 06 | Mobile Optimization | ~20-25 |
+| 07 | Accessibility and Performance | ~20-25 |
+| 08 | Testing and Deployment | ~20-25 |
+
+Session details in `.spec_system/PRD/phase_02/`.
 
 ## Technical Stack
 

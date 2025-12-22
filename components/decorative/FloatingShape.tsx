@@ -5,7 +5,12 @@
  * Used for adding visual depth and interest between parallax layers.
  */
 
-import { motion, useTransform, useMotionValue, type MotionValue } from "framer-motion";
+import {
+  motion,
+  useTransform,
+  useMotionValue,
+  type MotionValue,
+} from "framer-motion";
 import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Circle, Triangle, Hexagon, Diamond } from "./shapes";
@@ -102,11 +107,7 @@ export function FloatingShape({
   const effectiveProgress = scrollProgress ?? fallbackProgress;
 
   // Calculate parallax offset based on scroll progress
-  const parallaxY = useTransform(
-    effectiveProgress,
-    [0, 1],
-    [0, speed * 100]
-  );
+  const parallaxY = useTransform(effectiveProgress, [0, 1], [0, speed * 100]);
 
   const ShapeComponent = SHAPE_COMPONENTS[variant];
   const sizeValue = getSize(size);
@@ -131,10 +132,7 @@ export function FloatingShape({
 
   return (
     <motion.div
-      className={cn(
-        "absolute pointer-events-none",
-        className
-      )}
+      className={cn("pointer-events-none absolute", className)}
       style={{
         left: `${position.x}%`,
         top: `${position.y}%`,
@@ -148,11 +146,7 @@ export function FloatingShape({
       animate="visible"
       aria-hidden="true"
     >
-      <ShapeComponent
-        size={sizeValue}
-        fill={colorValue}
-        opacity={1}
-      />
+      <ShapeComponent size={sizeValue} fill={colorValue} opacity={1} />
     </motion.div>
   );
 }

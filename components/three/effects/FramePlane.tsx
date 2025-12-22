@@ -118,11 +118,7 @@ export function FramePlane({
   const fallbackColor = texture ? undefined : "#ff00ff";
 
   return (
-    <mesh
-      ref={meshRef}
-      position={[0, 0, zPosition]}
-      renderOrder={renderOrder}
-    >
+    <mesh ref={meshRef} position={[0, 0, zPosition]} renderOrder={renderOrder}>
       <planeGeometry args={[viewport.width, viewport.height]} />
       <meshBasicMaterial
         ref={materialRef}

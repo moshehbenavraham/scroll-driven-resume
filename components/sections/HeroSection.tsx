@@ -56,6 +56,7 @@ export function HeroSection({
 
   return (
     <section
+      id="hero"
       ref={sectionRef}
       className={cn(
         // 300vh creates scroll runway for smooth 192-frame animation

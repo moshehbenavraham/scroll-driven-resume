@@ -22,7 +22,4 @@ export type {
   ParallaxContextValue,
 } from "@/types/parallax";
 
-export {
-  PARALLAX_LAYER_SPEEDS,
-  MAX_PARALLAX_LAYERS,
-} from "@/types/parallax";
+export { PARALLAX_LAYER_SPEEDS, MAX_PARALLAX_LAYERS } from "@/types/parallax";

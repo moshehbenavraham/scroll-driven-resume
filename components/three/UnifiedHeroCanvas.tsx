@@ -85,11 +85,7 @@ function UnifiedHeroCanvasContent({
   return (
     <>
       {/* Background layer - frame texture (at z=0, fills viewport) */}
-      <FramePlane
-        texture={currentTexture}
-        renderOrder={0}
-        zPosition={0}
-      />
+      <FramePlane texture={currentTexture} renderOrder={0} zPosition={0} />
 
       {/* Mid layer - glow effect (if enabled) */}
       {effectType === "glow" && quality.enableGlow ? (
@@ -193,10 +189,7 @@ export function UnifiedHeroCanvas({
 
   // Determine if WebGL should be rendered
   const shouldRenderWebGL =
-    capabilities.isEnabled &&
-    !disabled &&
-    !isMobile &&
-    !prefersReducedMotion;
+    capabilities.isEnabled && !disabled && !isMobile && !prefersReducedMotion;
 
   // Render placeholder during SSR
   if (!isMounted) {
@@ -216,7 +209,9 @@ export function UnifiedHeroCanvas({
         ref={wrapperRef}
         className={cn("absolute inset-0", className)}
         data-unified-canvas="fallback"
-        data-reason={capabilities.disableReason || (isMobile ? "mobile" : "reduced-motion")}
+        data-reason={
+          capabilities.disableReason || (isMobile ? "mobile" : "reduced-motion")
+        }
       >
         {/* Use existing FrameSequence as fallback */}
         <FrameSequence
@@ -228,7 +223,7 @@ export function UnifiedHeroCanvas({
         />
         {/* Show CSS-only effects if WebGL unavailable but effects enabled */}
         {showEffects && !capabilities.isEnabled ? (
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="pointer-events-none absolute inset-0">
             <WebGLFallback
               reason={capabilities.disableReason}
               showEffect={showEffects}

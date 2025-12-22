@@ -49,7 +49,8 @@ describe("CanvasFrameRenderer", () => {
       }
     }
 
-    global.ResizeObserver = MockResizeObserver as unknown as typeof ResizeObserver;
+    global.ResizeObserver =
+      MockResizeObserver as unknown as typeof ResizeObserver;
 
     // Mock getBoundingClientRect
     Element.prototype.getBoundingClientRect = vi.fn().mockReturnValue({

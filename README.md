@@ -19,11 +19,16 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ```
 .
-├── app/                  # Next.js 16 App Router pages
+├── app/                  # Next.js 15 App Router pages
 ├── components/           # React components
-│   ├── demo/             # Demo/testing components
+│   ├── animation/        # Frame animation (Canvas renderer)
+│   ├── decorative/       # CSS/SVG decorative elements
+│   ├── hero/             # Hero section components
 │   ├── loading/          # Loading overlay system
-│   ├── three/            # React Three Fiber components
+│   ├── parallax/         # Parallax layer components
+│   ├── product/          # Product section components
+│   ├── sections/         # Page section layouts
+│   ├── three/            # React Three Fiber (WebGL)
 │   └── ui/               # shadcn/ui components
 ├── hooks/                # Custom React hooks (scroll, animation, parallax)
 ├── lib/                  # Utility functions
@@ -42,7 +47,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Tech Stack
 
-- **Next.js 16** - React framework with App Router
+- **Next.js 15** - React framework with App Router
 - **React 19** - UI library with concurrent features
 - **TypeScript 5** - Type-safe development
 - **Tailwind CSS 4** - Utility-first styling
@@ -53,6 +58,6 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Project Status
 
-Phase 00 (Foundation) complete. Phase 01 (Core Animation) in progress.
+Phase 00 (Foundation) and Phase 01 (Core Animation) complete. Phase 02 (Content and Polish) pending.
 
 See [PRD](.spec_system/PRD/PRD.md) for detailed roadmap.

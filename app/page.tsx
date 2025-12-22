@@ -45,13 +45,59 @@ export default function Home() {
       />
 
       {/* Main content */}
-      <main>
+      <main id="main-content">
         <HeroSection
           isRevealed={isContentRevealed}
           onLoadProgress={handleLoadProgress}
           onLoadComplete={handleLoadComplete}
         />
+
+        {/* Placeholder sections for navigation - will be replaced in future sessions */}
+        <section
+          id="about"
+          className="flex min-h-screen items-center justify-center bg-background"
+          aria-label="About section"
+        >
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-muted-foreground">About</h2>
+            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 02</p>
+          </div>
+        </section>
+
+        <section
+          id="skills"
+          className="flex min-h-screen items-center justify-center bg-background/50"
+          aria-label="Skills section"
+        >
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-muted-foreground">Skills</h2>
+            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 03</p>
+          </div>
+        </section>
+
+        <section
+          id="projects"
+          className="flex min-h-screen items-center justify-center bg-background"
+          aria-label="Projects section"
+        >
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-muted-foreground">Projects</h2>
+            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 04</p>
+          </div>
+        </section>
+
         <ProductSection isRevealed={isContentRevealed} />
+
+        <section
+          id="contact"
+          className="flex min-h-screen items-center justify-center bg-background/50"
+          aria-label="Contact section"
+        >
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-muted-foreground">Contact</h2>
+            <p className="mt-2 text-muted-foreground">Coming in Phase 02 Session 05</p>
+          </div>
+        </section>
       </main>
     </>
   );

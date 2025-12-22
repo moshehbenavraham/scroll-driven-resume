@@ -119,11 +119,15 @@ export function useUnifiedFrameAnimation(
 
   // Detect mobile and reduced motion
   const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === "undefined") {return false;}
+    if (typeof window === "undefined") {
+      return false;
+    }
     return getOptimalQuality() === "mobile";
   });
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") {return false;}
+    if (typeof window === "undefined") {
+      return false;
+    }
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   });
 
@@ -142,8 +146,10 @@ export function useUnifiedFrameAnimation(
     const mobileQuery = createMobileMediaQuery();
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const handleMobileChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    const handleMotionChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    const handleMobileChange = (e: MediaQueryListEvent) =>
+      setIsMobile(e.matches);
+    const handleMotionChange = (e: MediaQueryListEvent) =>
+      setPrefersReducedMotion(e.matches);
 
     mobileQuery?.addEventListener("change", handleMobileChange);
     motionQuery.addEventListener("change", handleMotionChange);
@@ -159,7 +165,9 @@ export function useUnifiedFrameAnimation(
 
   // Generate frame URLs
   const frameUrls = useMemo(() => {
-    if (totalFrames === 0) {return [];}
+    if (totalFrames === 0) {
+      return [];
+    }
     return generateFrameUrls({
       sequence,
       totalFrames,
@@ -168,7 +176,8 @@ export function useUnifiedFrameAnimation(
   }, [sequence, totalFrames, quality]);
 
   // Should animation be disabled?
-  const shouldDisable = prefersReducedMotion || storePrefersReducedMotion || isMobile;
+  const shouldDisable =
+    prefersReducedMotion || storePrefersReducedMotion || isMobile;
 
   // Frame animation hook
   const { frameIndex, direction, isActive } = useFrameAnimation({

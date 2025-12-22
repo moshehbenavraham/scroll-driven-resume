@@ -11,7 +11,13 @@ import type { ReactNode } from "react";
 /**
  * Icon identifier for product stats.
  */
-export type ProductStatIcon = "users" | "book" | "code" | "calendar" | "star" | "globe";
+export type ProductStatIcon =
+  | "users"
+  | "book"
+  | "code"
+  | "calendar"
+  | "star"
+  | "globe";
 
 /**
  * Configuration for a single product stat.

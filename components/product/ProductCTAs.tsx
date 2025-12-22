@@ -72,7 +72,7 @@ export function ProductCTAs({
         className={cn(
           // Custom styling for brand accent
           "bg-purple-600 hover:bg-purple-700",
-          "text-white font-semibold",
+          "font-semibold text-white",
           // Size overrides
           "px-8 py-3",
           "text-base md:text-lg",
@@ -100,7 +100,7 @@ export function ProductCTAs({
           // Custom styling for ghost/outline on dark
           "border-white/30 hover:border-white/50",
           "bg-transparent hover:bg-white/10",
-          "text-white font-medium",
+          "font-medium text-white",
           // Size overrides
           "px-8 py-3",
           "text-base md:text-lg",

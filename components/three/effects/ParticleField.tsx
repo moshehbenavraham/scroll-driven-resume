@@ -15,11 +15,11 @@ import type { MotionValue } from "framer-motion";
  * Creates deterministic random sequences from a seed.
  */
 function createSeededRandom(seed: number): () => number {
-  return function() {
-    let t = seed += 0x6D2B79F5;
-    t = Math.imul(t ^ t >>> 15, t | 1);
-    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  return function () {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
 
@@ -49,7 +49,14 @@ function createCircleTexture(): THREE.Texture {
   const center = size / 2;
 
   // Create radial gradient for soft circular particle
-  const gradient = ctx.createRadialGradient(center, center, 0, center, center, center);
+  const gradient = ctx.createRadialGradient(
+    center,
+    center,
+    0,
+    center,
+    center,
+    center
+  );
   gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
   gradient.addColorStop(0.3, "rgba(255, 255, 255, 0.8)");
   gradient.addColorStop(0.7, "rgba(255, 255, 255, 0.3)");
@@ -146,7 +153,9 @@ export function ParticleField({
 
     const points = pointsRef.current;
     const positionAttr = points.geometry.attributes.position;
-    if (!positionAttr) {return;}
+    if (!positionAttr) {
+      return;
+    }
 
     const posArray = positionAttr.array as Float32Array;
     const scrollInfluence = scrollRef.current;
@@ -167,12 +176,24 @@ export function ParticleField({
       posArray[i3 + 1] += scrollInfluence * delta * 0.3;
 
       // Wrap particles at boundaries
-      if (posArray[i3] > halfWidth) {posArray[i3] = -halfWidth;}
-      if (posArray[i3] < -halfWidth) {posArray[i3] = halfWidth;}
-      if (posArray[i3 + 1] > halfHeight) {posArray[i3 + 1] = -halfHeight;}
-      if (posArray[i3 + 1] < -halfHeight) {posArray[i3 + 1] = halfHeight;}
-      if (posArray[i3 + 2] > halfDepth) {posArray[i3 + 2] = -halfDepth;}
-      if (posArray[i3 + 2] < -halfDepth) {posArray[i3 + 2] = halfDepth;}
+      if (posArray[i3] > halfWidth) {
+        posArray[i3] = -halfWidth;
+      }
+      if (posArray[i3] < -halfWidth) {
+        posArray[i3] = halfWidth;
+      }
+      if (posArray[i3 + 1] > halfHeight) {
+        posArray[i3 + 1] = -halfHeight;
+      }
+      if (posArray[i3 + 1] < -halfHeight) {
+        posArray[i3 + 1] = halfHeight;
+      }
+      if (posArray[i3 + 2] > halfDepth) {
+        posArray[i3 + 2] = -halfDepth;
+      }
+      if (posArray[i3 + 2] < -halfDepth) {
+        posArray[i3 + 2] = halfDepth;
+      }
     }
 
     positionAttr.needsUpdate = true;
@@ -185,10 +206,7 @@ export function ParticleField({
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          args={[positions, 3]}
-        />
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
         transparent

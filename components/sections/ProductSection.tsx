@@ -76,6 +76,7 @@ export function ProductSection({
 
   return (
     <section
+      id="ai-community"
       ref={sectionRef}
       className={cn(
         // 225vh creates scroll runway for smooth 144-frame animation
@@ -83,7 +84,7 @@ export function ProductSection({
         className
       )}
       style={{ height: SCROLL_RUNWAY_HEIGHT }}
-      aria-label="Product section"
+      aria-label="AI Community section"
     >
       {/* Sticky container - stays fixed during scroll */}
       <div

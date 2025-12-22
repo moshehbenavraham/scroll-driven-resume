@@ -21,7 +21,9 @@ describe("ProductContent", () => {
 
   it("renders default tagline", () => {
     render(<ProductContent />);
-    expect(screen.getByText(DEFAULT_PRODUCT_CONTENT.tagline)).toBeInTheDocument();
+    expect(
+      screen.getByText(DEFAULT_PRODUCT_CONTENT.tagline)
+    ).toBeInTheDocument();
   });
 
   it("renders custom product name", () => {

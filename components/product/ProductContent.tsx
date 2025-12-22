@@ -6,7 +6,10 @@
  */
 
 import { cn } from "@/lib/cn";
-import { type ProductContentProps, DEFAULT_PRODUCT_CONTENT } from "@/types/product";
+import {
+  type ProductContentProps,
+  DEFAULT_PRODUCT_CONTENT,
+} from "@/types/product";
 
 /**
  * Product content container with name and tagline.

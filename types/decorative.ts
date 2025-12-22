@@ -13,7 +13,11 @@ import type { ReactNode, CSSProperties } from "react";
 /**
  * Available decorative shape variants.
  */
-export type DecorativeShapeVariant = "circle" | "triangle" | "hexagon" | "diamond";
+export type DecorativeShapeVariant =
+  | "circle"
+  | "triangle"
+  | "hexagon"
+  | "diamond";
 
 /**
  * Shape size presets.
@@ -32,11 +36,7 @@ export const DECORATIVE_SHAPE_SIZES: Record<DecorativeShapeSize, number> = {
 /**
  * Shape color presets using CSS custom properties.
  */
-export type DecorativeShapeColor =
-  | "accent"
-  | "muted"
-  | "highlight"
-  | "custom";
+export type DecorativeShapeColor = "accent" | "muted" | "highlight" | "custom";
 
 // ============================================================================
 // Position Configuration
@@ -198,7 +198,11 @@ export interface DecorativeElementConfig {
   /** Element type */
   type: "shape" | "line" | "gradient" | "noise";
   /** Element-specific props */
-  props: FloatingShapeProps | ConnectionLineProps | GradientMeshProps | NoiseOverlayProps;
+  props:
+    | FloatingShapeProps
+    | ConnectionLineProps
+    | GradientMeshProps
+    | NoiseOverlayProps;
 }
 
 /**

@@ -47,7 +47,9 @@ vi.mock("framer-motion", async () => {
         <div
           className={className}
           style={style as React.CSSProperties}
-          aria-hidden={ariaHidden === true || ariaHidden === "true" ? true : undefined}
+          aria-hidden={
+            ariaHidden === true || ariaHidden === "true" ? true : undefined
+          }
           data-testid="floating-shape"
           {...props}
         >
@@ -133,9 +135,7 @@ describe("FloatingShape", () => {
   });
 
   it("positions using percentage values", () => {
-    render(
-      <FloatingShape variant="circle" position={{ x: 25, y: 75 }} />
-    );
+    render(<FloatingShape variant="circle" position={{ x: 25, y: 75 }} />);
 
     const shape = screen.getByTestId("floating-shape");
     expect(shape).toHaveStyle({ left: "25%", top: "75%" });
@@ -163,11 +163,7 @@ describe("FloatingShape", () => {
 
   it("applies blur filter when blur prop is provided", () => {
     render(
-      <FloatingShape
-        variant="circle"
-        position={{ x: 10, y: 20 }}
-        blur={2}
-      />
+      <FloatingShape variant="circle" position={{ x: 10, y: 20 }} blur={2} />
     );
 
     const shape = screen.getByTestId("floating-shape");
@@ -176,11 +172,7 @@ describe("FloatingShape", () => {
 
   it("does not apply blur filter when blur is 0", () => {
     render(
-      <FloatingShape
-        variant="circle"
-        position={{ x: 10, y: 20 }}
-        blur={0}
-      />
+      <FloatingShape variant="circle" position={{ x: 10, y: 20 }} blur={0} />
     );
 
     const shape = screen.getByTestId("floating-shape");
@@ -191,9 +183,7 @@ describe("FloatingShape", () => {
     it("disables will-change when reduced motion is preferred", () => {
       mockReducedMotion = true;
 
-      render(
-        <FloatingShape variant="circle" position={{ x: 10, y: 20 }} />
-      );
+      render(<FloatingShape variant="circle" position={{ x: 10, y: 20 }} />);
 
       const shape = screen.getByTestId("floating-shape");
       expect(shape).toHaveStyle({ willChange: "auto" });
@@ -202,9 +192,7 @@ describe("FloatingShape", () => {
     it("enables will-change when reduced motion is not preferred", () => {
       mockReducedMotion = false;
 
-      render(
-        <FloatingShape variant="circle" position={{ x: 10, y: 20 }} />
-      );
+      render(<FloatingShape variant="circle" position={{ x: 10, y: 20 }} />);
 
       const shape = screen.getByTestId("floating-shape");
       expect(shape).toHaveStyle({ willChange: "transform" });

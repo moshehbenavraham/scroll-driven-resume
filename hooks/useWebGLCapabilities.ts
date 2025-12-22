@@ -262,12 +262,16 @@ function subscribeToMobile(callback: () => void): () => void {
   // (some browsers fire resize events when scrolling due to address bar)
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
   const debouncedCallback = () => {
-    if (timeoutId) {clearTimeout(timeoutId);}
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
     timeoutId = setTimeout(callback, 150);
   };
   window.addEventListener("resize", debouncedCallback);
   return () => {
-    if (timeoutId) {clearTimeout(timeoutId);}
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
     window.removeEventListener("resize", debouncedCallback);
   };
 }

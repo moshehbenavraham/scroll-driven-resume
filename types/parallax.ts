@@ -189,4 +189,6 @@ export interface ParallaxTransformParams {
 /**
  * Calculate parallax Y offset from progress and speed.
  */
-export type ParallaxOffsetCalculator = (params: ParallaxTransformParams) => number;
+export type ParallaxOffsetCalculator = (
+  params: ParallaxTransformParams
+) => number;

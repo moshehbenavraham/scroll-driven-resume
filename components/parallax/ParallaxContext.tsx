@@ -13,7 +13,10 @@ import {
   useMemo,
 } from "react";
 import { useMotionValue, type MotionValue } from "framer-motion";
-import { MAX_PARALLAX_LAYERS, type ParallaxContextValue } from "@/types/parallax";
+import {
+  MAX_PARALLAX_LAYERS,
+  type ParallaxContextValue,
+} from "@/types/parallax";
 
 /**
  * Context for sharing parallax state between container and layers.

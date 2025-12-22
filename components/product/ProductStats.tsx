@@ -18,7 +18,10 @@ import {
 /**
  * Icon mapping for stat items.
  */
-const ICON_MAP: Record<ProductStatIcon, React.ComponentType<{ className?: string }>> = {
+const ICON_MAP: Record<
+  ProductStatIcon,
+  React.ComponentType<{ className?: string }>
+> = {
   users: Users,
   book: BookOpen,
   code: Code,
@@ -48,13 +51,22 @@ interface StatItemProps {
   scrollProgress?: number;
 }
 
-function StatItem({ label, value, icon, index, scrollProgress = 1 }: StatItemProps) {
+function StatItem({
+  label,
+  value,
+  icon,
+  index,
+  scrollProgress = 1,
+}: StatItemProps) {
   const Icon = ICON_MAP[icon] || Users;
 
   // Calculate animation progress for this specific item
   // Each item starts slightly after the previous one (staggered)
   const itemStartProgress = REVEAL_CONFIG.startProgress + index * 0.05;
-  const itemEndProgress = Math.min(REVEAL_CONFIG.endProgress, itemStartProgress + 0.15);
+  const itemEndProgress = Math.min(
+    REVEAL_CONFIG.endProgress,
+    itemStartProgress + 0.15
+  );
 
   // Map scroll progress to item visibility (0-1)
   const itemProgress = useMemo(() => {
@@ -64,7 +76,10 @@ function StatItem({ label, value, icon, index, scrollProgress = 1 }: StatItemPro
     if (scrollProgress >= itemEndProgress) {
       return 1;
     }
-    return (scrollProgress - itemStartProgress) / (itemEndProgress - itemStartProgress);
+    return (
+      (scrollProgress - itemStartProgress) /
+      (itemEndProgress - itemStartProgress)
+    );
   }, [scrollProgress, itemStartProgress, itemEndProgress]);
 
   return (
@@ -90,11 +105,7 @@ function StatItem({ label, value, icon, index, scrollProgress = 1 }: StatItemPro
     >
       {/* Icon */}
       <Icon
-        className={cn(
-          "w-6 h-6 md:w-8 md:h-8",
-          "text-purple-400",
-          "mb-2"
-        )}
+        className={cn("h-6 w-6 md:h-8 md:w-8", "text-purple-400", "mb-2")}
       />
 
       {/* Value */}
@@ -114,7 +125,7 @@ function StatItem({ label, value, icon, index, scrollProgress = 1 }: StatItemPro
         className={cn(
           "text-sm md:text-base",
           "text-white/60",
-          "uppercase tracking-wide"
+          "tracking-wide uppercase"
         )}
       >
         {label}
@@ -175,7 +186,10 @@ export function ProductStats({
  * ProductStats variant that uses a MotionValue for scroll progress.
  * Use this when scroll progress comes from Framer Motion's useScroll.
  */
-export interface ProductStatsWithMotionProps extends Omit<ProductStatsProps, "scrollProgress"> {
+export interface ProductStatsWithMotionProps extends Omit<
+  ProductStatsProps,
+  "scrollProgress"
+> {
   /** Framer Motion scroll progress value */
   scrollProgress: MotionValue<number>;
 }
@@ -275,11 +289,7 @@ function MotionStatItem({
     >
       {/* Icon */}
       <Icon
-        className={cn(
-          "w-6 h-6 md:w-8 md:h-8",
-          "text-purple-400",
-          "mb-2"
-        )}
+        className={cn("h-6 w-6 md:h-8 md:w-8", "text-purple-400", "mb-2")}
       />
 
       {/* Value */}
@@ -299,7 +309,7 @@ function MotionStatItem({
         className={cn(
           "text-sm md:text-base",
           "text-white/60",
-          "uppercase tracking-wide"
+          "tracking-wide uppercase"
         )}
       >
         {label}

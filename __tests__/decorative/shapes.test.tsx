@@ -5,7 +5,12 @@
 
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
-import { Circle, Triangle, Hexagon, Diamond } from "@/components/decorative/shapes";
+import {
+  Circle,
+  Triangle,
+  Hexagon,
+  Diamond,
+} from "@/components/decorative/shapes";
 
 describe("Circle", () => {
   it("renders an SVG element", () => {

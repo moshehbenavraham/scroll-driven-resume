@@ -82,8 +82,12 @@ export function useFrameAnimation(
 
   // Track direction changes - only update state when direction actually changes
   useMotionValueEvent(scrollYProgress, "change", (currentProgress) => {
-    const newDirection = currentProgress > previousProgress.current ? "down" :
-                         currentProgress < previousProgress.current ? "up" : null;
+    const newDirection =
+      currentProgress > previousProgress.current
+        ? "down"
+        : currentProgress < previousProgress.current
+          ? "up"
+          : null;
     previousProgress.current = currentProgress;
 
     // Only trigger re-render if direction actually changed

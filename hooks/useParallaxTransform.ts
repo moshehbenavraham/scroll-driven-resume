@@ -70,9 +70,7 @@ export function useParallaxTransform(
   const y = useTransform(
     scrollProgress,
     [0, 1],
-    enabled && clampedSpeed !== 1.0
-      ? [-offsetRange, offsetRange]
-      : [0, 0]
+    enabled && clampedSpeed !== 1.0 ? [-offsetRange, offsetRange] : [0, 0]
   );
 
   return {

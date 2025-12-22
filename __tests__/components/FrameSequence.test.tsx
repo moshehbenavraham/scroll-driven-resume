@@ -245,9 +245,7 @@ describe("FrameSequence", () => {
       render(<FrameSequence sequence="hero" containerRef={ref} />);
 
       // Should render static image fallback
-      const frameImage = document.querySelector(
-        'img[alt="hero static frame"]'
-      );
+      const frameImage = document.querySelector('img[alt="hero static frame"]');
       expect(frameImage).toBeInTheDocument();
     });
 
@@ -270,9 +268,7 @@ describe("FrameSequence", () => {
       render(<FrameSequence sequence="hero" containerRef={ref} />);
 
       // Should render static image fallback
-      const frameImage = document.querySelector(
-        'img[alt="hero static frame"]'
-      );
+      const frameImage = document.querySelector('img[alt="hero static frame"]');
       expect(frameImage).toBeInTheDocument();
     });
 
@@ -295,9 +291,7 @@ describe("FrameSequence", () => {
       render(<FrameSequence sequence="hero" containerRef={ref} disabled />);
 
       // Should render static image fallback
-      const frameImage = document.querySelector(
-        'img[alt="hero static frame"]'
-      );
+      const frameImage = document.querySelector('img[alt="hero static frame"]');
       expect(frameImage).toBeInTheDocument();
     });
 

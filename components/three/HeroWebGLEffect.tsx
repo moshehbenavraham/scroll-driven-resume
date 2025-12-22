@@ -84,8 +84,7 @@ export function HeroWebGLEffect({
   const showEffects = effectType !== "none";
 
   // Determine if WebGL should be rendered
-  const shouldRenderWebGL =
-    capabilities.isEnabled && !disabled && showEffects;
+  const shouldRenderWebGL = capabilities.isEnabled && !disabled && showEffects;
 
   // Render placeholder during SSR to avoid hydration mismatch
   // WebGL detection only works client-side

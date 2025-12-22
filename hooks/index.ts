@@ -28,6 +28,10 @@ export { useCanvasRenderer } from "./useCanvasRenderer";
 export { useTextureLoader } from "./useTextureLoader";
 export { useUnifiedFrameAnimation } from "./useUnifiedFrameAnimation";
 
+// Navigation hooks
+export { useActiveSection } from "./useActiveSection";
+export { useScrollDirection } from "./useScrollDirection";
+
 // Default exports for convenience
 export { default as useScrollProgressDefault } from "./useScrollProgress";
 export { default as useFrameAnimationDefault } from "./useFrameAnimation";
@@ -42,3 +46,5 @@ export { default as useImageCacheDefault } from "./useImageCache";
 export { default as useCanvasRendererDefault } from "./useCanvasRenderer";
 export { default as useTextureLoaderDefault } from "./useTextureLoader";
 export { default as useUnifiedFrameAnimationDefault } from "./useUnifiedFrameAnimation";
+export { default as useActiveSectionDefault } from "./useActiveSection";
+export { default as useScrollDirectionDefault } from "./useScrollDirection";

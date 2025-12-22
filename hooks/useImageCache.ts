@@ -8,7 +8,10 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { UseImageCacheOptions, UseImageCacheReturn } from "@/types/animation";
+import type {
+  UseImageCacheOptions,
+  UseImageCacheReturn,
+} from "@/types/animation";
 
 /**
  * Hook to cache HTMLImageElement references for canvas rendering.
@@ -63,7 +66,9 @@ export function useImageCache({
       img.crossOrigin = "anonymous";
 
       img.onload = () => {
-        if (!mounted) {return;}
+        if (!mounted) {
+          return;
+        }
         cache.set(index, img);
         loaded++;
         setLoadedCount(loaded);
@@ -71,7 +76,9 @@ export function useImageCache({
 
       img.onerror = () => {
         // Silently ignore errors - frame will be skipped during render
-        if (!mounted) {return;}
+        if (!mounted) {
+          return;
+        }
         loaded++;
         setLoadedCount(loaded);
       };

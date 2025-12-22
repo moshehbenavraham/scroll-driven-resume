@@ -214,32 +214,41 @@ export function useTextureLoader({
 
       return texture;
     },
-    [enabled, frameUrls.length, loadImage, maxCachedTextures, evictOldest, updateAccessOrder]
+    [
+      enabled,
+      frameUrls.length,
+      loadImage,
+      maxCachedTextures,
+      evictOldest,
+      updateAccessOrder,
+    ]
   );
 
   /**
    * Check if texture is ready for a frame.
    */
-  const isTextureReady = useCallback(
-    (frameIndex: number): boolean => {
-      if (texturePoolRef.current.has(frameIndex)) {
-        return true;
-      }
-      const image = imageCacheRef.current.get(frameIndex);
-      return image !== undefined && image.complete;
-    },
-    []
-  );
+  const isTextureReady = useCallback((frameIndex: number): boolean => {
+    if (texturePoolRef.current.has(frameIndex)) {
+      return true;
+    }
+    const image = imageCacheRef.current.get(frameIndex);
+    return image !== undefined && image.complete;
+  }, []);
 
   /**
    * Preload textures for frames near the current position.
    */
   const preloadNearby = useCallback(
     (currentFrame: number) => {
-      if (!enabled) {return;}
+      if (!enabled) {
+        return;
+      }
 
       const start = Math.max(0, currentFrame - NEARBY_FRAME_RANGE);
-      const end = Math.min(frameUrls.length - 1, currentFrame + NEARBY_FRAME_RANGE);
+      const end = Math.min(
+        frameUrls.length - 1,
+        currentFrame + NEARBY_FRAME_RANGE
+      );
 
       for (let i = start; i <= end; i++) {
         // Trigger image load if not cached
@@ -304,7 +313,10 @@ export function useTextureLoader({
       } else {
         // Fallback for browsers without requestIdleCallback
         for (let i = priorityCount; i < frameUrls.length; i++) {
-          setTimeout(() => loadImage(i).catch(() => {}), (i - priorityCount) * 50);
+          setTimeout(
+            () => loadImage(i).catch(() => {}),
+            (i - priorityCount) * 50
+          );
         }
       }
     };

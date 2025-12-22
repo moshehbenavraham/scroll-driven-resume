@@ -53,10 +53,16 @@ vi.mock("framer-motion", async () => {
   return {
     ...actual,
     motion: {
-      div: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
+      div: ({
+        children,
+        ...props
+      }: React.PropsWithChildren<Record<string, unknown>>) => (
         <div {...props}>{children}</div>
       ),
-      svg: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
+      svg: ({
+        children,
+        ...props
+      }: React.PropsWithChildren<Record<string, unknown>>) => (
         <svg {...props}>{children}</svg>
       ),
       path: (props: Record<string, unknown>) => <path {...props} />,
@@ -80,7 +86,7 @@ describe("ProductSection", () => {
     render(<ProductSection />);
     expect(screen.getByRole("region")).toHaveAttribute(
       "aria-label",
-      "Product section"
+      "AI Community section"
     );
   });
 
@@ -159,7 +165,9 @@ describe("ProductSection", () => {
 
     // With parallax integration, z-index is applied via style prop on ParallaxLayer
     // Verify the layer structure exists by checking for key elements
-    const frameSequence = container.querySelector('[class*="h-full"][class*="w-full"]');
+    const frameSequence = container.querySelector(
+      '[class*="h-full"][class*="w-full"]'
+    );
     expect(frameSequence).toBeInTheDocument();
 
     // Gradient layer should exist
@@ -167,7 +175,9 @@ describe("ProductSection", () => {
     expect(gradientLayer).toBeInTheDocument();
 
     // Content layer with ContentReveal should exist
-    const contentContainer = container.querySelector('[class*="flex"][class*="items-center"][class*="justify-center"]');
+    const contentContainer = container.querySelector(
+      '[class*="flex"][class*="items-center"][class*="justify-center"]'
+    );
     expect(contentContainer).toBeInTheDocument();
   });
 

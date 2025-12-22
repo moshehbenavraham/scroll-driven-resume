@@ -5,10 +5,18 @@
  * Creates visual connections between decorative elements.
  */
 
-import { motion, useTransform, useMotionValue, type MotionValue } from "framer-motion";
+import {
+  motion,
+  useTransform,
+  useMotionValue,
+  type MotionValue,
+} from "framer-motion";
 import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { DECORATIVE_Z_INDEX, type ConnectionLineProps } from "@/types/decorative";
+import {
+  DECORATIVE_Z_INDEX,
+  type ConnectionLineProps,
+} from "@/types/decorative";
 
 /**
  * Calculate SVG path data for a line between two percentage positions.
@@ -102,7 +110,7 @@ export function ConnectionLine({
   return (
     <motion.svg
       className={cn(
-        "absolute inset-0 w-full h-full pointer-events-none",
+        "pointer-events-none absolute inset-0 h-full w-full",
         className
       )}
       viewBox="0 0 100 100"

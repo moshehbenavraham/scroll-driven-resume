@@ -117,10 +117,7 @@ export function CanvasFrameRenderer({
   }, [resizeCanvas]);
 
   return (
-    <div
-      ref={containerRef}
-      className={cn("relative h-full w-full", className)}
-    >
+    <div ref={containerRef} className={cn("relative h-full w-full", className)}>
       <canvas
         ref={canvasRef}
         className="absolute inset-0 h-full w-full"

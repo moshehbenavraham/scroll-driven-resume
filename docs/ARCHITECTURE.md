@@ -58,7 +58,7 @@ MinIO Storage (localhost:9000)
 
 | Technology | Purpose | Why Chosen |
 |------------|---------|------------|
-| Next.js 16 | Framework | App Router, RSC, optimized bundling |
+| Next.js 15 | Framework | App Router, RSC, optimized bundling |
 | React 19 | UI Library | Concurrent features, improved Suspense |
 | TypeScript 5 | Type Safety | Strict mode, no implicit any |
 | Tailwind CSS 4 | Styling | New oxide engine, utility-first |

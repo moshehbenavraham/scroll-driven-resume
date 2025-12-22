@@ -54,9 +54,19 @@ function renderElement(
         />
       );
     case "gradient":
-      return <GradientMesh key={config.id} {...(config.props as GradientMeshProps)} />;
+      return (
+        <GradientMesh
+          key={config.id}
+          {...(config.props as GradientMeshProps)}
+        />
+      );
     case "noise":
-      return <NoiseOverlay key={config.id} {...(config.props as NoiseOverlayProps)} />;
+      return (
+        <NoiseOverlay
+          key={config.id}
+          {...(config.props as NoiseOverlayProps)}
+        />
+      );
     default:
       return null;
   }
@@ -142,7 +152,7 @@ export function DecorativeElements({
     <motion.div
       ref={containerRef}
       className={cn(
-        "absolute inset-0 w-full h-full overflow-hidden pointer-events-none",
+        "pointer-events-none absolute inset-0 h-full w-full overflow-hidden",
         className
       )}
       variants={containerVariants}
