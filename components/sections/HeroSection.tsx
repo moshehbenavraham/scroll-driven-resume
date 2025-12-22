@@ -14,6 +14,13 @@ import { SkillIndicators } from "@/components/hero/SkillIndicators";
 import { SocialLinks } from "@/components/hero/SocialLinks";
 import { UnifiedHeroCanvas } from "@/components/three/UnifiedHeroCanvas";
 import { ParallaxContainer, ParallaxLayer } from "@/components/parallax";
+import {
+  DecorativeElements,
+  FloatingShape,
+  ConnectionLine,
+  GradientMesh,
+  NoiseOverlay,
+} from "@/components/decorative";
 import type { HeroSectionProps } from "@/types/hero";
 
 /**
@@ -25,6 +32,7 @@ import type { HeroSectionProps } from "@/types/hero";
  *
  * Z-index layers:
  * - Unified canvas (frames + effects): 0 (background)
+ * - Decorative elements: 5-8 (depth)
  * - Gradient overlay: 10 (contrast)
  * - Content: 20 (foreground)
  *
@@ -80,6 +88,89 @@ export function HeroSection({
               onLoadProgress={onLoadProgress}
               className="h-full w-full"
             />
+          </ParallaxLayer>
+
+          {/* Layer 1.5: Decorative elements (z-index: 5-8) */}
+          {/* Mid layer speed for subtle parallax depth */}
+          <ParallaxLayer layer="mid" zIndex={5} pointerEvents={false}>
+            <DecorativeElements staggerDelay={0.1}>
+              {/* Gradient mesh for atmospheric depth */}
+              <GradientMesh
+                type="radial"
+                stops={[
+                  { color: "rgba(147, 112, 219, 0.08)", position: 0 },
+                  { color: "rgba(100, 100, 120, 0.04)", position: 50 },
+                  { color: "transparent", position: 100 },
+                ]}
+                opacity={0.6}
+              />
+
+              {/* Top area shapes */}
+              <FloatingShape
+                variant="triangle"
+                position={{ x: 8, y: 12 }}
+                size="lg"
+                color="accent"
+                opacity={0.25}
+                blur={1}
+                speed={0.35}
+                delay={0.1}
+              />
+              <FloatingShape
+                variant="circle"
+                position={{ x: 85, y: 15 }}
+                size="md"
+                color="muted"
+                opacity={0.2}
+                blur={2}
+                speed={0.45}
+                delay={0.2}
+              />
+
+              {/* Mid area connection */}
+              <FloatingShape
+                variant="hexagon"
+                position={{ x: 45, y: 35 }}
+                size="sm"
+                color="highlight"
+                opacity={0.15}
+                speed={0.4}
+                delay={0.3}
+              />
+              <ConnectionLine
+                start={{ x: 12, y: 18 }}
+                end={{ x: 42, y: 35 }}
+                color="rgba(147, 112, 219, 0.15)"
+                thickness={1}
+                opacity={0.3}
+                delay={0.4}
+              />
+
+              {/* Bottom area shapes */}
+              <FloatingShape
+                variant="diamond"
+                position={{ x: 12, y: 78 }}
+                size="md"
+                color="accent"
+                opacity={0.2}
+                blur={1}
+                speed={0.3}
+                delay={0.5}
+              />
+              <FloatingShape
+                variant="circle"
+                position={{ x: 88, y: 82 }}
+                size="sm"
+                color="muted"
+                opacity={0.18}
+                blur={3}
+                speed={0.5}
+                delay={0.6}
+              />
+
+              {/* Noise overlay for organic feel */}
+              <NoiseOverlay intensity={0.03} blendMode="overlay" />
+            </DecorativeElements>
           </ParallaxLayer>
 
           {/* Layer 2: Gradient overlay for text contrast (z-index: 10) */}

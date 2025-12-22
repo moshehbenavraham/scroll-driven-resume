@@ -14,7 +14,7 @@
     "1": {
       "name": "Core Animation",
       "description": "Scroll-synchronized frame animation, hero section, product section, parallax layers, WebGL effects",
-      "status": "in_progress",
+      "status": "complete",
       "session_count": 6
     },
     "2": {
@@ -36,7 +36,8 @@
     "phase01-session02-hero-section",
     "phase01-session03-hero-webgl-effects",
     "phase01-session04-product-section",
-    "phase01-session05-parallax-layer-system"
+    "phase01-session05-parallax-layer-system",
+    "phase01-session06-decorative-elements"
   ],
   "next_session_history": [
     {
@@ -97,6 +98,11 @@
     {
       "date": "2025-12-22",
       "session": "phase01-session05-parallax-layer-system",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-22",
+      "session": "phase01-session06-decorative-elements",
       "status": "completed"
     }
   ]

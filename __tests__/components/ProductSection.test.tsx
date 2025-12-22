@@ -43,17 +43,30 @@ vi.mock("@/components/loading/ContentReveal", () => ({
 // Mock framer-motion to avoid animation issues in tests
 vi.mock("framer-motion", async () => {
   const actual = await vi.importActual("framer-motion");
+  const createMockMotionValue = (value: number) => ({
+    get: () => value,
+    set: vi.fn(),
+    getVelocity: () => 0,
+    on: vi.fn(() => vi.fn()),
+    onChange: vi.fn(() => vi.fn()),
+  });
   return {
     ...actual,
     motion: {
       div: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
         <div {...props}>{children}</div>
       ),
+      svg: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
+        <svg {...props}>{children}</svg>
+      ),
+      path: (props: Record<string, unknown>) => <path {...props} />,
     },
     useScroll: () => ({
-      scrollYProgress: { get: () => 0 },
+      scrollYProgress: createMockMotionValue(0),
     }),
-    useTransform: () => ({ get: () => 0 }),
+    useTransform: () => createMockMotionValue(0),
+    useMotionValue: (value: number) => createMockMotionValue(value),
+    useInView: () => true,
   };
 });
 
@@ -131,10 +144,14 @@ describe("ProductSection", () => {
 
   it("has gradient overlay for text contrast", () => {
     const { container } = render(<ProductSection />);
-    const gradient = container.querySelector("[aria-hidden='true']");
-    expect(gradient).toBeInTheDocument();
-    // With parallax integration, z-index is applied via style prop
-    expect(gradient?.className).toContain("bg-[radial-gradient");
+    // Use attribute selector to find gradient overlay
+    const gradients = container.querySelectorAll("[aria-hidden='true']");
+    // At least one element with aria-hidden should have the radial gradient class
+    const hasGradient = Array.from(gradients).some((el) => {
+      const classAttr = el.getAttribute("class") || "";
+      return classAttr.includes("bg-[radial-gradient");
+    });
+    expect(hasGradient).toBe(true);
   });
 
   it("has correct z-index layering", () => {
@@ -156,7 +173,12 @@ describe("ProductSection", () => {
 
   it("has radial gradient for burst effect", () => {
     const { container } = render(<ProductSection />);
-    const gradient = container.querySelector("[aria-hidden='true']");
-    expect(gradient?.className).toContain("bg-[radial-gradient");
+    // Search for radial gradient class in any element
+    const allElements = container.querySelectorAll("*");
+    const hasRadialGradient = Array.from(allElements).some((el) => {
+      const classAttr = el.getAttribute("class") || "";
+      return classAttr.includes("bg-[radial-gradient");
+    });
+    expect(hasRadialGradient).toBe(true);
   });
 });

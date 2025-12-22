@@ -195,7 +195,7 @@ This system delivers the product via phases. Each phase is implemented via multi
 | Phase | Name | Sessions | Status |
 |-------|------|----------|--------|
 | 00 | Foundation | 7 | Complete |
-| 01 | Core Animation | 6 | Not Started |
+| 01 | Core Animation | 6 | Complete |
 | 02 | Content and Polish | TBD | Not Started |
 
 ## Phase 00: Foundation
@@ -335,15 +335,15 @@ Sessions are defined via `/phasebuild` as `session_NN_name.md` stubs under `.spe
 - [x] Mobile variants created at under 5MB each
 - [x] Docker stack operational with MinIO serving optimized WebP frames via Nginx cache
 - [x] Next.js 15 app running with TypeScript strict mode, zero errors
-- [ ] Hero section frame animation advancing/reversing smoothly with scroll
-- [ ] Product section frame animation advancing/reversing smoothly with scroll
-- [ ] WebGL accent effects rendering in hero sections
-- [ ] Parallax layers creating visible depth effect (background, mid, foreground)
-- [ ] Framer Motion scroll animations performing at 60fps
+- [x] Hero section frame animation advancing/reversing smoothly with scroll
+- [x] Product section frame animation advancing/reversing smoothly with scroll
+- [x] WebGL accent effects rendering in hero sections
+- [x] Parallax layers creating visible depth effect (background, mid, foreground)
+- [x] Framer Motion scroll animations performing at 60fps
 - [ ] Fixed navbar with backdrop blur functioning correctly
 - [x] Dark/light mode toggle working with next-themes
 - [x] Loading screen displaying progress and revealing content after preload
-- [ ] Mobile view showing static frames with disabled parallax/WebGL
+- [x] Mobile view showing static frames with disabled parallax/WebGL
 - [x] prefers-reduced-motion respected (static frames, no parallax, no WebGL)
 - [ ] All sections rendering correctly (About, Skills, Projects, Contact, Footer)
 - [ ] Core Web Vitals passing (LCP < 2.5s, CLS < 0.1, INP < 200ms)

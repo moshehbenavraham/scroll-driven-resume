@@ -14,6 +14,9 @@ export * from "./webgl";
 // Re-export product types
 export * from "./product";
 
+// Re-export decorative types
+export * from "./decorative";
+
 /**
  * Theme options for the application.
  */

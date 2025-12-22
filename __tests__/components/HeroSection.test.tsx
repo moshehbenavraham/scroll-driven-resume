@@ -40,6 +40,36 @@ vi.mock("@/components/loading/ContentReveal", () => ({
   ),
 }));
 
+// Mock framer-motion to avoid animation issues in tests
+vi.mock("framer-motion", async () => {
+  const actual = await vi.importActual("framer-motion");
+  const createMockMotionValue = (value: number) => ({
+    get: () => value,
+    set: vi.fn(),
+    getVelocity: () => 0,
+    on: vi.fn(() => vi.fn()),
+    onChange: vi.fn(() => vi.fn()),
+  });
+  return {
+    ...actual,
+    motion: {
+      div: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
+        <div {...props}>{children}</div>
+      ),
+      svg: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
+        <svg {...props}>{children}</svg>
+      ),
+      path: (props: Record<string, unknown>) => <path {...props} />,
+    },
+    useScroll: () => ({
+      scrollYProgress: createMockMotionValue(0),
+    }),
+    useTransform: () => createMockMotionValue(0),
+    useMotionValue: (value: number) => createMockMotionValue(value),
+    useInView: () => true,
+  };
+});
+
 describe("HeroSection", () => {
   it("renders without crashing", () => {
     render(<HeroSection />);
