@@ -59,8 +59,6 @@ export default defineConfig({
       maxDiffPixelRatio: 0.01,
       // Animation tolerance
       animations: "disabled",
-      // Increased timeout for screenshot capture
-      timeout: 30000,
     },
 
     toMatchSnapshot: {

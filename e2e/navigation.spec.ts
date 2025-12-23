@@ -1,3 +1,4 @@
+import type { Page } from "@playwright/test";
 import {
   test,
   expect,
@@ -11,7 +12,7 @@ import {
  * Helper to check if current viewport is mobile-sized.
  * Desktop nav links are hidden on mobile (md breakpoint = 768px).
  */
-async function isMobileViewport(page: import("@playwright/test").Page): Promise<boolean> {
+async function isMobileViewport(page: Page): Promise<boolean> {
   const viewportSize = page.viewportSize();
   return viewportSize !== null && viewportSize.width < 768;
 }
@@ -20,7 +21,7 @@ async function isMobileViewport(page: import("@playwright/test").Page): Promise<
  * Helper to navigate to a section, using mobile menu if on mobile viewport.
  */
 async function navigateToSection(
-  page: import("@playwright/test").Page,
+  page: Page,
   sectionHref: string
 ): Promise<void> {
   const isMobile = await isMobileViewport(page);

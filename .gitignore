@@ -57,3 +57,6 @@ out/
 coverage/
 playwright-report/
 test-results/
+
+# TypeScript build cache
+*.tsbuildinfo
