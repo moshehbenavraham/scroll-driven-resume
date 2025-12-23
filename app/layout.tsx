@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { fontVariables } from "./fonts";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navbar } from "@/components/navigation";
+import { SkipLink } from "@/components/a11y/SkipLink";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -51,6 +52,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SkipLink />
           <Navbar />
           {children}
         </ThemeProvider>

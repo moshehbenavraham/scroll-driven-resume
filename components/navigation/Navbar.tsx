@@ -15,33 +15,6 @@ import { MobileMenu } from "./MobileMenu";
 import { SECTION_IDS, type NavbarProps } from "@/types/navigation";
 
 /**
- * Skip to content link component.
- * Hidden by default, visible on focus for keyboard users.
- */
-function SkipToContent() {
-  return (
-    <a
-      href="#main-content"
-      className={cn(
-        // Position off-screen by default
-        "absolute top-4 left-4 z-[60]",
-        // Hidden until focused
-        "-translate-y-16 opacity-0",
-        // Visible on focus
-        "focus:translate-y-0 focus:opacity-100",
-        // Styling
-        "bg-primary text-primary-foreground rounded-md px-4 py-2 text-sm font-medium",
-        "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
-        // Transition
-        "transition-all duration-200"
-      )}
-    >
-      Skip to content
-    </a>
-  );
-}
-
-/**
  * Main navigation bar with glass-morphism design.
  * Features responsive layout with mobile menu and scroll-aware visibility.
  *
@@ -74,9 +47,6 @@ export function Navbar({ className, hideOnScroll = false }: NavbarProps) {
 
   return (
     <>
-      {/* Skip to content link for accessibility */}
-      <SkipToContent />
-
       {/* Fixed navbar container */}
       <AnimatePresence>
         {isVisible ? (

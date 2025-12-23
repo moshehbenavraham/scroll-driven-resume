@@ -87,13 +87,6 @@ describe("Navbar", () => {
     expect(nav).toHaveAttribute("role", "navigation");
   });
 
-  it("contains skip-to-content link", () => {
-    render(<Navbar />);
-    const skipLink = screen.getByText(/skip to content/i);
-    expect(skipLink).toBeInTheDocument();
-    expect(skipLink).toHaveAttribute("href", "#main-content");
-  });
-
   it("contains ThemeToggle component", () => {
     render(<Navbar />);
     expect(screen.getByTestId("theme-toggle")).toBeInTheDocument();
@@ -161,13 +154,6 @@ describe("Navbar - NavLink", () => {
 });
 
 describe("Navbar - Accessibility", () => {
-  it("skip link is focusable", () => {
-    render(<Navbar />);
-    const skipLink = screen.getByText(/skip to content/i);
-    skipLink.focus();
-    expect(document.activeElement).toBe(skipLink);
-  });
-
   it("navigation links are focusable", () => {
     render(<Navbar />);
     const aboutLink = screen.getAllByText("About")[0];
