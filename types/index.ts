@@ -20,6 +20,9 @@ export * from "./decorative";
 // Re-export about types
 export * from "./about";
 
+// Re-export projects types
+export * from "./projects";
+
 /**
  * Theme options for the application.
  */

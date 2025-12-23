@@ -10,6 +10,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { ProductSection } from "@/components/sections/ProductSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { LoadingScreen } from "@/components/loading/LoadingScreen";
 
 /**
@@ -60,20 +61,8 @@ export default function Home() {
         {/* Skills section */}
         <SkillsSection isRevealed={isContentRevealed} />
 
-        <section
-          id="projects"
-          className="bg-background flex min-h-screen items-center justify-center"
-          aria-label="Projects section"
-        >
-          <div className="text-center">
-            <h2 className="text-muted-foreground text-3xl font-bold">
-              Projects
-            </h2>
-            <p className="text-muted-foreground mt-2">
-              Coming in Phase 02 Session 04
-            </p>
-          </div>
-        </section>
+        {/* Projects section */}
+        <ProjectsSection isRevealed={isContentRevealed} />
 
         <ProductSection isRevealed={isContentRevealed} />
 
