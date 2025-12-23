@@ -23,6 +23,9 @@ export * from "./about";
 // Re-export projects types
 export * from "./projects";
 
+// Re-export contact types
+export * from "./contact";
+
 /**
  * Theme options for the application.
  */

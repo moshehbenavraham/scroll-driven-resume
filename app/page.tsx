@@ -11,6 +11,8 @@ import { ProductSection } from "@/components/sections/ProductSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { Footer } from "@/components/sections/Footer";
 import { LoadingScreen } from "@/components/loading/LoadingScreen";
 
 /**
@@ -66,21 +68,12 @@ export default function Home() {
 
         <ProductSection isRevealed={isContentRevealed} />
 
-        <section
-          id="contact"
-          className="bg-background/50 flex min-h-screen items-center justify-center"
-          aria-label="Contact section"
-        >
-          <div className="text-center">
-            <h2 className="text-muted-foreground text-3xl font-bold">
-              Contact
-            </h2>
-            <p className="text-muted-foreground mt-2">
-              Coming in Phase 02 Session 05
-            </p>
-          </div>
-        </section>
+        {/* Contact section */}
+        <ContactSection isRevealed={isContentRevealed} />
       </main>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 }
