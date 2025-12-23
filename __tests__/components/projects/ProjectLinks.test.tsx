@@ -102,10 +102,7 @@ describe("ProjectLinks", () => {
 
   it("applies custom className", () => {
     const { container } = render(
-      <ProjectLinks
-        liveUrl="https://example.com"
-        className="custom-class"
-      />
+      <ProjectLinks liveUrl="https://example.com" className="custom-class" />
     );
     expect(container.firstChild).toHaveClass("custom-class");
   });

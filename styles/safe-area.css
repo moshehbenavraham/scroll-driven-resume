@@ -102,6 +102,10 @@
 
 /* Full height with both safe areas accounted */
 .h-dvh-safe {
-  height: calc(100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));
-  height: calc(100dvh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));
+  height: calc(
+    100vh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom)
+  );
+  height: calc(
+    100dvh - var(--safe-area-inset-top) - var(--safe-area-inset-bottom)
+  );
 }

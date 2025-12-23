@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { focusMainContent } from '@/lib/a11y';
+import { focusMainContent } from "@/lib/a11y";
 
 /**
  * Skip link component for keyboard users to bypass navigation
@@ -16,7 +16,7 @@ export function SkipLink() {
     <a
       href="#main-content"
       onClick={handleClick}
-      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2"
+      className="focus:bg-background focus:text-foreground focus:ring-ring sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:px-4 focus:py-2 focus:ring-2 focus:ring-offset-2"
     >
       Skip to main content
     </a>

@@ -93,6 +93,7 @@ function StatItem({
         // Border
         "border border-white/10"
       )}
+      role="listitem"
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: itemProgress,
@@ -285,6 +286,7 @@ function MotionStatItem({
         // Border
         "border border-white/10"
       )}
+      role="listitem"
       style={{ opacity, y }}
     >
       {/* Icon */}

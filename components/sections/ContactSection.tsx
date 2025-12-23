@@ -137,8 +137,8 @@ export function ContactSection({
                 Get In Touch
               </h2>
               <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
-                Have a project in mind or want to discuss opportunities?
-                I would love to hear from you.
+                Have a project in mind or want to discuss opportunities? I would
+                love to hear from you.
               </p>
             </motion.div>
 
@@ -157,9 +157,9 @@ export function ContactSection({
               <div className="lg:col-span-7">
                 <div
                   className={cn(
-                    "rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8",
+                    "rounded-xl p-4 sm:rounded-2xl sm:p-6 md:p-8",
                     "bg-card/30 backdrop-blur-sm",
-                    "border border-border/30"
+                    "border-border/30 border"
                   )}
                 >
                   <ContactForm />
@@ -170,9 +170,9 @@ export function ContactSection({
               <div className="lg:col-span-5">
                 <div
                   className={cn(
-                    "rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8",
+                    "rounded-xl p-4 sm:rounded-2xl sm:p-6 md:p-8",
                     "bg-card/30 backdrop-blur-sm",
-                    "border border-border/30"
+                    "border-border/30 border"
                   )}
                 >
                   <ContactSocialLinks />

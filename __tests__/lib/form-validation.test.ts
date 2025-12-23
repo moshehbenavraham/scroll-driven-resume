@@ -37,7 +37,9 @@ describe("contactFormSchema", () => {
     if (result.success) {
       expect(result.data.name).toBe("John Doe");
       expect(result.data.email).toBe("john@example.com");
-      expect(result.data.message).toBe("Hello, I would like to discuss a project.");
+      expect(result.data.message).toBe(
+        "Hello, I would like to discuss a project."
+      );
     }
   });
 

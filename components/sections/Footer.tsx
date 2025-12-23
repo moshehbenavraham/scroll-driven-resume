@@ -64,7 +64,7 @@ export function Footer({ className }: FooterProps) {
       <motion.footer
         className={cn(
           "relative",
-          "border-t border-border/30",
+          "border-border/30 border-t",
           "bg-background/80 backdrop-blur-sm",
           // Padding with safe area bottom for notched devices
           "pt-12 pb-12",
@@ -83,14 +83,14 @@ export function Footer({ className }: FooterProps) {
             <FooterNav />
 
             {/* Divider */}
-            <div className="h-px w-24 bg-border/50" aria-hidden="true" />
+            <div className="bg-border/50 h-px w-24" aria-hidden="true" />
 
             {/* Copyright */}
             <div className="flex flex-col items-center gap-2 text-center">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 {currentYear} Mosheh Ben Avraham. All rights reserved.
               </p>
-              <p className="text-xs text-muted-foreground/60">
+              <p className="text-muted-foreground/60 text-xs">
                 Built with Next.js, Tailwind CSS, and Framer Motion
               </p>
             </div>

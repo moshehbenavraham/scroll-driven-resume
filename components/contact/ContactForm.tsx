@@ -170,10 +170,10 @@ export function ContactForm({
         transition={{ duration: 0.3 }}
       >
         <CheckCircle className="h-16 w-16 text-green-500" aria-hidden="true" />
-        <h3 className="text-xl font-semibold text-foreground">
+        <h3 className="text-foreground text-xl font-semibold">
           Message Ready!
         </h3>
-        <p className="text-center text-muted-foreground">
+        <p className="text-muted-foreground text-center">
           Your email client should have opened with the message.
           <br />
           If not, please email me directly at{" "}
@@ -231,7 +231,7 @@ export function ContactForm({
 
       {/* Honeypot field - visually hidden but accessible */}
       <div
-        className="absolute left-[-9999px] top-0"
+        className="absolute top-0 left-[-9999px]"
         aria-hidden="true"
         tabIndex={-1}
       >
@@ -268,10 +268,10 @@ export function ContactForm({
           className={cn(
             "flex w-full items-center justify-center gap-2",
             // 44px minimum touch target
-            "rounded-lg px-6 py-3 min-h-[44px]",
-            "bg-accent text-white font-medium",
+            "min-h-[44px] rounded-lg px-6 py-3",
+            "bg-accent font-medium text-white",
             "hover:bg-accent/90",
-            "focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:outline-none",
+            "focus:ring-accent focus:ring-2 focus:ring-offset-2 focus:outline-none",
             "focus:ring-offset-background",
             "transition-all duration-200",
             "disabled:cursor-not-allowed disabled:opacity-50",

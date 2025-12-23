@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 interface VisuallyHiddenProps {
   children: ReactNode;
   /** HTML element to render. Defaults to span */
-  as?: 'span' | 'div';
+  as?: "span" | "div";
 }
 
 /**
@@ -12,7 +12,7 @@ interface VisuallyHiddenProps {
  */
 export function VisuallyHidden({
   children,
-  as: Component = 'span',
+  as: Component = "span",
 }: VisuallyHiddenProps) {
   return <Component className="sr-only">{children}</Component>;
 }

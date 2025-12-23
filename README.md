@@ -56,8 +56,71 @@ Open [http://localhost:3017](http://localhost:3017) to view the site.
 - **Zustand** - Client state management
 - **shadcn/ui** - Accessible UI primitives
 
+## Testing
+
+```bash
+# Unit tests
+npm run test
+
+# E2E tests with Playwright
+npm run test:e2e
+
+# E2E tests with UI
+npm run test:e2e:ui
+
+# Update visual regression baselines
+npm run test:e2e:update
+```
+
+## Production Deployment
+
+### Docker Build
+
+The project includes a production-ready Dockerfile for containerized deployment:
+
+```bash
+# Build production image
+docker build -t modern-resume-site .
+
+# Run locally
+docker run -p 3000:3000 modern-resume-site
+```
+
+### Coolify Deployment
+
+1. **Connect Repository**: Link your GitHub repository in Coolify dashboard
+2. **Build Configuration**:
+   - Build Pack: Dockerfile
+   - Dockerfile Location: `/Dockerfile`
+   - Exposed Port: `3000`
+3. **Resource Limits** (recommended):
+   - Memory: 1024 MB
+   - CPU: 1.0 cores
+4. **Health Check**:
+   - Path: `/`
+   - Port: `3000`
+   - Interval: 30s
+5. **Domain**: Configure your custom domain with automatic SSL
+
+See [Coolify Documentation](docs/ongoing-roadmap/coolify-as-production-platform.md) for detailed deployment patterns.
+
+### Environment Variables
+
+No environment variables required for production. Optional:
+
+| Variable   | Description      | Default      |
+| ---------- | ---------------- | ------------ |
+| `NODE_ENV` | Environment mode | `production` |
+| `PORT`     | Server port      | `3000`       |
+
 ## Project Status
 
-Phase 00 (Foundation) and Phase 01 (Core Animation) complete. Phase 02 (Content and Polish) pending.
+| Phase | Name | Sessions | Status |
+|-------|------|----------|--------|
+| 00 | Foundation | 7/7 | Complete |
+| 01 | Core Animation | 6/6 | Complete |
+| 02 | Content and Polish | 7/8 | In Progress |
+
+**Current**: Session 08 - Testing and Deployment
 
 See [PRD](.spec_system/PRD/PRD.md) for detailed roadmap.

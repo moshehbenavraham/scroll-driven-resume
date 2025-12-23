@@ -1,0 +1,155 @@
+================================================================================
+                           APEX SPEC AUDIT REPORT
+================================================================================
+Project:     Modern Resume Site
+Timestamp:   2025-12-23 21:55:00
+Git Status:  dirty (uncommitted changes)
+Stack:       TypeScript 5 + Next.js 16.1.0 + React 19
+
+================================================================================
+                              PHASE 1: DETECTION
+================================================================================
+
+[TOOLING DETECTED]
+  Package Manager:  npm (package-lock.json present)
+  Linter:          ESLint 9 (eslint-config-next)
+  Formatter:       Prettier 3 (prettier-plugin-tailwindcss)
+  Type Checker:    TypeScript 5 (strict mode)
+  Unit Tests:      Vitest 4 (jsdom environment)
+  E2E Tests:       Playwright 1.57 (4 browser configs)
+
+[CONFIGURATION FILES]
+  - eslint.config.mjs     [OK] Flat config with strict rules
+  - prettier.config.mjs   [OK] Tailwind class sorting enabled
+  - tsconfig.json         [OK] Strict mode, no unused vars/params
+  - vitest.config.ts      [OK] Coverage thresholds configured
+  - playwright.config.ts  [OK] Visual regression + a11y testing
+
+[DEPENDENCIES]
+  Framework:    Next.js 16.1.0 (Turbopack)
+  UI:           React 19, Tailwind CSS 4, Framer Motion
+  3D:           Three.js, React Three Fiber, React Three Drei
+  State:        Zustand
+  Testing:      Vitest, Playwright, @axe-core/playwright
+  Icons:        Lucide React
+
+================================================================================
+                           PHASE 2: AUTO-FIX RESULTS
+================================================================================
+
+[PRETTIER - FORMATTING]
+  Command:     npm run format
+  Status:      SUCCESS
+  Files Fixed: ~25 files reformatted
+  Issues:      0 remaining
+
+[ESLINT - LINTING]
+  Command:     npm run lint:fix
+  Status:      SUCCESS
+  Fixed:       0 (code was already clean)
+  Remaining:   0 issues
+
+[TYPESCRIPT - TYPE CHECKING]
+  Command:     npm run type-check
+  Status:      SUCCESS
+  Errors:      0
+
+[BUILD VERIFICATION]
+  Command:     npm run build
+  Status:      SUCCESS
+  Output:      Production build completed
+
+================================================================================
+                            PHASE 3: TEST RESULTS
+================================================================================
+
+[UNIT TESTS - VITEST]
+  Command:     npm run test
+  Status:      SUCCESS
+  Passed:      590/590 (100%)
+  Failed:      0
+  Duration:    6.06s
+  Test Files:  42
+
+[E2E TESTS - PLAYWRIGHT]
+  Command:     npm run test:e2e
+  Status:      PARTIAL
+  Passed:      268/300 (89%)
+  Failed:      32
+  Duration:    ~3 minutes
+
+[E2E FAILURE BREAKDOWN]
+  Contact Form Validation:     4 failures (error count assertion)
+  Navigation Section Links:   16 failures (loading screen blocking)
+  Mobile Menu Close:           4 failures (duplicate aria-label)
+  Accessibility (axe-core):    8 failures (ARIA violations)
+
+================================================================================
+                          ACCESSIBILITY VIOLATIONS
+================================================================================
+
+[CRITICAL - aria-required-children]
+  Element:     <div role="list" aria-label="Community statistics">
+  Issue:       Role "list" requires children with role "listitem"
+  Location:    About section achievement counters
+  Fix:         Add role="listitem" to child elements
+
+[MODERATE - landmark-unique]
+  Element:     <nav aria-label="Social links">
+  Issue:       Multiple navigations with same accessible name
+  Location:    Contact section + Footer
+  Fix:         Use unique aria-labels: "Social links - Contact", "Social links - Footer"
+
+================================================================================
+                               TODO ITEMS
+================================================================================
+
+[HIGH PRIORITY]
+  [ ] Fix aria-required-children: Add role="listitem" to community stats
+  [ ] Fix landmark-unique: Differentiate social nav aria-labels
+
+[MEDIUM PRIORITY]
+  [ ] Fix mobile menu: Ensure unique aria-label for close buttons
+  [ ] Fix navigation tests: Wait for loading screen to dismiss
+  [ ] Add missing project images: /images/projects/*.webp
+
+[LOW PRIORITY]
+  [ ] Consider adding visual regression baseline snapshots
+  [ ] Review E2E test timeouts for slow CI environments
+
+================================================================================
+                          SUGGESTED known-issues.md
+================================================================================
+
+If these issues cannot be fixed immediately, add to known-issues.md:
+
+```markdown
+## Known Issues
+
+### Accessibility
+- Community statistics list needs role="listitem" on children (axe-core)
+- Duplicate "Social links" navigation landmarks need unique labels
+
+### E2E Tests
+- Navigation tests flaky on Chromium due to loading screen timing
+- Mobile viewport tests may fail if desktop nav is queried
+```
+
+================================================================================
+                                 SUMMARY
+================================================================================
+
+  Phase 1 (Detection):     OK - All tooling present and configured
+  Phase 2 (Auto-Fix):      OK - 25 files formatted, 0 lint/type errors
+  Phase 3 (Tests):         PARTIAL - Unit 100%, E2E 89%
+
+  Overall Health:          GOOD (minor accessibility fixes needed)
+
+  Recommendations:
+  1. Address the 2 accessibility violations for WCAG compliance
+  2. Stabilize E2E tests with better loading state handling
+  3. All code quality tools passing - maintain this standard
+
+================================================================================
+                              END OF REPORT
+================================================================================

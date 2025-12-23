@@ -103,14 +103,14 @@ export function ContactSocialLinks({ className }: ContactSocialLinksProps) {
     >
       {/* Section heading */}
       <motion.h3
-        className="text-lg font-semibold text-foreground"
+        className="text-foreground text-lg font-semibold"
         variants={activeItemVariants}
       >
         Connect With Me
       </motion.h3>
 
       {/* Social links list */}
-      <nav aria-label="Social links">
+      <nav aria-label="Connect on social media">
         <ul className="flex flex-col gap-3">
           {DEFAULT_SOCIAL_LINKS.map((link: SocialLinkConfig) => {
             const Icon = SOCIAL_ICONS[link.platform];
@@ -127,7 +127,7 @@ export function ContactSocialLinks({ className }: ContactSocialLinksProps) {
                     "text-muted-foreground hover:text-foreground",
                     "transition-colors duration-200",
                     // Focus styles
-                    "rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                    "focus:ring-accent rounded-lg focus:ring-2 focus:outline-none"
                   )}
                   aria-label={link.label}
                   {...(isExternal && {
@@ -138,16 +138,13 @@ export function ContactSocialLinks({ className }: ContactSocialLinksProps) {
                   <span
                     className={cn(
                       // 44px icon container
-                      "flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center",
+                      "flex h-11 min-h-[44px] w-11 min-w-[44px] items-center justify-center",
                       "rounded-lg",
                       "bg-accent/10 group-hover:bg-accent/20",
                       "transition-colors duration-200"
                     )}
                   >
-                    <Icon
-                      className="h-5 w-5 text-accent"
-                      aria-hidden="true"
-                    />
+                    <Icon className="text-accent h-5 w-5" aria-hidden="true" />
                   </span>
                   <span className="font-medium">
                     {PLATFORM_LABELS[link.platform]}
@@ -161,10 +158,10 @@ export function ContactSocialLinks({ className }: ContactSocialLinksProps) {
 
       {/* Alternative contact info */}
       <motion.div
-        className="mt-4 border-t border-border/50 pt-6"
+        className="border-border/50 mt-4 border-t pt-6"
         variants={activeItemVariants}
       >
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Prefer a direct approach? Send me an email at{" "}
           <a
             href="mailto:hello@mosheh.dev"

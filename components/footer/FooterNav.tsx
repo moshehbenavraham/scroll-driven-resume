@@ -19,7 +19,10 @@ import { DEFAULT_FOOTER_LINKS, type FooterNavProps } from "@/types/contact";
  * @example
  * <FooterNav />
  */
-export function FooterNav({ className, links = DEFAULT_FOOTER_LINKS }: FooterNavProps) {
+export function FooterNav({
+  className,
+  links = DEFAULT_FOOTER_LINKS,
+}: FooterNavProps) {
   /**
    * Handle smooth scroll to section.
    */
@@ -43,7 +46,10 @@ export function FooterNav({ className, links = DEFAULT_FOOTER_LINKS }: FooterNav
   };
 
   return (
-    <nav className={cn("flex flex-wrap justify-center gap-2 sm:gap-4", className)} aria-label="Footer navigation">
+    <nav
+      className={cn("flex flex-wrap justify-center gap-2 sm:gap-4", className)}
+      aria-label="Footer navigation"
+    >
       {links.map((link) => (
         <a
           key={link.href}
@@ -56,7 +62,7 @@ export function FooterNav({ className, links = DEFAULT_FOOTER_LINKS }: FooterNav
             "text-sm font-medium",
             "text-muted-foreground hover:text-foreground",
             "transition-colors duration-200",
-            "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+            "focus:ring-accent focus:ring-2 focus:ring-offset-2 focus:outline-none",
             "focus:ring-offset-background rounded-md"
           )}
           {...(link.isExternal && {

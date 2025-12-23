@@ -10,7 +10,29 @@ This creates an optimized production build in `.next/`.
 
 ## Deployment Options
 
-### Vercel (Recommended)
+### Docker + Coolify (Recommended)
+
+Self-hosted deployment using the included Dockerfile:
+
+```bash
+# Build production image
+docker build -t modern-resume-site .
+
+# Run locally
+docker run -p 3000:3000 modern-resume-site
+```
+
+**Coolify Configuration:**
+1. Connect GitHub repository in Coolify dashboard
+2. Build Pack: Dockerfile
+3. Dockerfile Location: `/Dockerfile`
+4. Exposed Port: `3000`
+5. Health Check: Path `/`, Port `3000`
+6. Configure custom domain with automatic SSL
+
+See [Coolify Guide](ongoing-roadmap/coolify-as-production-platform.md) for detailed setup.
+
+### Vercel
 
 1. Connect GitHub repository to Vercel
 2. Configure environment variables in Vercel dashboard

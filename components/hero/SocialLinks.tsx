@@ -41,7 +41,7 @@ export function SocialLinks({
   return (
     <nav
       className={cn("flex items-center gap-4", className)}
-      aria-label="Social links"
+      aria-label="Social media links"
     >
       {links.map((link) => {
         const Icon = SOCIAL_ICONS[link.platform];
@@ -54,7 +54,7 @@ export function SocialLinks({
             className={cn(
               // Base styles with 44px minimum touch target
               "inline-flex items-center justify-center",
-              "h-11 w-11 min-h-[44px] min-w-[44px] rounded-full",
+              "h-11 min-h-[44px] w-11 min-w-[44px] rounded-full",
               // Colors
               "text-white/70 hover:text-white",
               "bg-white/10 hover:bg-white/20",

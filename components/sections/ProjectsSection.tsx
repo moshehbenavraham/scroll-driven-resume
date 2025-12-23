@@ -15,10 +15,7 @@ import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ParallaxContainer, ParallaxLayer } from "@/components/parallax";
 import { ProjectCard, ProjectsDecorative } from "@/components/projects";
-import {
-  DEFAULT_PROJECTS,
-  type ProjectsSectionProps,
-} from "@/types/projects";
+import { DEFAULT_PROJECTS, type ProjectsSectionProps } from "@/types/projects";
 
 /**
  * Container animation variants for staggered children.

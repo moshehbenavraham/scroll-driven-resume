@@ -82,6 +82,6 @@ describe("SocialLinks", () => {
     render(<SocialLinks />);
 
     const nav = screen.getByRole("navigation");
-    expect(nav).toHaveAttribute("aria-label", "Social links");
+    expect(nav).toHaveAttribute("aria-label", "Social media links");
   });
 });

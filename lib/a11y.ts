@@ -7,16 +7,16 @@
  */
 export function getFocusableElements(container: HTMLElement): HTMLElement[] {
   const selector = [
-    'a[href]',
-    'button:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
     '[tabindex]:not([tabindex="-1"])',
-  ].join(', ');
+  ].join(", ");
 
   return Array.from(container.querySelectorAll<HTMLElement>(selector)).filter(
-    (el) => !el.hasAttribute('disabled') && el.offsetParent !== null
+    (el) => !el.hasAttribute("disabled") && el.offsetParent !== null
   );
 }
 
@@ -30,7 +30,7 @@ export function createFocusTrap(container: HTMLElement): () => void {
   const lastFocusable = focusableElements[focusableElements.length - 1];
 
   function handleKeyDown(event: KeyboardEvent): void {
-    if (event.key !== 'Tab') {
+    if (event.key !== "Tab") {
       return;
     }
 
@@ -49,14 +49,14 @@ export function createFocusTrap(container: HTMLElement): () => void {
     }
   }
 
-  container.addEventListener('keydown', handleKeyDown);
+  container.addEventListener("keydown", handleKeyDown);
 
   // Focus the first element
   firstFocusable?.focus();
 
   // Return cleanup function
   return () => {
-    container.removeEventListener('keydown', handleKeyDown);
+    container.removeEventListener("keydown", handleKeyDown);
   };
 }
 
@@ -65,16 +65,16 @@ export function createFocusTrap(container: HTMLElement): () => void {
  * Returns announce function and cleanup function
  */
 export function createAnnouncer(
-  politeness: 'polite' | 'assertive' = 'polite'
+  politeness: "polite" | "assertive" = "polite"
 ): {
   announce: (message: string) => void;
   cleanup: () => void;
 } {
-  const announcer = document.createElement('div');
-  announcer.setAttribute('role', 'status');
-  announcer.setAttribute('aria-live', politeness);
-  announcer.setAttribute('aria-atomic', 'true');
-  announcer.className = 'sr-only';
+  const announcer = document.createElement("div");
+  announcer.setAttribute("role", "status");
+  announcer.setAttribute("aria-live", politeness);
+  announcer.setAttribute("aria-atomic", "true");
+  announcer.className = "sr-only";
   // Visually hidden styles inline for reliability
   announcer.style.cssText = `
     position: absolute;
@@ -92,7 +92,7 @@ export function createAnnouncer(
 
   function announce(message: string): void {
     // Clear and set message to ensure announcement
-    announcer.textContent = '';
+    announcer.textContent = "";
     // Use setTimeout to ensure the screen reader picks up the change
     setTimeout(() => {
       announcer.textContent = message;
@@ -110,15 +110,15 @@ export function createAnnouncer(
  * Focus the main content area (for skip link functionality)
  */
 export function focusMainContent(): void {
-  const main = document.getElementById('main-content');
+  const main = document.getElementById("main-content");
   if (main) {
-    main.setAttribute('tabindex', '-1');
+    main.setAttribute("tabindex", "-1");
     main.focus();
     // Remove tabindex after focus to maintain natural tab order
     main.addEventListener(
-      'blur',
+      "blur",
       () => {
-        main.removeAttribute('tabindex');
+        main.removeAttribute("tabindex");
       },
       { once: true }
     );

@@ -61,7 +61,7 @@ export function MobileMenuButton({
         "transition-colors duration-150",
         className
       )}
-      aria-label={isOpen ? "Close menu" : "Open menu"}
+      aria-label={isOpen ? "Close navigation menu" : "Open menu"}
       aria-expanded={isOpen}
       aria-controls="mobile-menu"
     >

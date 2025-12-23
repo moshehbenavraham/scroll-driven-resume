@@ -16,10 +16,7 @@ vi.mock("framer-motion", async () => {
       div: ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
         <div {...props}>{children}</div>
       ),
-      form: ({
-        children,
-        ...props
-      }: React.HTMLAttributes<HTMLFormElement>) => (
+      form: ({ children, ...props }: React.HTMLAttributes<HTMLFormElement>) => (
         <form {...props}>{children}</form>
       ),
     },

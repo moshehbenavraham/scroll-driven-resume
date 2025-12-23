@@ -5,7 +5,7 @@
 | Environment | URL | Purpose |
 |-------------|-----|---------|
 | Development | http://localhost:3017 | Local development |
-| Production | TBD | Live site |
+| Production | Custom domain via Coolify | Live site (self-hosted) |
 
 ## Configuration Differences
 

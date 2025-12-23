@@ -38,14 +38,14 @@ export interface ContactFormFieldProps {
  */
 const inputStyles = cn(
   // Base styles with 44px minimum touch target
-  "w-full rounded-lg border px-4 py-3 min-h-[44px]",
+  "min-h-[44px] w-full rounded-lg border px-4 py-3",
   // Responsive text size (16px on mobile prevents iOS zoom)
   "text-base sm:text-sm",
   // Colors
   "bg-background/50 border-border/50",
   "text-foreground placeholder:text-muted-foreground/60",
   // Focus states
-  "focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none",
+  "focus:border-accent focus:ring-accent focus:ring-1 focus:outline-none",
   // Transitions
   "transition-colors duration-200",
   // Disabled state
@@ -104,7 +104,7 @@ export const ContactFormField = forwardRef<
       <label
         htmlFor={fieldId}
         className={cn(
-          "text-sm font-medium text-foreground",
+          "text-foreground text-sm font-medium",
           hasError && "text-red-500"
         )}
       >

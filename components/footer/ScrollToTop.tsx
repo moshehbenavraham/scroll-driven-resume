@@ -109,9 +109,9 @@ export function ScrollToTop({
             "flex h-12 w-12 items-center justify-center",
             "rounded-full",
             "bg-accent text-white",
-            "shadow-lg shadow-accent/20",
+            "shadow-accent/20 shadow-lg",
             "hover:bg-accent/90",
-            "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+            "focus:ring-accent focus:ring-2 focus:ring-offset-2 focus:outline-none",
             "focus:ring-offset-background",
             "transition-colors duration-200",
             className
