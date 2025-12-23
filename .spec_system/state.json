@@ -42,7 +42,8 @@
     "phase02-session02-about-section",
     "phase02-session03-skills-section",
     "phase02-session04-projects-section",
-    "phase02-session05-contact-and-footer"
+    "phase02-session05-contact-and-footer",
+    "phase02-session06-mobile-optimization"
   ],
   "next_session_history": [
     {
@@ -133,6 +134,11 @@
     {
       "date": "2025-12-23",
       "session": "phase02-session05-contact-and-footer",
+      "status": "completed"
+    },
+    {
+      "date": "2025-12-23",
+      "session": "phase02-session06-mobile-optimization",
       "status": "completed"
     }
   ]

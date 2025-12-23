@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../styles/safe-area.css";
 
 /* =============================================================================
    CSS Variable Theme Token System

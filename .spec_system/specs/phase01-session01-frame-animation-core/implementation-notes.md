@@ -29,8 +29,8 @@
 ### 2025-12-22 - Setup Phase (T001-T003)
 
 **T001**: Docker stack verified. MinIO serving frames correctly.
-- Hero frames: 192 at `http://localhost:8080/frames-desktop/hero/`
-- Product frames: 144 at `http://localhost:8080/frames-desktop/product/`
+- Hero frames: 192 at `http://localhost:8089/frames-desktop/hero/`
+- Product frames: 144 at `http://localhost:8089/frames-desktop/product/`
 - Mobile variants at `/frames-mobile/{hero|product}/`
 
 **T002**: Created `components/animation/` directory
@@ -92,7 +92,7 @@
 **T022**: Component tests - 23 tests
 **T023**: Full test suite - 181 tests passing
 **T024**: Lint/TypeScript - 0 errors
-**T025**: Manual testing - demo page accessible at localhost:3000/demo/frames
+**T025**: Manual testing - demo page accessible at localhost:3017/demo/frames
 
 ---
 
@@ -112,8 +112,8 @@
 
 **Context**: URL structure different from spec assumption
 **Actual structure**:
-- `http://localhost:8080/frames-desktop/{hero|product}/frame_NNNN.webp`
-- `http://localhost:8080/frames-mobile/{hero|product}/frame_NNNN.webp`
+- `http://localhost:8089/frames-desktop/{hero|product}/frame_NNNN.webp`
+- `http://localhost:8089/frames-mobile/{hero|product}/frame_NNNN.webp`
 
 **Adapted**: frame-utils.ts generates correct URLs based on actual bucket structure
 

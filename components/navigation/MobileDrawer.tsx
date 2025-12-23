@@ -102,9 +102,13 @@ export function MobileDrawer({
               <motion.div
                 id="mobile-menu"
                 className={cn(
-                  // Position and sizing
+                  // Position and sizing with safe area support
                   "fixed top-0 right-0 bottom-0 z-50",
                   "w-[280px] max-w-[80vw]",
+                  // Full height with dynamic viewport
+                  "h-dvh",
+                  // Safe area padding for notched devices
+                  "safe-area-y safe-area-right",
                   // Background and border
                   "bg-background border-border border-l",
                   // Shadow

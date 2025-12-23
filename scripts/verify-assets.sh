@@ -6,7 +6,7 @@
 set -e
 
 # Configuration
-NGINX_BASE="http://localhost:8080"
+NGINX_BASE="http://localhost:8089"
 ASSETS_PATH="/assets"
 
 # Colors for output
@@ -93,7 +93,7 @@ verify_headers() {
     fi
 
     # Check CORS headers
-    local cors_origin=$(curl -sI -H "Origin: http://localhost:3000" "$url" 2>/dev/null | grep -i "^Access-Control-Allow-Origin:" | tr -d '\r')
+    local cors_origin=$(curl -sI -H "Origin: http://localhost:3017" "$url" 2>/dev/null | grep -i "^Access-Control-Allow-Origin:" | tr -d '\r')
     if [ -n "$cors_origin" ]; then
         echo -e "  ${GREEN}CORS: Access-Control-Allow-Origin present${NC}"
         echo "  $cors_origin"

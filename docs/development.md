@@ -12,11 +12,11 @@
 
 | Service | Port | URL |
 |---------|------|-----|
-| Next.js | 3000 | http://localhost:3000 |
-| Nginx (assets) | 8080 | http://localhost:8080 |
+| Next.js | 3017 | http://localhost:3017 |
+| Nginx (assets) | 8089 | http://localhost:8089 |
 | MinIO API | 9000 | http://localhost:9000 |
 | MinIO Console | 9001 | http://localhost:9001 |
-| PostgreSQL | 5432 | localhost:5432 |
+| PostgreSQL | 5442 | localhost:5442 |
 
 ## Dev Scripts
 

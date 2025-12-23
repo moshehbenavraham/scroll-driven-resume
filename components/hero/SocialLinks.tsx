@@ -52,9 +52,9 @@ export function SocialLinks({
             key={link.platform}
             href={link.href}
             className={cn(
-              // Base styles
+              // Base styles with 44px minimum touch target
               "inline-flex items-center justify-center",
-              "h-10 w-10 rounded-full",
+              "h-11 w-11 min-h-[44px] min-w-[44px] rounded-full",
               // Colors
               "text-white/70 hover:text-white",
               "bg-white/10 hover:bg-white/20",

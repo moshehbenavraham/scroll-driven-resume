@@ -306,7 +306,7 @@ export interface GenerateFrameUrlsParams {
  * Frame URL configuration from environment.
  */
 export interface FrameUrlConfig {
-  /** Base URL for frame assets (e.g., http://localhost:8080) */
+  /** Base URL for frame assets (e.g., http://localhost:8089) */
   baseUrl: string;
   /** Bucket name pattern for desktop frames */
   desktopBucket: string;

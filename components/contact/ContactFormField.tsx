@@ -37,8 +37,10 @@ export interface ContactFormFieldProps {
  * Shared input styles.
  */
 const inputStyles = cn(
-  // Base styles
-  "w-full rounded-lg border px-4 py-3",
+  // Base styles with 44px minimum touch target
+  "w-full rounded-lg border px-4 py-3 min-h-[44px]",
+  // Responsive text size (16px on mobile prevents iOS zoom)
+  "text-base sm:text-sm",
   // Colors
   "bg-background/50 border-border/50",
   "text-foreground placeholder:text-muted-foreground/60",

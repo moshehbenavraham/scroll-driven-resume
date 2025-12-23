@@ -29,7 +29,7 @@ describe("frame-utils", () => {
         quality: "desktop",
       });
       expect(url).toBe(
-        "http://localhost:8080/frames-desktop/hero/frame_0001.webp?v3"
+        "http://localhost:8089/frames-desktop/hero/frame_0001.webp?v3"
       );
     });
 
@@ -40,7 +40,7 @@ describe("frame-utils", () => {
         quality: "mobile",
       });
       expect(url).toBe(
-        "http://localhost:8080/frames-mobile/hero/frame_0001.webp?v3"
+        "http://localhost:8089/frames-mobile/hero/frame_0001.webp?v3"
       );
     });
 
@@ -51,7 +51,7 @@ describe("frame-utils", () => {
         quality: "desktop",
       });
       expect(url).toBe(
-        "http://localhost:8080/frames-desktop/product/frame_0100.webp?v3"
+        "http://localhost:8089/frames-desktop/product/frame_0100.webp?v3"
       );
     });
 
@@ -62,7 +62,7 @@ describe("frame-utils", () => {
         quality: "mobile",
       });
       expect(url).toBe(
-        "http://localhost:8080/frames-mobile/product/frame_0144.webp?v3"
+        "http://localhost:8089/frames-mobile/product/frame_0144.webp?v3"
       );
     });
 

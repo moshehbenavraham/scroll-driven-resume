@@ -116,7 +116,7 @@ From spec.md:
 - [x] `Content-Type: image/webp` on all frame responses
 - [x] `Cache-Control: public, max-age=604800, immutable` present
 - [x] `X-Cache-Status` header present (HIT on cached requests)
-- [x] `Access-Control-Allow-Origin: http://localhost:3000` present
+- [x] `Access-Control-Allow-Origin: http://localhost:3017` present
 
 ### Testing Requirements
 - [x] Verification script runs (note: exit code 1 due to grep quirk, manual verification passed)
@@ -160,7 +160,7 @@ HTTP/1.1 200 OK
 Content-Type: image/webp
 Cache-Control: public, max-age=604800, immutable
 X-Cache-Status: HIT
-Access-Control-Allow-Origin: http://localhost:3000
+Access-Control-Allow-Origin: http://localhost:3017
 Access-Control-Allow-Methods: GET, HEAD, OPTIONS
 Access-Control-Allow-Headers: Accept, Accept-Encoding, Accept-Language, Cache-Control, Content-Type, Origin, Range
 ```

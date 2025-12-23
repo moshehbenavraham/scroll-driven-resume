@@ -66,7 +66,9 @@ export function Footer({ className }: FooterProps) {
           "relative",
           "border-t border-border/30",
           "bg-background/80 backdrop-blur-sm",
-          "py-12",
+          // Padding with safe area bottom for notched devices
+          "pt-12 pb-12",
+          "safe-area-bottom",
           className
         )}
         initial="hidden"

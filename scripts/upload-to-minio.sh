@@ -142,10 +142,10 @@ if [ "$total" -eq 672 ]; then
     echo -e "${GREEN}SUCCESS: All 672 frames uploaded!${NC}"
     echo ""
     echo "Asset URLs:"
-    echo "  http://localhost:8080/assets/frames-desktop/hero/frame_0001.webp"
-    echo "  http://localhost:8080/assets/frames-mobile/hero/frame_0001.webp"
-    echo "  http://localhost:8080/assets/frames-desktop/product/frame_0001.webp"
-    echo "  http://localhost:8080/assets/frames-mobile/product/frame_0001.webp"
+    echo "  http://localhost:8089/assets/frames-desktop/hero/frame_0001.webp"
+    echo "  http://localhost:8089/assets/frames-mobile/hero/frame_0001.webp"
+    echo "  http://localhost:8089/assets/frames-desktop/product/frame_0001.webp"
+    echo "  http://localhost:8089/assets/frames-mobile/product/frame_0001.webp"
     exit 0
 else
     echo -e "${RED}WARNING: Expected 672 files, found $total${NC}"

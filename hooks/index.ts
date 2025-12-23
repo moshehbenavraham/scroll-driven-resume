@@ -14,6 +14,13 @@ export { useFrameSequence, FRAME_COUNTS } from "./useFrameSequence";
 export { useReducedMotion } from "./useReducedMotion";
 export { useIsMobile } from "./useIsMobile";
 
+// Viewport hooks
+export {
+  useViewportHeight,
+  useViewportHeightCSS,
+  useViewportHeightValues,
+} from "./useViewportHeight";
+
 // Parallax hooks
 export { useParallaxTransform } from "./useParallaxTransform";
 
@@ -48,3 +55,4 @@ export { default as useTextureLoaderDefault } from "./useTextureLoader";
 export { default as useUnifiedFrameAnimationDefault } from "./useUnifiedFrameAnimation";
 export { default as useActiveSectionDefault } from "./useActiveSection";
 export { default as useScrollDirectionDefault } from "./useScrollDirection";
+export { default as useViewportHeightDefault } from "./useViewportHeight";

@@ -4,14 +4,14 @@
 
 | Environment | URL | Purpose |
 |-------------|-----|---------|
-| Development | http://localhost:3000 | Local development |
+| Development | http://localhost:3017 | Local development |
 | Production | TBD | Live site |
 
 ## Configuration Differences
 
 | Config | Development | Production |
 |--------|-------------|------------|
-| Asset URL | http://localhost:8080/assets | CDN URL |
+| Asset URL | http://localhost:8089/assets | CDN URL |
 | Debug mode | Enabled | Disabled |
 | Source maps | Enabled | Disabled |
 | Minification | Disabled | Enabled |
@@ -50,6 +50,6 @@
 
 | Service | Dev Port | Purpose |
 |---------|----------|---------|
-| postgres | 5432 | Metadata database |
+| postgres | 5442 | Metadata database |
 | minio | 9000/9001 | Object storage for frames |
-| nginx | 8080 | Caching proxy |
+| nginx | 8089 | Caching proxy |

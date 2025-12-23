@@ -49,8 +49,8 @@ export function AboutSection({
       ref={sectionRef}
       className={cn(
         "relative",
-        // Natural height with generous padding
-        "min-h-screen py-24 lg:py-32",
+        // Natural height with responsive padding
+        "min-h-screen py-16 sm:py-20 md:py-24 lg:py-32",
         // Background
         "bg-background",
         className
@@ -68,12 +68,12 @@ export function AboutSection({
           <div
             ref={contentRef}
             className={cn(
-              "container mx-auto px-4 md:px-6 lg:px-8",
-              "flex flex-col gap-16 lg:gap-24"
+              "container mx-auto px-4 sm:px-6 lg:px-8",
+              "flex flex-col gap-12 md:gap-16 lg:gap-24"
             )}
           >
             {/* Asymmetric two-column layout */}
-            <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="grid grid-cols-1 items-start gap-8 md:gap-12 lg:grid-cols-12 lg:gap-16">
               {/* Bio column - takes 7 columns on large screens */}
               <div className="lg:col-span-7">
                 <Bio isRevealed={shouldReveal} />

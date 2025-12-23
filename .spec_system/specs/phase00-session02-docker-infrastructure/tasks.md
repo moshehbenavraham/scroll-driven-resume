@@ -60,7 +60,7 @@ Detailed configuration for each service.
 - [x] T011 [S0002] Create nginx.conf main configuration with worker processes and includes (`/docker/nginx/nginx.conf`)
 - [x] T012 [S0002] Create default.conf with upstream block for MinIO proxy (`/docker/nginx/conf.d/default.conf`)
 - [x] T013 [S0002] Add 7-day caching headers to Nginx for static asset responses (`/docker/nginx/conf.d/default.conf`)
-- [x] T014 [S0002] Add CORS headers for localhost:3000 origin (`/docker/nginx/conf.d/default.conf`)
+- [x] T014 [S0002] Add CORS headers for localhost:3017 origin (`/docker/nginx/conf.d/default.conf`)
 - [x] T015 [S0002] Add gzip compression configuration for text-based responses (`/docker/nginx/nginx.conf`)
 - [x] T016 [S0002] Add MinIO health check with interval and retries (`/docker-compose.yml`)
 - [x] T017 [S0002] Add PostgreSQL health check with pg_isready command (`/docker-compose.yml`)
@@ -87,7 +87,7 @@ Before marking session complete:
 - [x] All 23 tasks marked `[x]`
 - [x] All services start without errors
 - [x] Health check script passes all validations
-- [x] CORS headers verified for localhost:3000
+- [x] CORS headers verified for localhost:3017
 - [x] Cache-Control: max-age=604800 verified
 - [x] All files ASCII-encoded with LF line endings
 - [x] No secrets in version-controlled files

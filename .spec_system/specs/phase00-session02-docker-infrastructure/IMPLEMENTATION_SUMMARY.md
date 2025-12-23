@@ -57,8 +57,8 @@ Established a complete Docker infrastructure stack for local development asset d
 |---------|----------|--------|
 | MinIO API | http://localhost:9000 | Healthy |
 | MinIO Console | http://localhost:9001 | Healthy |
-| PostgreSQL | localhost:5435 | Healthy |
-| Nginx | http://localhost:8080 | Healthy |
+| PostgreSQL | localhost:5442 | Healthy |
+| Nginx | http://localhost:8089 | Healthy |
 
 ---
 

@@ -105,8 +105,8 @@ export function ProjectsSection({
       ref={sectionRef}
       className={cn(
         "relative",
-        // Natural height with generous padding
-        "min-h-screen py-24 lg:py-32",
+        // Natural height with responsive padding
+        "min-h-screen py-16 sm:py-20 md:py-24 lg:py-32",
         // Background
         "bg-background",
         className
@@ -124,8 +124,8 @@ export function ProjectsSection({
           <div
             ref={contentRef}
             className={cn(
-              "container mx-auto px-4 md:px-6 lg:px-8",
-              "flex flex-col gap-12 lg:gap-16"
+              "container mx-auto px-4 sm:px-6 lg:px-8",
+              "flex flex-col gap-8 md:gap-12 lg:gap-16"
             )}
           >
             {/* Section heading with reveal animation */}
@@ -147,7 +147,7 @@ export function ProjectsSection({
             {/* Projects grid - responsive columns */}
             <motion.div
               className={cn(
-                "grid gap-6 lg:gap-8",
+                "grid gap-4 sm:gap-6 lg:gap-8",
                 // Responsive grid: 1 -> 2 -> 3 columns
                 "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
                 // Equal height items

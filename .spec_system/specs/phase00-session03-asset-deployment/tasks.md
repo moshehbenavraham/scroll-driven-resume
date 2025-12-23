@@ -115,10 +115,10 @@ Console: http://localhost:9001
 
 ### Expected URL Patterns
 ```
-Desktop Hero:    http://localhost:8080/assets/frames-desktop/hero/frame_NNNN.webp
-Desktop Product: http://localhost:8080/assets/frames-desktop/product/frame_NNNN.webp
-Mobile Hero:     http://localhost:8080/assets/frames-mobile/hero/frame_NNNN.webp
-Mobile Product:  http://localhost:8080/assets/frames-mobile/product/frame_NNNN.webp
+Desktop Hero:    http://localhost:8089/assets/frames-desktop/hero/frame_NNNN.webp
+Desktop Product: http://localhost:8089/assets/frames-desktop/product/frame_NNNN.webp
+Mobile Hero:     http://localhost:8089/assets/frames-mobile/hero/frame_NNNN.webp
+Mobile Product:  http://localhost:8089/assets/frames-mobile/product/frame_NNNN.webp
 ```
 
 ---

@@ -84,7 +84,7 @@
 - Created nginx.conf with gzip compression for text-based responses
 - Created default.conf with upstream to MinIO
 - Configured 7-day caching (max-age=604800)
-- Configured CORS for localhost:3000
+- Configured CORS for localhost:3017
 
 **Files Created**:
 - `docker/nginx/nginx.conf` - 55 lines
@@ -130,7 +130,7 @@
 **Notes**:
 - Stack starts successfully with docker compose up -d
 - All services healthy (MinIO, PostgreSQL, Nginx)
-- CORS headers verified: Access-Control-Allow-Origin: http://localhost:3000
+- CORS headers verified: Access-Control-Allow-Origin: http://localhost:3017
 - Cache headers verified: Cache-Control: public, max-age=604800, immutable
 - All files pass ASCII-only check
 - All files have Unix LF line endings
@@ -140,8 +140,8 @@
 |---------|-----|--------|
 | MinIO API | http://localhost:9000 | 200 OK |
 | MinIO Console | http://localhost:9001 | 200 OK |
-| PostgreSQL | localhost:5435 | Ready |
-| Nginx | http://localhost:8080 | 200 OK |
+| PostgreSQL | localhost:5442 | Ready |
+| Nginx | http://localhost:8089 | 200 OK |
 
 ---
 

@@ -53,7 +53,7 @@ Completing this session establishes the complete asset delivery pipeline, enabli
 - Upload product frames (144 desktop + 144 mobile = 288 files)
 - Configure anonymous read policy on all buckets
 - Verify Nginx proxy caching is working (X-Cache-Status header)
-- Verify CORS headers allow localhost:3000 origin
+- Verify CORS headers allow localhost:3017 origin
 - Verify Content-Type: image/webp on all frame responses
 - Test first-frame load time on throttled connection
 - Create asset URL documentation
@@ -88,12 +88,12 @@ MinIO (localhost:9000)
         |-- product/frame_0001.webp ... frame_0144.webp
         |
         v [proxy_pass + cache]
-Nginx (localhost:8080)
+Nginx (localhost:8089)
   |-- /assets/frames-desktop/hero/frame_0001.webp
   |-- /assets/frames-mobile/product/frame_0144.webp
         |
         v [fetch]
-Next.js (localhost:3000) [Session 04+]
+Next.js (localhost:3017) [Session 04+]
 ```
 
 ### Design Patterns
@@ -148,7 +148,7 @@ Next.js (localhost:3000) [Session 04+]
 - [ ] `Content-Type: image/webp` on all frame responses
 - [ ] `Cache-Control: public, max-age=604800, immutable` present
 - [ ] `X-Cache-Status` header present (MISS on first request, HIT on subsequent)
-- [ ] `Access-Control-Allow-Origin: http://localhost:3000` present
+- [ ] `Access-Control-Allow-Origin: http://localhost:3017` present
 
 ### Testing Requirements
 - [ ] Verification script runs without errors
@@ -204,7 +204,7 @@ All output files must use ASCII-only characters (0-127). No smart quotes, em-das
 ### Manual Testing
 1. Open MinIO Console at `http://localhost:9001`
 2. Verify buckets `frames-desktop` and `frames-mobile` exist with correct file counts
-3. Load `http://localhost:8080/assets/frames-desktop/hero/frame_0001.webp` in browser
+3. Load `http://localhost:8089/assets/frames-desktop/hero/frame_0001.webp` in browser
 4. Verify image displays correctly
 5. Refresh and check Network tab for `X-Cache-Status: HIT`
 
@@ -242,7 +242,7 @@ All output files must use ASCII-only characters (0-127). No smart quotes, em-das
 
 ### Asset URL Patterns
 ```
-Base URL: http://localhost:8080
+Base URL: http://localhost:8089
 
 Desktop Hero:    /assets/frames-desktop/hero/frame_NNNN.webp
 Desktop Product: /assets/frames-desktop/product/frame_NNNN.webp
@@ -254,12 +254,12 @@ Where NNNN = 0001 to 0192 (hero) or 0001 to 0144 (product)
 
 ### Example URLs
 ```
-http://localhost:8080/assets/frames-desktop/hero/frame_0001.webp
-http://localhost:8080/assets/frames-desktop/hero/frame_0192.webp
-http://localhost:8080/assets/frames-desktop/product/frame_0001.webp
-http://localhost:8080/assets/frames-desktop/product/frame_0144.webp
-http://localhost:8080/assets/frames-mobile/hero/frame_0096.webp
-http://localhost:8080/assets/frames-mobile/product/frame_0072.webp
+http://localhost:8089/assets/frames-desktop/hero/frame_0001.webp
+http://localhost:8089/assets/frames-desktop/hero/frame_0192.webp
+http://localhost:8089/assets/frames-desktop/product/frame_0001.webp
+http://localhost:8089/assets/frames-desktop/product/frame_0144.webp
+http://localhost:8089/assets/frames-mobile/hero/frame_0096.webp
+http://localhost:8089/assets/frames-mobile/product/frame_0072.webp
 ```
 
 ---

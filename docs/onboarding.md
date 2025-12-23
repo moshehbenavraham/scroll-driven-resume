@@ -37,7 +37,7 @@ cp .env.example .env.local
 | `POSTGRES_PASSWORD` | PostgreSQL password |
 | `MINIO_ROOT_USER` | MinIO admin username |
 | `MINIO_ROOT_PASSWORD` | MinIO admin password |
-| `NEXT_PUBLIC_ASSET_BASE_URL` | Asset server URL (http://localhost:8080/assets) |
+| `NEXT_PUBLIC_ASSET_BASE_URL` | Asset server URL (http://localhost:8089/assets) |
 
 ### 5. Start Docker Infrastructure
 
@@ -59,7 +59,7 @@ npm run dev
 
 ### 7. Verify Setup
 
-- [ ] App runs at http://localhost:3000
+- [ ] App runs at http://localhost:3017
 - [ ] MinIO console accessible at http://localhost:9001
 - [ ] Tests pass: `npm test`
 - [ ] Linting passes: `npm run lint`
@@ -70,7 +70,7 @@ npm run dev
 Ensure Docker daemon is running. Check logs with `docker compose logs`.
 
 ### Port conflicts
-Default ports: 3000 (Next.js), 8080 (Nginx), 9000/9001 (MinIO), 5432 (PostgreSQL). Adjust in `docker-compose.yml` if needed.
+Default ports: 3017 (Next.js), 8089 (Nginx), 9000/9001 (MinIO), 5442 (PostgreSQL). Adjust in `docker-compose.yml` if needed.
 
 ### Asset loading errors
 Verify MinIO buckets exist and contain frame files. Check CORS settings in Nginx config.

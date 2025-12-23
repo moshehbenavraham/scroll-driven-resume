@@ -91,9 +91,9 @@ None
 |---------|----------|-------------|--------|
 | MinIO API | http://localhost:9000/minio/health/live | 200 | healthy |
 | MinIO Console | http://localhost:9001 | 200 | healthy |
-| PostgreSQL | localhost:5435 | accepting connections | healthy |
-| Nginx Health | http://localhost:8080/health | 200 | healthy |
-| Nginx->MinIO Proxy | http://localhost:8080/minio/health/live | 200 | healthy |
+| PostgreSQL | localhost:5442 | accepting connections | healthy |
+| Nginx Health | http://localhost:8089/health | 200 | healthy |
+| Nginx->MinIO Proxy | http://localhost:8089/minio/health/live | 200 | healthy |
 
 #### Stack Restart Test
 - `docker compose down && docker compose up -d` completed successfully
@@ -112,10 +112,10 @@ From spec.md:
 - [x] `docker-compose up -d` starts all services without errors
 - [x] MinIO API accessible at http://localhost:9000
 - [x] MinIO Console accessible at http://localhost:9001 with admin login
-- [x] PostgreSQL accepts connections on localhost:5435 (modified from 5432 due to port conflict)
-- [x] Nginx responds on http://localhost:8080
+- [x] PostgreSQL accepts connections on localhost:5442 (modified from 5432 due to port conflict)
+- [x] Nginx responds on http://localhost:8089
 - [x] Nginx proxies requests to MinIO correctly (verified with curl)
-- [x] CORS headers present for requests from localhost:3000
+- [x] CORS headers present for requests from localhost:3017
 - [x] Cache-Control header set to `max-age=604800` (7 days) for asset responses
 - [x] All services survive `docker-compose down && docker-compose up -d`
 
@@ -123,7 +123,7 @@ From spec.md:
 
 #### CORS Headers (on /assets/ path)
 ```
-Access-Control-Allow-Origin: http://localhost:3000
+Access-Control-Allow-Origin: http://localhost:3017
 Access-Control-Allow-Methods: GET, HEAD, OPTIONS
 Access-Control-Allow-Headers: Accept, Accept-Encoding, Accept-Language, Cache-Control, Content-Type, Origin, Range
 Access-Control-Expose-Headers: Content-Length, Content-Range, Content-Type

@@ -60,7 +60,7 @@ Deployed all 672 optimized WebP frame images to MinIO object storage and verifie
 - Content-Type: image/webp
 - Cache-Control: public, max-age=604800, immutable
 - X-Cache-Status: HIT (caching working)
-- CORS: Access-Control-Allow-Origin: http://localhost:3000
+- CORS: Access-Control-Allow-Origin: http://localhost:3017
 
 ### Performance
 - Load time: 0.67ms (target: <500ms)
@@ -99,7 +99,7 @@ Items for future sessions:
 ## Asset URL Patterns
 
 ```
-Base URL: http://localhost:8080
+Base URL: http://localhost:8089
 
 Desktop Hero:    /assets/frames-desktop/hero/frame_NNNN.webp (0001-0192)
 Desktop Product: /assets/frames-desktop/product/frame_NNNN.webp (0001-0144)

@@ -84,8 +84,10 @@ export function Navbar({ className, hideOnScroll = false }: NavbarProps) {
             className={cn(
               // Fixed positioning at top
               "fixed top-0 right-0 left-0 z-50",
-              // Padding for inset effect
+              // Padding for inset effect with safe area support
               "px-4 pt-4",
+              // Safe area top padding for notched devices
+              "safe-area-top",
               // Pointer events pass through padding area
               "pointer-events-none"
             )}

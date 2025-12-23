@@ -42,7 +42,7 @@ This session transforms the project from a technical demo into an actual portfol
 - CSS z-index stacking contexts
 
 ### Environment Requirements
-- Docker stack running (MinIO serving frames at localhost:8080)
+- Docker stack running (MinIO serving frames at localhost:8089)
 - Hero frames: 192 WebP files at `/frames-desktop/hero/`
 - Mobile frames: 192 WebP files at `/frames-mobile/hero/`
 - Node.js 20+ with pnpm

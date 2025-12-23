@@ -121,9 +121,13 @@ export function ContactSocialLinks({ className }: ContactSocialLinksProps) {
                 <a
                   href={link.href}
                   className={cn(
+                    // 44px minimum touch target
                     "group flex items-center gap-3",
+                    "min-h-[44px] py-2",
                     "text-muted-foreground hover:text-foreground",
-                    "transition-colors duration-200"
+                    "transition-colors duration-200",
+                    // Focus styles
+                    "rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
                   )}
                   aria-label={link.label}
                   {...(isExternal && {
@@ -133,7 +137,8 @@ export function ContactSocialLinks({ className }: ContactSocialLinksProps) {
                 >
                   <span
                     className={cn(
-                      "flex h-10 w-10 items-center justify-center",
+                      // 44px icon container
+                      "flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center",
                       "rounded-lg",
                       "bg-accent/10 group-hover:bg-accent/20",
                       "transition-colors duration-200"

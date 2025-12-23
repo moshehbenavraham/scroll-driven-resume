@@ -6,7 +6,7 @@ This document describes the URL patterns for accessing optimized frame assets th
 
 | Setting | Value |
 |---------|-------|
-| Asset Server | http://localhost:8080 |
+| Asset Server | http://localhost:8089 |
 | Assets Prefix | /assets |
 | Image Format | WebP |
 | Cache TTL | 7 days (604800 seconds) |
@@ -17,13 +17,13 @@ This document describes the URL patterns for accessing optimized frame assets th
 
 **Hero Sequence** (192 frames)
 ```
-http://localhost:8080/assets/frames-desktop/hero/frame_NNNN.webp
+http://localhost:8089/assets/frames-desktop/hero/frame_NNNN.webp
 ```
 Where `NNNN` = 0001 to 0192
 
 **Product Sequence** (144 frames)
 ```
-http://localhost:8080/assets/frames-desktop/product/frame_NNNN.webp
+http://localhost:8089/assets/frames-desktop/product/frame_NNNN.webp
 ```
 Where `NNNN` = 0001 to 0144
 
@@ -31,13 +31,13 @@ Where `NNNN` = 0001 to 0144
 
 **Hero Sequence** (192 frames)
 ```
-http://localhost:8080/assets/frames-mobile/hero/frame_NNNN.webp
+http://localhost:8089/assets/frames-mobile/hero/frame_NNNN.webp
 ```
 Where `NNNN` = 0001 to 0192
 
 **Product Sequence** (144 frames)
 ```
-http://localhost:8080/assets/frames-mobile/product/frame_NNNN.webp
+http://localhost:8089/assets/frames-mobile/product/frame_NNNN.webp
 ```
 Where `NNNN` = 0001 to 0144
 
@@ -58,22 +58,22 @@ All frame requests return the following headers:
 | Content-Type | image/webp |
 | Cache-Control | public, max-age=604800, immutable |
 | X-Cache-Status | MISS (first request) or HIT (cached) |
-| Access-Control-Allow-Origin | http://localhost:3000 |
+| Access-Control-Allow-Origin | http://localhost:3017 |
 
 ## Example URLs
 
 ```bash
 # First desktop hero frame
-curl -I http://localhost:8080/assets/frames-desktop/hero/frame_0001.webp
+curl -I http://localhost:8089/assets/frames-desktop/hero/frame_0001.webp
 
 # Last desktop hero frame
-curl -I http://localhost:8080/assets/frames-desktop/hero/frame_0192.webp
+curl -I http://localhost:8089/assets/frames-desktop/hero/frame_0192.webp
 
 # First mobile product frame
-curl -I http://localhost:8080/assets/frames-mobile/product/frame_0001.webp
+curl -I http://localhost:8089/assets/frames-mobile/product/frame_0001.webp
 
 # Last mobile product frame
-curl -I http://localhost:8080/assets/frames-mobile/product/frame_0144.webp
+curl -I http://localhost:8089/assets/frames-mobile/product/frame_0144.webp
 ```
 
 ## Frontend Integration
@@ -83,7 +83,7 @@ curl -I http://localhost:8080/assets/frames-mobile/product/frame_0144.webp
 Add to `.env.local` for Next.js:
 
 ```env
-NEXT_PUBLIC_ASSET_BASE_URL=http://localhost:8080/assets
+NEXT_PUBLIC_ASSET_BASE_URL=http://localhost:8089/assets
 ```
 
 ### TypeScript Constants
@@ -104,7 +104,7 @@ const FRAME_URLS = {
 
 // Usage
 const frame = FRAME_URLS.desktop.hero(1);
-// => "http://localhost:8080/assets/frames-desktop/hero/frame_0001.webp"
+// => "http://localhost:8089/assets/frames-desktop/hero/frame_0001.webp"
 ```
 
 ### Frame Preloading
@@ -136,7 +136,7 @@ MinIO (localhost:9000)
         |-- product/frame_0001.webp ... frame_0144.webp
         |
         v [Nginx proxy_pass + cache]
-Nginx (localhost:8080)
+Nginx (localhost:8089)
   |-- /assets/* -> MinIO with 7-day cache
 ```
 
@@ -148,7 +148,7 @@ Nginx (localhost:8080)
 - Verify bucket contents: `mc ls local/frames-desktop/hero/`
 
 ### CORS Errors
-- Ensure requesting from http://localhost:3000
+- Ensure requesting from http://localhost:3017
 - Check Nginx CORS configuration in docker/nginx/nginx.conf
 
 ### Cache Issues

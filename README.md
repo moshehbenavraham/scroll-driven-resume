@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3017](http://localhost:3017) to view the site.
 
 ## Repository Structure
 

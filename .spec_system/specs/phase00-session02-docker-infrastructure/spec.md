@@ -52,7 +52,7 @@ This is pure infrastructure work with well-defined success criteria and no creat
 - PostgreSQL initialization with basic schema for metadata
 - Nginx reverse proxy configuration with:
   - Caching headers (7-day max-age for static assets)
-  - CORS headers for localhost:3000 (Next.js dev server)
+  - CORS headers for localhost:3017 (Next.js dev server)
   - Gzip compression for text-based responses
   - Proxy pass to MinIO for asset requests
 - Environment variable template with documentation
@@ -75,7 +75,7 @@ This is pure infrastructure work with well-defined success criteria and no creat
 +------------------+     +------------------+     +------------------+
 |                  |     |                  |     |                  |
 |   Next.js App    |---->|      Nginx       |---->|      MinIO       |
-|  (localhost:3000)|     |  (localhost:8080)|     | (localhost:9000) |
+|  (localhost:3017)|     |  (localhost:8089)|     | (localhost:9000) |
 |                  |     |                  |     |                  |
 +------------------+     +------------------+     +------------------+
                                                           |
@@ -132,9 +132,9 @@ The Next.js application (future sessions) will request assets from Nginx. Nginx 
 - [ ] MinIO API accessible at http://localhost:9000
 - [ ] MinIO Console accessible at http://localhost:9001 with admin login
 - [ ] PostgreSQL accepts connections on localhost:5432
-- [ ] Nginx responds on http://localhost:8080
+- [ ] Nginx responds on http://localhost:8089
 - [ ] Nginx proxies requests to MinIO correctly (test with curl)
-- [ ] CORS headers present for requests from localhost:3000
+- [ ] CORS headers present for requests from localhost:3017
 - [ ] Cache-Control header set to `max-age=604800` (7 days) for asset responses
 - [ ] All services survive `docker-compose down && docker-compose up -d`
 
@@ -184,7 +184,7 @@ All output files must use ASCII-only characters (0-127). No Unicode quotes, dash
 2. Open MinIO Console at http://localhost:9001
 3. Login with credentials from .env
 4. Create a test bucket manually
-5. Verify Nginx proxy at http://localhost:8080/minio/health/live
+5. Verify Nginx proxy at http://localhost:8089/minio/health/live
 6. Test CORS with browser dev tools or curl
 7. Verify cache headers with `curl -I`
 

@@ -19,7 +19,7 @@ import type {
  * Uses nginx proxy in development for CORS and caching.
  */
 const FRAME_BASE_URL =
-  process.env.NEXT_PUBLIC_FRAME_BASE_URL || "http://localhost:8080";
+  process.env.NEXT_PUBLIC_FRAME_BASE_URL || "http://localhost:8089";
 
 /**
  * Cache version for CORS-enabled requests.
@@ -50,7 +50,7 @@ const BUCKET_NAMES: Record<FrameQuality, string> = {
  *
  * @example
  * getFrameUrl({ sequence: "hero", index: 1, quality: "desktop" })
- * // => "http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+ * // => "http://localhost:8089/frames-desktop/hero/frame_0001.webp"
  */
 export function getFrameUrl(params: GetFrameUrlParams): string {
   const { sequence, index, quality } = params;
@@ -99,8 +99,8 @@ function buildFrameUrl(
  *   totalFrames: 192,
  *   quality: "desktop"
  * });
- * // urls[0] => "http://localhost:8080/frames-desktop/hero/frame_0001.webp"
- * // urls[191] => "http://localhost:8080/frames-desktop/hero/frame_0192.webp"
+ * // urls[0] => "http://localhost:8089/frames-desktop/hero/frame_0001.webp"
+ * // urls[191] => "http://localhost:8089/frames-desktop/hero/frame_0192.webp"
  */
 export function generateFrameUrls(params: GenerateFrameUrlsParams): string[] {
   const { sequence, totalFrames, quality } = params;

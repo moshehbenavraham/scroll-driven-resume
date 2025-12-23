@@ -38,7 +38,7 @@ describe("FrameSequence", () => {
   const mockFrameUrls = Array.from(
     { length: 192 },
     (_, i) =>
-      `http://localhost:8080/frames-desktop/hero/frame_${String(i + 1).padStart(4, "0")}.webp`
+      `http://localhost:8089/frames-desktop/hero/frame_${String(i + 1).padStart(4, "0")}.webp`
   );
 
   beforeEach(() => {
@@ -426,7 +426,7 @@ describe("FrameImage", () => {
   it("renders with correct src", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={1}
@@ -436,14 +436,14 @@ describe("FrameImage", () => {
     const img = screen.getByRole("img");
     expect(img).toHaveAttribute(
       "src",
-      "http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+      "http://localhost:8089/frames-desktop/hero/frame_0001.webp"
     );
   });
 
   it("renders with correct alt text", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={1}
@@ -456,7 +456,7 @@ describe("FrameImage", () => {
   it("has opacity 1 when active", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={1}
@@ -470,7 +470,7 @@ describe("FrameImage", () => {
   it("has opacity 0 when inactive", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={false}
         zIndex={1}
@@ -484,7 +484,7 @@ describe("FrameImage", () => {
   it("applies z-index correctly", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={5}
@@ -498,7 +498,7 @@ describe("FrameImage", () => {
   it("applies custom className", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={1}
@@ -512,7 +512,7 @@ describe("FrameImage", () => {
   it("uses eager loading by default", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={1}
@@ -526,7 +526,7 @@ describe("FrameImage", () => {
   it("supports lazy loading", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={1}
@@ -541,7 +541,7 @@ describe("FrameImage", () => {
   it("is not draggable", () => {
     render(
       <FrameImage
-        src="http://localhost:8080/frames-desktop/hero/frame_0001.webp"
+        src="http://localhost:8089/frames-desktop/hero/frame_0001.webp"
         alt="Test frame"
         isActive={true}
         zIndex={1}

@@ -33,7 +33,7 @@
 
 Initial configuration and environment verification.
 
-- [x] T001 [S0102] Verify Docker stack running and hero frames accessible at localhost:8080
+- [x] T001 [S0102] Verify Docker stack running and hero frames accessible at localhost:8089
 - [x] T002 [S0102] Create directory structure: `components/sections/` and `components/hero/`
 - [x] T003 [S0102] Verify existing dependencies: FrameSequence, ContentReveal, useScroll hooks
 

@@ -150,10 +150,11 @@ describe("SkillsSection", () => {
     expect(section).toHaveClass("min-h-screen");
   });
 
-  it("has proper padding", () => {
+  it("has proper responsive padding", () => {
     render(<SkillsSection />);
     const section = screen.getByRole("region");
-    expect(section).toHaveClass("py-24");
+    // Responsive padding: py-16 sm:py-20 md:py-24 lg:py-32
+    expect(section).toHaveClass("py-16");
   });
 
   it("renders skill cards with skills", () => {

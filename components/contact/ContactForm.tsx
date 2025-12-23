@@ -260,20 +260,23 @@ export function ContactForm({
         </motion.div>
       )}
 
-      {/* Submit button */}
+      {/* Submit button - 44px minimum touch target */}
       <motion.div variants={activeFieldVariants}>
         <button
           type="submit"
           disabled={isDisabled}
           className={cn(
             "flex w-full items-center justify-center gap-2",
-            "rounded-lg px-6 py-3",
+            // 44px minimum touch target
+            "rounded-lg px-6 py-3 min-h-[44px]",
             "bg-accent text-white font-medium",
             "hover:bg-accent/90",
             "focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:outline-none",
             "focus:ring-offset-background",
             "transition-all duration-200",
-            "disabled:cursor-not-allowed disabled:opacity-50"
+            "disabled:cursor-not-allowed disabled:opacity-50",
+            // Mobile keyboard: ensure button stays visible
+            "sticky bottom-0 sm:static"
           )}
         >
           {isDisabled ? (

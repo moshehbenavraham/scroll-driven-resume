@@ -7,7 +7,7 @@ A scroll-synchronized frame animation portfolio with parallax layering. The syst
 ## Dependency Graph
 
 ```
-Next.js App (localhost:3000)
+Next.js App (localhost:3017)
     |
     |-- React Components
     |     |-- Loading System (Zustand store)
@@ -17,7 +17,7 @@ Next.js App (localhost:3000)
     |-- Frame Assets
           |
           v
-Nginx Proxy (localhost:8080) -- 7-day cache
+Nginx Proxy (localhost:8089) -- 7-day cache
           |
           v
 MinIO Storage (localhost:9000)

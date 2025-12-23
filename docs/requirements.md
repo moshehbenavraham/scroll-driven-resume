@@ -667,13 +667,13 @@ MINIO_ROOT_PASSWORD=your_secure_minio_password
    - Upload your frame sequences (frame_0001.webp, frame_0002.webp, etc.)
 
 5. **Verify access through Nginx:**
-   - Test: `http://localhost:8080/frames/portfolio-hero-frames/frame_0001.webp`
+   - Test: `http://localhost:8089/frames/portfolio-hero-frames/frame_0001.webp`
 
 ### URL Format
 
 **Development (localhost):**
 ```
-http://localhost:8080/frames/[BUCKET]/frame_0001.webp
+http://localhost:8089/frames/[BUCKET]/frame_0001.webp
 ```
 
 **Production (with domain):**
@@ -683,8 +683,8 @@ https://assets.yourdomain.com/frames/[BUCKET]/frame_0001.webp
 
 **Example URLs you'll use:**
 
-- Hero: `http://localhost:8080/frames/portfolio-hero-frames/frame_0001.webp`
-- Product: `http://localhost:8080/frames/portfolio-product-frames/frame_0001.webp`
+- Hero: `http://localhost:8089/frames/portfolio-hero-frames/frame_0001.webp`
+- Product: `http://localhost:8089/frames/portfolio-product-frames/frame_0001.webp`
 
 ### Production Deployment
 
@@ -1274,7 +1274,7 @@ For users who prefer reduced motion:
 |     - Create portfolio-hero-frames bucket (public)                |
 |     - Create portfolio-product-frames bucket (public)             |
 |     - Upload all WebP frames via Console or mc CLI                |
-|     - Verify URLs: http://localhost:8080/frames/[bucket]/...      |
+|     - Verify URLs: http://localhost:8089/frames/[bucket]/...      |
 |     - Time: 15-20 minutes                                         |
 +------------------------------------------------------------------+
                               |

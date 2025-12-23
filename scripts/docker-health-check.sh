@@ -18,8 +18,8 @@ fi
 # Default ports
 MINIO_API_PORT=${MINIO_API_PORT:-9000}
 MINIO_CONSOLE_PORT=${MINIO_CONSOLE_PORT:-9001}
-POSTGRES_PORT=${POSTGRES_PORT:-5433}
-NGINX_PORT=${NGINX_PORT:-8080}
+POSTGRES_PORT=${POSTGRES_PORT:-5442}
+NGINX_PORT=${NGINX_PORT:-8089}
 
 # Counters
 PASSED=0
@@ -70,7 +70,7 @@ check_postgres() {
 check_cors() {
     printf "Checking %-20s ... " "CORS Headers"
 
-    cors_header=$(curl -s -I -H "Origin: http://localhost:3000" "http://localhost:${NGINX_PORT}/health" 2>/dev/null | grep -i "access-control-allow-origin" || true)
+    cors_header=$(curl -s -I -H "Origin: http://localhost:3017" "http://localhost:${NGINX_PORT}/health" 2>/dev/null | grep -i "access-control-allow-origin" || true)
 
     if [ -n "$cors_header" ]; then
         echo -e "${GREEN}PASS${NC}"

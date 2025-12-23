@@ -103,8 +103,8 @@ export function ContactSection({
       ref={sectionRef}
       className={cn(
         "relative",
-        // Natural height with generous padding
-        "min-h-screen py-24 lg:py-32",
+        // Natural height with responsive padding
+        "min-h-screen py-16 sm:py-20 md:py-24 lg:py-32",
         // Background
         "bg-background/50",
         className
@@ -122,8 +122,8 @@ export function ContactSection({
           <div
             ref={contentRef}
             className={cn(
-              "container mx-auto px-4 md:px-6 lg:px-8",
-              "flex flex-col gap-12 lg:gap-16"
+              "container mx-auto px-4 sm:px-6 lg:px-8",
+              "flex flex-col gap-8 md:gap-12 lg:gap-16"
             )}
           >
             {/* Section heading */}
@@ -145,7 +145,7 @@ export function ContactSection({
             {/* Two-column layout: Form | Social */}
             <motion.div
               className={cn(
-                "grid gap-12 lg:gap-16",
+                "grid gap-8 md:gap-12 lg:gap-16",
                 "grid-cols-1 lg:grid-cols-12",
                 "items-start"
               )}
@@ -157,7 +157,7 @@ export function ContactSection({
               <div className="lg:col-span-7">
                 <div
                   className={cn(
-                    "rounded-2xl p-6 md:p-8",
+                    "rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8",
                     "bg-card/30 backdrop-blur-sm",
                     "border border-border/30"
                   )}
@@ -170,7 +170,7 @@ export function ContactSection({
               <div className="lg:col-span-5">
                 <div
                   className={cn(
-                    "rounded-2xl p-6 md:p-8",
+                    "rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8",
                     "bg-card/30 backdrop-blur-sm",
                     "border border-border/30"
                   )}

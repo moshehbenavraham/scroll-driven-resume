@@ -67,7 +67,7 @@ Set up the self-hosted Docker stack with MinIO (S3-compatible storage), PostgreS
 ### Potential Challenges
 - **Port conflicts**: Common ports (80, 5432) may be in use by other services
 - **MinIO bucket policies**: Must configure public read access for frame delivery
-- **CORS configuration**: Must allow cross-origin requests from localhost:3000 (Next.js dev server)
+- **CORS configuration**: Must allow cross-origin requests from localhost:3017 (Next.js dev server)
 - **Cache header tuning**: Balance between freshness and performance (7-day cache target)
 
 ---

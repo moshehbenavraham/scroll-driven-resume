@@ -105,7 +105,7 @@ mc anonymous set download local/frames-mobile
 - Content-Type: image/webp (correct)
 - Cache-Control: public, max-age=604800, immutable (7 days)
 - X-Cache-Status: HIT (caching working)
-- Access-Control-Allow-Origin: http://localhost:3000 (CORS correct)
+- Access-Control-Allow-Origin: http://localhost:3017 (CORS correct)
 
 **ASCII Validation**:
 - scripts/upload-to-minio.sh: ASCII-only
@@ -156,9 +156,9 @@ mc anonymous set download local/frames-mobile
 
 Session completed successfully. All 672 optimized WebP frames are now deployed to MinIO and accessible through the Nginx caching proxy at:
 
-- http://localhost:8080/assets/frames-desktop/hero/frame_NNNN.webp
-- http://localhost:8080/assets/frames-desktop/product/frame_NNNN.webp
-- http://localhost:8080/assets/frames-mobile/hero/frame_NNNN.webp
-- http://localhost:8080/assets/frames-mobile/product/frame_NNNN.webp
+- http://localhost:8089/assets/frames-desktop/hero/frame_NNNN.webp
+- http://localhost:8089/assets/frames-desktop/product/frame_NNNN.webp
+- http://localhost:8089/assets/frames-mobile/hero/frame_NNNN.webp
+- http://localhost:8089/assets/frames-mobile/product/frame_NNNN.webp
 
 Ready for Session 04 (Next.js Bootstrap) to configure environment variables and begin frontend development.

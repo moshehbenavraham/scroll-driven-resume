@@ -23,7 +23,7 @@
 
 **Resolution**:
 1. Check MinIO status: `docker compose ps`
-2. Verify Nginx proxy: `curl http://localhost:8080/assets/frames-desktop/hero/frame_0001.webp`
+2. Verify Nginx proxy: `curl http://localhost:8089/assets/frames-desktop/hero/frame_0001.webp`
 3. Check CORS headers in browser Network tab
 4. Restart Docker stack: `docker compose restart`
 
@@ -55,4 +55,4 @@
 1. Check Docker daemon: `docker info`
 2. View container logs: `docker compose logs`
 3. Restart stack: `docker compose down && docker compose up -d`
-4. Verify ports: 8080 (Nginx), 9000/9001 (MinIO), 5432 (PostgreSQL)
+4. Verify ports: 8089 (Nginx), 9000/9001 (MinIO), 5442 (PostgreSQL)
