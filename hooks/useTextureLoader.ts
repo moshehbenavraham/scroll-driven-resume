@@ -17,6 +17,19 @@ const MAX_TEXTURE_POOL_SIZE = 50;
 const NEARBY_FRAME_RANGE = 5;
 
 /**
+ * Cached image entry with failure tracking for terminal states.
+ * Failed entries participate in LRU eviction to prevent cache bloat.
+ */
+export interface CachedTexture {
+  /** The loaded image element, null if load failed */
+  image: HTMLImageElement | null;
+  /** Whether the load failed (terminal state - no retry) */
+  failed: boolean;
+  /** Timestamp for LRU eviction tracking */
+  timestamp: number;
+}
+
+/**
  * Options for useTextureLoader hook.
  */
 export interface UseTextureLoaderOptions {
@@ -67,8 +80,8 @@ export function useTextureLoader({
   maxCachedTextures = MAX_TEXTURE_POOL_SIZE,
   enabled = true,
 }: UseTextureLoaderOptions): UseTextureLoaderReturn {
-  // Browser image cache - keeps all loaded HTMLImageElements
-  const imageCacheRef = useRef<Map<number, HTMLImageElement>>(new Map());
+  // Browser image cache - keeps all loaded CachedTexture entries (including failures)
+  const imageCacheRef = useRef<Map<number, CachedTexture>>(new Map());
 
   // GPU texture pool - limited size with LRU eviction
   const texturePoolRef = useRef<Map<number, THREE.Texture>>(new Map());
@@ -79,38 +92,46 @@ export function useTextureLoader({
   // Track loaded image count
   const [loadedCount, setLoadedCount] = useState(0);
 
-  // Loading state for images
+  // Loading state for images (legacy - still used for tracking in-flight loads)
   const loadingRef = useRef<Set<number>>(new Set());
 
   // Track mounted state to prevent state updates after unmount or before mount
   const isMountedRef = useRef(false);
 
+  // Promise registry for concurrent load deduplication (T005)
+  const loadingPromisesRef = useRef<Map<number, Promise<CachedTexture>>>(
+    new Map()
+  );
+
+  // Track requestIdleCallback handle for cleanup (T006)
+  const idleCallbackHandleRef = useRef<number | null>(null);
+
+  // Track setTimeout handles for cleanup (T007)
+  const timeoutHandlesRef = useRef<Set<ReturnType<typeof setTimeout>>>(
+    new Set()
+  );
+
   /**
    * Load an image into browser cache.
+   * Returns a CachedTexture entry (may contain failed state).
    */
   const loadImage = useCallback(
-    (index: number): Promise<HTMLImageElement> => {
-      return new Promise((resolve, reject) => {
-        // Already cached
-        const cached = imageCacheRef.current.get(index);
-        if (cached && cached.complete) {
-          resolve(cached);
-          return;
-        }
+    (index: number): Promise<CachedTexture> => {
+      // Check for existing loading promise (concurrent load deduplication)
+      const existingPromise = loadingPromisesRef.current.get(index);
+      if (existingPromise) {
+        return existingPromise;
+      }
 
-        // Already loading
-        if (loadingRef.current.has(index)) {
-          // Wait for existing load
-          const checkInterval = setInterval(() => {
-            const img = imageCacheRef.current.get(index);
-            if (img && img.complete) {
-              clearInterval(checkInterval);
-              resolve(img);
-            }
-          }, 10);
-          return;
-        }
+      // Already cached (success or failure)
+      const cached = imageCacheRef.current.get(index);
+      if (cached) {
+        // Return cached entry (even if failed - terminal state)
+        return Promise.resolve(cached);
+      }
 
+      // Create promise for this load
+      const promise = new Promise<CachedTexture>((resolve, reject) => {
         // Start loading
         loadingRef.current.add(index);
         const img = new Image();
@@ -119,21 +140,40 @@ export function useTextureLoader({
 
         img.onload = () => {
           loadingRef.current.delete(index);
-          imageCacheRef.current.set(index, img);
+          const entry: CachedTexture = {
+            image: img,
+            failed: false,
+            timestamp: Date.now(),
+          };
+          imageCacheRef.current.set(index, entry);
+          loadingPromisesRef.current.delete(index);
           // Only update state if component is mounted
           if (isMountedRef.current) {
             setLoadedCount((prev) => prev + 1);
           }
-          resolve(img);
+          resolve(entry);
         };
 
         img.onerror = () => {
           loadingRef.current.delete(index);
+          // Cache failed state as terminal (no retry)
+          const entry: CachedTexture = {
+            image: null,
+            failed: true,
+            timestamp: Date.now(),
+          };
+          imageCacheRef.current.set(index, entry);
+          loadingPromisesRef.current.delete(index);
           reject(new Error(`Failed to load image at index ${index}`));
         };
 
         img.src = frameUrls[index];
       });
+
+      // Store promise for concurrent load deduplication
+      loadingPromisesRef.current.set(index, promise);
+
+      return promise;
     },
     [frameUrls]
   );
@@ -187,8 +227,14 @@ export function useTextureLoader({
       }
 
       // Check if image is in browser cache
-      const image = imageCacheRef.current.get(frameIndex);
-      if (!image || !image.complete) {
+      const cached = imageCacheRef.current.get(frameIndex);
+
+      // Skip failed entries - they are terminal states
+      if (cached && cached.failed) {
+        return null;
+      }
+
+      if (!cached || !cached.image || !cached.image.complete) {
         // Image not ready - trigger load in background
         loadImage(frameIndex).catch(() => {
           // Silently ignore - texture will be unavailable
@@ -202,7 +248,7 @@ export function useTextureLoader({
       }
 
       // Create texture from image
-      const texture = new THREE.Texture(image);
+      const texture = new THREE.Texture(cached.image);
       texture.needsUpdate = true;
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.minFilter = THREE.LinearFilter;
@@ -231,8 +277,9 @@ export function useTextureLoader({
     if (texturePoolRef.current.has(frameIndex)) {
       return true;
     }
-    const image = imageCacheRef.current.get(frameIndex);
-    return image !== undefined && image.complete;
+    const cached = imageCacheRef.current.get(frameIndex);
+    // Ready if cached, not failed, and image is complete
+    return cached !== undefined && !cached.failed && cached.image !== null && cached.image.complete;
   }, []);
 
   /**
@@ -279,7 +326,7 @@ export function useTextureLoader({
     // Load first N frames with priority
     const loadPriorityFrames = async () => {
       const count = Math.min(priorityCount, frameUrls.length);
-      const promises: Promise<HTMLImageElement>[] = [];
+      const promises: Promise<CachedTexture>[] = [];
 
       for (let i = 0; i < count; i++) {
         promises.push(loadImage(i));
@@ -305,18 +352,21 @@ export function useTextureLoader({
           }
 
           if (currentIndex < frameUrls.length) {
-            requestIdleCallback(loadBatch);
+            // Track the idle callback handle for cleanup (T013)
+            idleCallbackHandleRef.current = requestIdleCallback(loadBatch);
           }
         };
 
-        requestIdleCallback(loadBatch);
+        // Track initial idle callback handle (T013)
+        idleCallbackHandleRef.current = requestIdleCallback(loadBatch);
       } else {
-        // Fallback for browsers without requestIdleCallback
+        // Fallback for browsers without requestIdleCallback (T014)
         for (let i = priorityCount; i < frameUrls.length; i++) {
-          setTimeout(
+          const handle = setTimeout(
             () => loadImage(i).catch(() => {}),
             (i - priorityCount) * 50
           );
+          timeoutHandlesRef.current.add(handle);
         }
       }
     };
@@ -324,11 +374,29 @@ export function useTextureLoader({
     loadRemainingFrames();
   }, [enabled, frameUrls, priorityCount, loadImage]);
 
-  // Cleanup textures on unmount
+  // Cleanup textures and async resources on unmount (T015)
   useEffect(() => {
     const texturePool = texturePoolRef.current;
     const accessOrder = accessOrderRef.current;
+    const timeoutHandles = timeoutHandlesRef.current;
+    const loadingPromises = loadingPromisesRef.current;
     return () => {
+      // Cancel pending idle callbacks
+      if (idleCallbackHandleRef.current !== null && "cancelIdleCallback" in window) {
+        cancelIdleCallback(idleCallbackHandleRef.current);
+        idleCallbackHandleRef.current = null;
+      }
+
+      // Clear all pending timeouts
+      timeoutHandles.forEach((handle) => {
+        clearTimeout(handle);
+      });
+      timeoutHandles.clear();
+
+      // Clear loading promises registry
+      loadingPromises.clear();
+
+      // Dispose GPU textures
       texturePool.forEach((texture) => {
         texture.dispose();
       });
