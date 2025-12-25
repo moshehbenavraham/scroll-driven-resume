@@ -19,20 +19,13 @@ import {
   getOptimalQuality,
   createMobileMediaQuery,
 } from "@/lib/frame-utils";
-import type {
-  FrameSequenceId,
-  FrameQuality,
-  ScrollDirection,
-  ScrollOffset,
+import {
+  FRAME_COUNTS,
+  type FrameSequenceId,
+  type FrameQuality,
+  type ScrollDirection,
+  type ScrollOffset,
 } from "@/types/animation";
-
-/**
- * Frame counts for each sequence.
- */
-const SEQUENCE_FRAME_COUNTS: Record<string, number> = {
-  hero: 192,
-  product: 144,
-};
 
 /**
  * Options for useUnifiedFrameAnimation hook.
@@ -115,7 +108,7 @@ export function useUnifiedFrameAnimation(
   } = options;
 
   // Get frame count for this sequence
-  const totalFrames = SEQUENCE_FRAME_COUNTS[sequence] ?? 0;
+  const totalFrames = FRAME_COUNTS[sequence] ?? 0;
 
   // Detect mobile and reduced motion
   const [isMobile, setIsMobile] = useState(() => {

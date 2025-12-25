@@ -18,8 +18,8 @@ import type {
  * Base URL for frame assets.
  * Uses nginx proxy in development for CORS and caching.
  */
-const FRAME_BASE_URL =
-  process.env.NEXT_PUBLIC_FRAME_BASE_URL || "http://localhost:8089";
+const ASSET_BASE_URL =
+  process.env.NEXT_PUBLIC_ASSET_BASE_URL || "http://localhost:8089/assets";
 
 /**
  * Cache version for CORS-enabled requests.
@@ -77,7 +77,7 @@ function buildFrameUrl(
   const paddedIndex = String(index).padStart(4, "0");
 
   // Add cache version to bust stale non-CORS cached images
-  return `${FRAME_BASE_URL}/${bucket}/${sequence}/frame_${paddedIndex}.webp?${CACHE_VERSION}`;
+  return `${ASSET_BASE_URL}/${bucket}/${sequence}/frame_${paddedIndex}.webp?${CACHE_VERSION}`;
 }
 
 // ============================================================================

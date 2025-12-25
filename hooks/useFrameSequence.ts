@@ -15,22 +15,15 @@ import {
   getOptimalQuality,
   createMobileMediaQuery,
 } from "@/lib/frame-utils";
-import type {
-  UseFrameSequenceOptions,
-  UseFrameSequenceReturn,
-  FrameQuality,
+import {
+  FRAME_COUNTS,
+  type UseFrameSequenceOptions,
+  type UseFrameSequenceReturn,
+  type FrameQuality,
 } from "@/types/animation";
 
 // Re-export FRAME_COUNTS for convenience
-export { FRAME_COUNTS } from "@/types/animation";
-
-/**
- * Frame counts for each sequence.
- */
-const SEQUENCE_FRAME_COUNTS: Record<string, number> = {
-  hero: 192,
-  product: 144,
-};
+export { FRAME_COUNTS };
 
 /**
  * Integration hook for scroll-synchronized frame animation.
@@ -69,7 +62,7 @@ export function useFrameSequence(
   } = options;
 
   // Get frame count for this sequence
-  const totalFrames = SEQUENCE_FRAME_COUNTS[sequence] ?? 0;
+  const totalFrames = FRAME_COUNTS[sequence] ?? 0;
 
   // Detect mobile and reduced motion using lazy initializer for SSR safety
   const [isMobile, setIsMobile] = useState(() => {
