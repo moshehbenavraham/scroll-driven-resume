@@ -41,7 +41,7 @@
 ## File Structure
 
 ```
-.env              # Base config (committed, no secrets)
+.env              # Local config (gitignored, copy from .env.example)
 .env.local        # Local overrides (not committed)
 .env.example      # Template with all variables
 ```

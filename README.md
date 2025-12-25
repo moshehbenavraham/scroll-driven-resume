@@ -19,7 +19,7 @@ Open [http://localhost:3017](http://localhost:3017) to view the site.
 
 ```
 .
-├── app/                  # Next.js 15 App Router pages
+├── app/                  # Next.js 16 App Router pages
 ├── components/           # React components
 │   ├── animation/        # Frame animation (Canvas renderer)
 │   ├── decorative/       # CSS/SVG decorative elements
@@ -47,7 +47,7 @@ Open [http://localhost:3017](http://localhost:3017) to view the site.
 
 ## Tech Stack
 
-- **Next.js 15** - React framework with App Router
+- **Next.js 16** - React framework with App Router
 - **React 19** - UI library with concurrent features
 - **TypeScript 5** - Type-safe development
 - **Tailwind CSS 4** - Utility-first styling
