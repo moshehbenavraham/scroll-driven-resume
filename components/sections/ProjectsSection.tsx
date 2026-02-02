@@ -15,6 +15,7 @@ import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ParallaxContainer, ParallaxLayer } from "@/components/parallax";
 import { ProjectCard, ProjectsDecorative } from "@/components/projects";
+import { HorizontalCardScroller } from "@/components/scroller";
 import { DEFAULT_PROJECTS, type ProjectsSectionProps } from "@/types/projects";
 
 /**
@@ -104,10 +105,11 @@ export function ProjectsSection({
         "relative",
         // Natural height with responsive padding
         "min-h-screen py-16 sm:py-20 md:py-24 lg:py-32",
-        // Background
+        // Background (solid to hide parallax from previous sections)
         "bg-background",
         className
       )}
+      style={{ zIndex: 4 }}
       aria-label="Projects section"
     >
       <ParallaxContainer containerRef={sectionRef}>
@@ -141,27 +143,25 @@ export function ProjectsSection({
               </p>
             </motion.div>
 
-            {/* Projects grid - responsive columns */}
+            {/* Projects horizontal scroller */}
             <motion.div
-              className={cn(
-                "grid gap-4 sm:gap-6 lg:gap-8",
-                // Responsive grid: 1 -> 2 -> 3 columns
-                "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-                // Equal height items
-                "items-stretch"
-              )}
               initial="hidden"
               animate={shouldReveal ? "visible" : "hidden"}
               variants={activeContainerVariants}
             >
-              {DEFAULT_PROJECTS.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  isRevealed={shouldReveal}
-                  delay={prefersReducedMotion ? 0 : 0.1 * index}
-                />
-              ))}
+              <HorizontalCardScroller
+                cardClassName="w-[300px] sm:w-[350px] lg:w-[380px]"
+                ariaLabel="Portfolio projects"
+              >
+                {DEFAULT_PROJECTS.map((project, index) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    isRevealed={shouldReveal}
+                    delay={prefersReducedMotion ? 0 : 0.1 * index}
+                  />
+                ))}
+              </HorizontalCardScroller>
             </motion.div>
           </div>
         </ParallaxLayer>

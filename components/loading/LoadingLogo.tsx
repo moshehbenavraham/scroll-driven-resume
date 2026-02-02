@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
  * Props for LoadingLogo component.
  */
 export interface LoadingLogoProps {
-  /** Optional custom text to display (default: "JD") */
+  /** Optional custom text to display (default: "AI") */
   text?: string;
   /** Optional custom className for styling */
   className?: string;
@@ -21,7 +21,7 @@ export interface LoadingLogoProps {
  * Loading logo with subtle pulse animation.
  * Uses a simple monogram as placeholder for actual logo.
  */
-export function LoadingLogo({ text = "JD", className = "" }: LoadingLogoProps) {
+export function LoadingLogo({ text = "AI", className = "" }: LoadingLogoProps) {
   return (
     <motion.div
       className={`flex items-center justify-center ${className}`}

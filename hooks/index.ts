@@ -39,6 +39,9 @@ export { useUnifiedFrameAnimation } from "./useUnifiedFrameAnimation";
 export { useActiveSection } from "./useActiveSection";
 export { useScrollDirection } from "./useScrollDirection";
 
+// Scroller hooks
+export { useHorizontalScroll } from "./useHorizontalScroll";
+
 // Default exports for convenience
 export { default as useScrollProgressDefault } from "./useScrollProgress";
 export { default as useFrameAnimationDefault } from "./useFrameAnimation";
@@ -56,3 +59,4 @@ export { default as useUnifiedFrameAnimationDefault } from "./useUnifiedFrameAni
 export { default as useActiveSectionDefault } from "./useActiveSection";
 export { default as useScrollDirectionDefault } from "./useScrollDirection";
 export { default as useViewportHeightDefault } from "./useViewportHeight";
+export { default as useHorizontalScrollDefault } from "./useHorizontalScroll";

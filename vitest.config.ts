@@ -10,6 +10,14 @@ export default defineConfig({
     setupFiles: ["./__tests__/setup.ts"],
     include: ["__tests__/**/*.test.{ts,tsx}"],
     exclude: ["node_modules", ".next"],
+    // Force dedupe of Three.js to prevent multiple instances
+    deps: {
+      optimizer: {
+        web: {
+          include: ["three", "@react-three/fiber", "@react-three/drei"],
+        },
+      },
+    },
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
@@ -33,6 +41,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./"),
+      // Force Three.js singleton to prevent "Multiple instances" warning
+      three: path.resolve(__dirname, "node_modules/three"),
     },
   },
 });

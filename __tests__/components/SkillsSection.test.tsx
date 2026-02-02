@@ -79,23 +79,48 @@ vi.mock("@/components/decorative", () => ({
   NoiseOverlay: () => <div data-testid="noise-overlay" />,
 }));
 
+// Mock HorizontalCardScroller
+vi.mock("@/components/scroller", () => ({
+  HorizontalCardScroller: ({
+    children,
+    ariaLabel,
+    cardClassName,
+  }: {
+    children: React.ReactNode;
+    ariaLabel?: string;
+    cardClassName?: string;
+  }) => (
+    <div
+      data-testid="horizontal-card-scroller"
+      role="region"
+      aria-label={ariaLabel}
+      className={`flex gap-4 ${cardClassName || ""}`}
+    >
+      {children}
+    </div>
+  ),
+}));
+
 describe("SkillsSection", () => {
   it("renders without crashing", () => {
     render(<SkillsSection />);
-    expect(screen.getByRole("region")).toBeInTheDocument();
+    expect(
+      screen.getByRole("region", { name: "Skills section" })
+    ).toBeInTheDocument();
   });
 
   it("has correct aria-label", () => {
     render(<SkillsSection />);
-    expect(screen.getByRole("region")).toHaveAttribute(
-      "aria-label",
-      "Skills section"
-    );
+    expect(
+      screen.getByRole("region", { name: "Skills section" })
+    ).toHaveAttribute("aria-label", "Skills section");
   });
 
   it("has id='skills' for navigation", () => {
     render(<SkillsSection />);
-    expect(screen.getByRole("region")).toHaveAttribute("id", "skills");
+    expect(
+      screen.getByRole("region", { name: "Skills section" })
+    ).toHaveAttribute("id", "skills");
   });
 
   it("renders section heading", () => {
@@ -120,13 +145,15 @@ describe("SkillsSection", () => {
 
   it("applies custom className", () => {
     render(<SkillsSection className="custom-class" />);
-    const section = screen.getByRole("region");
+    const section = screen.getByRole("region", { name: "Skills section" });
     expect(section).toHaveClass("custom-class");
   });
 
   it("defaults isRevealed to true", () => {
     render(<SkillsSection />);
-    expect(screen.getByRole("region")).toBeInTheDocument();
+    expect(
+      screen.getByRole("region", { name: "Skills section" })
+    ).toBeInTheDocument();
   });
 
   it("has parallax container", () => {
@@ -146,13 +173,13 @@ describe("SkillsSection", () => {
 
   it("has min-h-screen for proper height", () => {
     render(<SkillsSection />);
-    const section = screen.getByRole("region");
+    const section = screen.getByRole("region", { name: "Skills section" });
     expect(section).toHaveClass("min-h-screen");
   });
 
   it("has proper responsive padding", () => {
     render(<SkillsSection />);
-    const section = screen.getByRole("region");
+    const section = screen.getByRole("region", { name: "Skills section" });
     // Responsive padding: py-16 sm:py-20 md:py-24 lg:py-32
     expect(section).toHaveClass("py-16");
   });
@@ -166,11 +193,10 @@ describe("SkillsSection", () => {
     expect(screen.getByText("Team Building")).toBeInTheDocument();
   });
 
-  it("has responsive grid container", () => {
+  it("has horizontal scroller container", () => {
     render(<SkillsSection isRevealed={true} />);
-    // Find the grid by looking for an element with grid classes
-    const grids = document.querySelectorAll(".grid");
-    expect(grids.length).toBeGreaterThan(0);
+    // Find the horizontal scroller
+    expect(screen.getByTestId("horizontal-card-scroller")).toBeInTheDocument();
   });
 
   it("renders correct heading level (h2)", () => {

@@ -87,6 +87,28 @@ vi.mock("@/components/decorative", () => ({
   NoiseOverlay: () => <div data-testid="noise-overlay" />,
 }));
 
+// Mock HorizontalCardScroller
+vi.mock("@/components/scroller", () => ({
+  HorizontalCardScroller: ({
+    children,
+    ariaLabel,
+    cardClassName,
+  }: {
+    children: React.ReactNode;
+    ariaLabel?: string;
+    cardClassName?: string;
+  }) => (
+    <div
+      data-testid="horizontal-card-scroller"
+      role="region"
+      aria-label={ariaLabel}
+      className={`flex gap-4 ${cardClassName || ""}`}
+    >
+      {children}
+    </div>
+  ),
+}));
+
 describe("ProjectsSection", () => {
   beforeEach(() => {
     mockReducedMotion = false;
@@ -145,12 +167,10 @@ describe("ProjectsSection", () => {
     expect(section).toHaveClass("custom-class");
   });
 
-  it("has responsive grid layout", () => {
-    const { container } = render(<ProjectsSection />);
-    const grid = container.querySelector(".grid");
-    expect(grid).toHaveClass("grid-cols-1");
-    expect(grid).toHaveClass("md:grid-cols-2");
-    expect(grid).toHaveClass("lg:grid-cols-3");
+  it("has horizontal scroller layout", () => {
+    render(<ProjectsSection />);
+    // Find the horizontal scroller
+    expect(screen.getByTestId("horizontal-card-scroller")).toBeInTheDocument();
   });
 
   it("renders with min-h-screen class", () => {

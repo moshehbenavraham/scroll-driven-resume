@@ -26,6 +26,9 @@ export * from "./projects";
 // Re-export contact types
 export * from "./contact";
 
+// Re-export scroller types
+export * from "./scroller";
+
 /**
  * Theme options for the application.
  */

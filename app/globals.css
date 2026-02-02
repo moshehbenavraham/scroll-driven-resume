@@ -167,3 +167,16 @@ body {
   background-color: hsl(var(--primary) / 0.2);
   color: hsl(var(--foreground));
 }
+
+/* =============================================================================
+   Hidden Scrollbar Utility
+   ============================================================================= */
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

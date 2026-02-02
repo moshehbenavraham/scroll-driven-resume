@@ -15,6 +15,7 @@ import { cn } from "@/lib/cn";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ParallaxContainer, ParallaxLayer } from "@/components/parallax";
 import { SkillCard, SkillsDecorative } from "@/components/skills";
+import { HorizontalCardScroller } from "@/components/scroller";
 import {
   DEFAULT_SKILL_CATEGORIES,
   type SkillsSectionProps,
@@ -107,10 +108,11 @@ export function SkillsSection({
         "relative",
         // Natural height with responsive padding
         "min-h-screen py-16 sm:py-20 md:py-24 lg:py-32",
-        // Background
-        "bg-background/50",
+        // Background (solid to hide parallax from previous sections)
+        "bg-background",
         className
       )}
+      style={{ zIndex: 3 }}
       aria-label="Skills section"
     >
       <ParallaxContainer containerRef={sectionRef}>
@@ -144,27 +146,25 @@ export function SkillsSection({
               </p>
             </motion.div>
 
-            {/* Skills grid - responsive columns */}
+            {/* Skills horizontal scroller */}
             <motion.div
-              className={cn(
-                "grid gap-4 sm:gap-6",
-                // Responsive grid: 1 -> 2 -> 4 columns
-                "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
-                // Equal height items
-                "items-stretch"
-              )}
               initial="hidden"
               animate={shouldReveal ? "visible" : "hidden"}
               variants={activeContainerVariants}
             >
-              {DEFAULT_SKILL_CATEGORIES.map((category, index) => (
-                <SkillCard
-                  key={category.id}
-                  category={category}
-                  isRevealed={shouldReveal}
-                  delay={prefersReducedMotion ? 0 : 0.1 * index}
-                />
-              ))}
+              <HorizontalCardScroller
+                cardClassName="w-[280px] sm:w-[320px] lg:w-[280px]"
+                ariaLabel="Skills categories"
+              >
+                {DEFAULT_SKILL_CATEGORIES.map((category, index) => (
+                  <SkillCard
+                    key={category.id}
+                    category={category}
+                    isRevealed={shouldReveal}
+                    delay={prefersReducedMotion ? 0 : 0.1 * index}
+                  />
+                ))}
+              </HorizontalCardScroller>
             </motion.div>
           </div>
         </ParallaxLayer>

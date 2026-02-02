@@ -105,10 +105,11 @@ export function ContactSection({
         "relative",
         // Natural height with responsive padding
         "min-h-screen py-16 sm:py-20 md:py-24 lg:py-32",
-        // Background
-        "bg-background/50",
+        // Background (solid to hide parallax from previous sections)
+        "bg-background",
         className
       )}
+      style={{ zIndex: 6 }}
       aria-label="Contact section"
     >
       <ParallaxContainer containerRef={sectionRef}>

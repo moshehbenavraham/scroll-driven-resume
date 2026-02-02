@@ -63,6 +63,7 @@ export function HeroSection({
         "relative h-[300vh]",
         className
       )}
+      style={{ zIndex: 1 }}
       aria-label="Hero section"
     >
       {/* Sticky container - stays fixed during scroll */}

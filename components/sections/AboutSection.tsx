@@ -51,10 +51,11 @@ export function AboutSection({
         "relative",
         // Natural height with responsive padding
         "min-h-screen py-16 sm:py-20 md:py-24 lg:py-32",
-        // Background
+        // Background (solid to hide parallax from previous sections)
         "bg-background",
         className
       )}
+      style={{ zIndex: 2 }}
       aria-label="About section"
     >
       <ParallaxContainer containerRef={sectionRef}>

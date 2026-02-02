@@ -83,7 +83,7 @@ export function ProductSection({
         "relative",
         className
       )}
-      style={{ height: SCROLL_RUNWAY_HEIGHT }}
+      style={{ height: SCROLL_RUNWAY_HEIGHT, zIndex: 5 }}
       aria-label="AI Community section"
     >
       {/* Sticky container - stays fixed during scroll */}
