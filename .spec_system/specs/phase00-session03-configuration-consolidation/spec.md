@@ -12,7 +12,7 @@
 
 ## 1. Session Overview
 
-This session eliminates configuration drift in the modern-resume-site codebase by establishing single sources of truth for frame counts and environment variables. The code audit identified duplicate `SEQUENCE_FRAME_COUNTS` definitions in two hooks that shadow the canonical `FRAME_COUNTS` export, creating maintenance risk and potential for inconsistency.
+This session eliminates configuration drift in the scroll-driven-resume codebase by establishing single sources of truth for frame counts and environment variables. The code audit identified duplicate `SEQUENCE_FRAME_COUNTS` definitions in two hooks that shadow the canonical `FRAME_COUNTS` export, creating maintenance risk and potential for inconsistency.
 
 Additionally, environment variable naming is inconsistent: the runtime code uses `NEXT_PUBLIC_FRAME_BASE_URL` while documentation emphasizes `NEXT_PUBLIC_ASSET_BASE_URL`. The PRD design decision mandates standardizing on `NEXT_PUBLIC_ASSET_BASE_URL` with an `/assets` prefix to align with the Nginx proxy path.
 

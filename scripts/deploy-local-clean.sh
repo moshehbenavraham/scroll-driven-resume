@@ -263,7 +263,7 @@ phase_stop() {
     # Kill any node processes related to this project
     print_step "Checking for orphan Node processes..."
     pkill -f "next dev.*${DEV_PORT}" 2>/dev/null || true
-    pkill -f "node.*modern-resume-site" 2>/dev/null || true
+    pkill -f "node.*scroll-driven-resume" 2>/dev/null || true
     print_success "Orphan processes cleaned"
 
     # Stop Docker containers

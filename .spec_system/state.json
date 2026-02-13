@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "project_name": "modern-resume-site",
+  "project_name": "scroll-driven-resume",
   "description": "Modern animated portfolio/resume website with WebGL effects, parallax scrolling, and interactive sections",
   "current_phase": 0,
   "current_session": "phase00-session05-test-environment-improvements",

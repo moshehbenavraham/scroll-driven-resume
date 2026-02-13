@@ -1,4 +1,4 @@
-# modern-resume-site - Product Requirements Document
+# scroll-driven-resume - Product Requirements Document
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# Modern Resume Site
+# Scroll-Driven Resume
 
 A premium, single-page personal tech portfolio combining scroll-synchronized frame animation with parallax layering for a cinematic user experience.
 
@@ -80,10 +80,10 @@ The project includes a production-ready Dockerfile for containerized deployment:
 
 ```bash
 # Build production image
-docker build -t modern-resume-site .
+docker build -t scroll-driven-resume .
 
 # Run locally
-docker run -p 3000:3000 modern-resume-site
+docker run -p 3000:3000 scroll-driven-resume
 ```
 
 ### Coolify Deployment

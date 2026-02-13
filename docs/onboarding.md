@@ -14,7 +14,7 @@ Zero-to-hero setup for new developers.
 
 ```bash
 git clone <repo-url>
-cd modern-resume-site
+cd scroll-driven-resume
 ```
 
 ### 2. Install Dependencies

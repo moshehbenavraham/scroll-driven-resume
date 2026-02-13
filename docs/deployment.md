@@ -16,10 +16,10 @@ Self-hosted deployment using the included Dockerfile:
 
 ```bash
 # Build production image
-docker build -t modern-resume-site .
+docker build -t scroll-driven-resume .
 
 # Run locally
-docker run -p 3000:3000 modern-resume-site
+docker run -p 3000:3000 scroll-driven-resume
 ```
 
 **Coolify Configuration:**

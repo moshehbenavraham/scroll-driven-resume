@@ -8,7 +8,7 @@
 
 ## Overview
 
-This session eliminated configuration drift in the modern-resume-site codebase by establishing single sources of truth for frame counts and environment variables. The duplicate `SEQUENCE_FRAME_COUNTS` definitions in two hooks were removed, consolidating all frame count access to the canonical `FRAME_COUNTS` export in `types/animation.ts`. Additionally, the environment variable was standardized from `NEXT_PUBLIC_FRAME_BASE_URL` to `NEXT_PUBLIC_ASSET_BASE_URL` with proper `/assets` path prefix.
+This session eliminated configuration drift in the scroll-driven-resume codebase by establishing single sources of truth for frame counts and environment variables. The duplicate `SEQUENCE_FRAME_COUNTS` definitions in two hooks were removed, consolidating all frame count access to the canonical `FRAME_COUNTS` export in `types/animation.ts`. Additionally, the environment variable was standardized from `NEXT_PUBLIC_FRAME_BASE_URL` to `NEXT_PUBLIC_ASSET_BASE_URL` with proper `/assets` path prefix.
 
 ---
 
